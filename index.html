@@ -112,9 +112,6 @@
                     <span class="w-2 h-2 rounded-full bg-apprecio-red animate-pulse"></span>
                     <span id="sync-text">Sincronizado</span>
                 </span>
-                <button onclick="toggleConfigModal()" class="p-2.5 rounded-xl border border-slate-200 text-slate-600 hover:bg-apprecio-light hover:text-apprecio-red hover:border-apprecio-light transition-colors" title="Configurar origen de datos">
-                    <i class="fa-solid fa-gear"></i>
-                </button>
             </div>
         </div>
     </header>
@@ -127,8 +124,8 @@
             <div class="absolute -right-12 -bottom-12 w-80 h-80 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
             <div class="absolute right-1/4 -top-12 w-64 h-64 bg-white/5 rounded-full blur-2xl pointer-events-none"></div>
             
-            <div class="flex flex-col lg:flex-row items-center justify-between gap-8 relative z-10">
-                <div class="max-w-2xl space-y-4">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
+                <div class="max-w-xl space-y-4">
                     <div class="flex items-center gap-2">
                         <span class="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest font-extrabold px-3.5 py-1 rounded-full bg-white text-apprecio-red shadow-sm">
                             <i class="fa-solid fa-gift text-apprecio-red"></i> Catálogo Apprecio
@@ -140,22 +137,18 @@
                     <p class="text-white/95 text-sm sm:text-base leading-relaxed font-semibold">
                         Un gran programa de reconocimientos donde<br class="hidden sm:inline"> canjeas puntos por gift cards y cupones digitales
                     </p>
-                    <div class="pt-2 flex flex-wrap gap-3">
-                        <a href="https://docs.google.com/spreadsheets/d/14w_8kJekDgHq6-YxBY1ZKo1XfoCuwd0dB9giCd7Q2rI/edit#gid=1041963400" target="_blank" class="px-4 py-2.5 rounded-xl bg-white text-apprecio-red hover:bg-slate-100 font-bold text-xs shadow-md transition-all flex items-center gap-2">
-                            <i class="fa-solid fa-file-excel text-emerald-600"></i> Abrir Hoja de Datos en Google Sheets
-                        </a>
-                    </div>
                 </div>
 
-                <!-- Hero Header Image beside Title -->
-                <div class="w-full lg:w-[420px] h-56 sm:h-64 rounded-2xl overflow-hidden shadow-2xl border-2 border-white/20 shrink-0 relative group">
-                    <img 
-                        src="banner-apprecio.jpg" 
-                        alt="Apprecio Banner" 
-                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        onerror="this.onerror=null; this.src='https://placehold.co/1200x630/fa335e/ffffff?text=Apprecio+Colombia';"
-                    >
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none"></div>
+                <!-- Banner Image Card -->
+                <div class="w-full md:w-80 lg:w-96 shrink-0">
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-white/20 aspect-[16/9] md:aspect-[4/3] bg-white/10 backdrop-blur-sm group">
+                        <img 
+                            src="banner-apprecio.jpg" 
+                            alt="Apprecio Banner" 
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\\'w-full h-full flex flex-col items-center justify-center p-6 text-center bg-white/10\\'><i class=\\'fa-solid fa-gift text-4xl text-white mb-2\\'></i><span class=\\'text-xs font-bold text-white\\'>Apprecio Gift Cards</span></div>';"
+                        >
+                    </div>
                 </div>
             </div>
         </section>
