@@ -1,0 +1,412 @@
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo Comercial & Presentación Dinámica</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(229, 231, 235, 0.8);
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white text-xl font-bold shadow-md shadow-indigo-200">
+                    <i class="fa-solid fa-store"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold text-slate-900 leading-tight">Catálogo Comercial</h1>
+                    <p class="text-xs text-slate-500 font-medium">Sincronizado en tiempo real</p>
+                </div>
+            </div>
+
+            <!-- Sync Indicator & Settings Toggle -->
+            <div class="flex items-center gap-3">
+                <span id="sync-status-badge" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span>Sincronizado</span>
+                </span>
+                <button onclick="toggleConfigModal()" class="p-2.5 rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-100 hover:text-indigo-600 transition-colors" title="Configurar Excel / PPT">
+                    <i class="fa-solid fa-gear"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10">
+
+        <!-- Banner & Live PPT Integration -->
+        <section class="bg-gradient-to-br from-indigo-900 via-slate-900 to-indigo-950 rounded-3xl p-6 sm:p-8 text-white shadow-xl relative overflow-hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+                <div class="lg:col-span-5 space-y-4">
+                    <span class="inline-flex items-center gap-2 text-xs uppercase tracking-widest font-bold px-3 py-1 rounded-md bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
+                        <i class="fa-solid fa-bolt text-yellow-400"></i> Actualización Automática
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight">
+                        Catálogo de Comercios y Ofertas
+                    </h2>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                        Los montos, tarjetas y datos se actualizan directamente desde tu archivo de Excel / Google Sheets y tu presentación de Google Slides.
+                    </p>
+                    <div class="pt-2 flex flex-wrap gap-3">
+                        <a href="#catalogo" class="px-5 py-2.5 rounded-xl bg-indigo-500 hover:bg-indigo-600 text-white font-semibold text-sm transition-all shadow-lg shadow-indigo-500/30 flex items-center gap-2">
+                            <i class="fa-solid fa-grid-2"></i> Ver Cuadros / Tarjetas
+                        </a>
+                        <a href="#ppt-slide-section" class="px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-sm border border-white/20 transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-file-powerpoint text-orange-400"></i> Ver Presentación
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Google Slides Embed Container -->
+                <div class="lg:col-span-7 bg-slate-950/60 rounded-2xl border border-white/10 overflow-hidden shadow-2xl aspect-video relative group">
+                    <iframe 
+                        id="ppt-iframe" 
+                        src="https://docs.google.com/presentation/d/1RXktMajNMeL6T2jhRAte3KBc77LyP9p0Cr4HSlj0xPA/embed?start=false&loop=false&delayms=3000" 
+                        frameborder="0" 
+                        class="w-full h-full" 
+                        allowfullscreen="true" 
+                        mozallowfullscreen="true" 
+                        webkitallowfullscreen="true">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filters & Search Bar Section -->
+        <section id="catalogo" class="space-y-6">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
+                
+                <!-- Category Tabs -->
+                <div class="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 scrollbar-none" id="category-buttons">
+                    <button onclick="filterCategory('todos')" class="cat-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap bg-indigo-600 text-white transition-all shadow-sm">
+                        Todos
+                    </button>
+                    <button onclick="filterCategory('Supermercados')" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all">
+                        🛒 Supermercados
+                    </button>
+                    <button onclick="filterCategory('Restaurantes')" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all">
+                        🍔 Restaurantes
+                    </button>
+                    <button onclick="filterCategory('Moda')" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all">
+                        👗 Moda
+                    </button>
+                    <button onclick="filterCategory('Hogar/Tecnología')" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all">
+                        💻 Hogar & Tech
+                    </button>
+                    <button onclick="filterCategory('Entretenimiento')" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all">
+                        🎬 Entretenimiento
+                    </button>
+                </div>
+
+                <!-- Search Input -->
+                <div class="relative min-w-[240px]">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                    <input 
+                        type="text" 
+                        id="search-input" 
+                        oninput="handleSearch()" 
+                        placeholder="Buscar comercio o monto..." 
+                        class="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition-all">
+                </div>
+            </div>
+
+            <!-- Cards Container Grid -->
+            <div id="cards-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Cards inject dynamically via JS -->
+            </div>
+
+            <!-- Empty State -->
+            <div id="no-results" class="hidden text-center py-16 space-y-3 bg-white rounded-2xl border border-slate-200">
+                <i class="fa-solid fa-store-slash text-4xl text-slate-300"></i>
+                <h3 class="text-base font-bold text-slate-700">No se encontraron comercios</h3>
+                <p class="text-xs text-slate-500">Prueba ajustando el filtro o el término de búsqueda.</p>
+            </div>
+        </section>
+
+        <!-- Dynamic Slide Viewer Details -->
+        <section id="ppt-slide-section" class="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-4">
+                <div>
+                    <h3 class="text-lg font-bold text-slate-900">Presentación Sincronizada (Google Slides)</h3>
+                    <p class="text-xs text-slate-500">Cada cambio realizado en las diapositivas se refleja aquí en tiempo real.</p>
+                </div>
+                <a id="ppt-external-link" href="https://docs.google.com/presentation/d/1RXktMajNMeL6T2jhRAte3KBc77LyP9p0Cr4HSlj0xPA/edit" target="_blank" class="text-xs font-semibold text-indigo-600 hover:text-indigo-800 flex items-center gap-1">
+                    Abrir en Google Slides <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+            </div>
+
+            <div class="rounded-2xl overflow-hidden border border-slate-200 bg-slate-900 aspect-[16/9] w-full max-w-4xl mx-auto shadow-inner">
+                <iframe 
+                    id="ppt-slide-full" 
+                    src="https://docs.google.com/presentation/d/1RXktMajNMeL6T2jhRAte3KBc77LyP9p0Cr4HSlj0xPA/embed?start=false&loop=false&delayms=5000" 
+                    frameborder="0" 
+                    class="w-full h-full" 
+                    allowfullscreen="true">
+                </iframe>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 mt-12 py-6 text-center text-xs text-slate-500 space-y-2">
+        <p>© 2026 Catálogo Comercial Dinámico — Conectado a Google Sheets y Google Slides</p>
+        <p class="text-[11px] text-slate-400">Actualización en vivo cada vez que edites tu Excel o Presentación.</p>
+    </footer>
+
+    <!-- Configuration Modal (Instructions & Google Sheets CSV URL Setup) -->
+    <div id="config-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 space-y-6 shadow-2xl relative animate-fade-in">
+            <button onclick="toggleConfigModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+
+            <div class="space-y-2">
+                <div class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center text-lg font-bold">
+                    <i class="fa-solid fa-rotate"></i>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900">¿Cómo funciona la auto-actualización?</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    Para que la página web lea tus datos automáticamente sin reprogramar nada:
+                </p>
+            </div>
+
+            <!-- Steps for Google Sheets -->
+            <div class="space-y-3 bg-slate-50 p-4 rounded-2xl border border-slate-200 text-xs">
+                <div class="flex items-start gap-3">
+                    <span class="w-5 h-5 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-[10px] shrink-0">1</span>
+                    <p class="text-slate-700">En tu Google Sheet, ve a <strong>Archivo > Compartir > Publicar en la web</strong>.</p>
+                </div>
+                <div class="flex items-start gap-3">
+                    <span class="w-5 h-5 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-[10px] shrink-0">2</span>
+                    <p class="text-slate-700">Selecciona la pestaña deseada y elije formato <strong>Valores separados por comas (.csv)</strong>.</p>
+                </div>
+                <div class="flex items-start gap-3">
+                    <span class="w-5 h-5 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-[10px] shrink-0">3</span>
+                    <p class="text-slate-700">Pega la URL del CSV aquí para vincular el catálogo en vivo:</p>
+                </div>
+            </div>
+
+            <!-- Input CSV URL -->
+            <div class="space-y-2">
+                <label class="text-xs font-bold text-slate-700 block">URL del CSV de Google Sheets publicado:</label>
+                <input 
+                    type="text" 
+                    id="csv-url-input" 
+                    placeholder="https://docs.google.com/spreadsheets/d/e/.../pub?output=csv" 
+                    class="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-xs bg-slate-50 focus:bg-white focus:ring-2 focus:ring-indigo-500 outline-none">
+            </div>
+
+            <div class="flex gap-3">
+                <button onclick="saveCsvUrl()" class="flex-1 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl text-xs transition-all shadow-md">
+                    Guardar y Cargar Datos
+                </button>
+                <button onclick="toggleConfigModal()" class="px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-xl text-xs transition-all">
+                    Cerrar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript logic -->
+    <script>
+        // Sample baseline data extracted from the Catalogue structure
+        const sampleCatalogue = [
+            { id: 1, comercio: "Éxito / Carulla", categoria: "Supermercados", monto: "$150.000", descuento: "15% Cashback", icono: "fa-cart-shopping", color: "from-amber-500 to-orange-500", badge: "Destacado" },
+            { id: 2, comercio: "Jumbo / Metro", categoria: "Supermercados", monto: "$200.000", descuento: "20% en Lácteos", icono: "fa-basket-shopping", color: "from-green-500 to-emerald-600", badge: "Popular" },
+            { id: 3, comercio: "Crepes & Waffles", categoria: "Restaurantes", monto: "$80.000", descuento: "10% de Descuento", icono: "fa-utensils", color: "from-red-500 to-rose-600", badge: "Recomendado" },
+            { id: 4, comercio: "El Corral", categoria: "Restaurantes", monto: "$60.000", descuento: "Combo Especial", icono: "fa-burger", color: "from-yellow-500 to-amber-600", badge: "Oferta" },
+            { id: 5, comercio: "Zara / Bershka", categoria: "Moda", monto: "$250.000", descuento: "3x2 en Colección", icono: "fa-shirt", color: "from-purple-500 to-indigo-600", badge: "Nuevo" },
+            { id: 6, comercio: "Falabella", categoria: "Hogar/Tecnología", monto: "$500.000", descuento: "Hasta 30% OFF", icono: "fa-laptop", color: "from-blue-500 to-cyan-600", badge: "Destacado" },
+            { id: 7, comercio: "Alkosto / Ktronix", categoria: "Hogar/Tecnología", monto: "$450.000", descuento: "Envío Gratis", icono: "fa-tv", color: "from-teal-500 to-emerald-600", badge: "Top Monto" },
+            { id: 8, comercio: "Cine Colombia", categoria: "Entretenimiento", monto: "$40.000", descuento: "2x1 Boletas", icono: "fa-film", color: "from-fuchsia-500 to-pink-600", badge: "Especial" }
+        ];
+
+        let catalogueData = [...sampleCatalogue];
+        let currentCategory = 'todos';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCards(catalogueData);
+            
+            // Direct CSV Link from user's Google Sheet (GID 1041963400)
+            const defaultCsvUrl = "https://docs.google.com/spreadsheets/d/14w_8kJekDgHq6-YxBY1ZKo1XfoCuwd0dB9giCd7Q2rI/gviz/tq?tqx=out:csv&gid=1041963400";
+            const savedCsv = localStorage.getItem('google_sheet_csv_url');
+            
+            const activeUrl = savedCsv || defaultCsvUrl;
+            document.getElementById('csv-url-input').value = activeUrl;
+            fetchGoogleSheetCsv(activeUrl);
+        });
+
+        // Function to render cards dynamically
+        function renderCards(items) {
+            const grid = document.getElementById('cards-grid');
+            const noResults = document.getElementById('no-results');
+            grid.innerHTML = '';
+
+            if (items.length === 0) {
+                noResults.classList.remove('hidden');
+                return;
+            } else {
+                noResults.classList.add('hidden');
+            }
+
+            items.forEach(item => {
+                const card = document.createElement('div');
+                card.className = "glass-card rounded-2xl p-5 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between border border-slate-200 animate-fade-in";
+                
+                card.innerHTML = `
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br ${item.color || 'from-indigo-500 to-purple-600'} text-white flex items-center justify-center text-xl shadow-md">
+                                <i class="fa-solid ${item.icono || 'fa-store'}"></i>
+                            </div>
+                            <span class="px-2.5 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-slate-100 text-slate-600 border border-slate-200">
+                                ${item.badge || item.categoria}
+                            </span>
+                        </div>
+
+                        <div>
+                            <h4 class="text-base font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">${item.comercio}</h4>
+                            <p class="text-xs text-slate-500 font-medium">${item.categoria}</p>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between">
+                        <div>
+                            <span class="text-[10px] text-slate-400 font-semibold block uppercase">Monto Registrado</span>
+                            <span class="text-lg font-black text-slate-900">${item.monto}</span>
+                        </div>
+                        <span class="text-xs font-bold px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-600 border border-emerald-200">
+                            ${item.descuento || 'Disponible'}
+                        </span>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Category Filter logic
+        function filterCategory(category) {
+            currentCategory = category;
+            
+            // Toggle active styles on buttons
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.classList.remove('bg-indigo-600', 'text-white', 'shadow-sm');
+                btn.classList.add('bg-slate-100', 'text-slate-600');
+            });
+            event.currentTarget.classList.remove('bg-slate-100', 'text-slate-600');
+            event.currentTarget.classList.add('bg-indigo-600', 'text-white', 'shadow-sm');
+
+            applyFilters();
+        }
+
+        // Search logic
+        function handleSearch() {
+            applyFilters();
+        }
+
+        function applyFilters() {
+            const query = document.getElementById('search-input').value.toLowerCase();
+            
+            const filtered = catalogueData.filter(item => {
+                const matchesCategory = currentCategory === 'todos' || item.categoria.toLowerCase() === currentCategory.toLowerCase();
+                const matchesQuery = item.comercio.toLowerCase().includes(query) || 
+                                     item.monto.toLowerCase().includes(query) ||
+                                     item.categoria.toLowerCase().includes(query);
+                return matchesCategory && matchesQuery;
+            });
+
+            renderCards(filtered);
+        }
+
+        // Fetch Live Google Sheets CSV Data
+        async function fetchGoogleSheetCsv(url) {
+            try {
+                const res = await fetch(url);
+                const csvText = await res.text();
+                
+                // Helper to split CSV row correctly with quotes
+                const parseCsvLine = (line) => {
+                    const regex = /(?:^|,)(?:"([^"]*)"|([^,]*))/g;
+                    const row = [];
+                    let match;
+                    while ((match = regex.exec(line)) !== null) {
+                        if (match.index === regex.lastIndex) regex.lastIndex++;
+                        row.push(match[1] !== undefined ? match[1] : match[2]);
+                    }
+                    return row;
+                };
+
+                const lines = csvText.split(/\r?\n/);
+                if (lines.length > 1) {
+                    const parsedData = [];
+                    for (let i = 1; i < lines.length; i++) {
+                        if (!lines[i].trim()) continue;
+                        const cols = parseCsvLine(lines[i]);
+                        if (cols[0] && cols[0].trim() !== '') {
+                            parsedData.push({
+                                id: i,
+                                comercio: cols[0].trim(),
+                                categoria: cols[1] ? cols[1].trim() : 'General',
+                                monto: cols[2] ? cols[2].trim() : '$0',
+                                descuento: cols[3] ? cols[3].trim() : 'Disponible',
+                                icono: 'fa-store',
+                                color: 'from-indigo-500 to-blue-600',
+                                badge: 'En Vivo'
+                            });
+                        }
+                    }
+                    if (parsedData.length > 0) {
+                        catalogueData = parsedData;
+                        applyFilters();
+                        showToast("¡Conectado en vivo con tu Google Sheet!");
+                    }
+                }
+            } catch (err) {
+                console.error("Error al obtener el CSV de Google Sheets:", err);
+            }
+        }
+
+        function saveCsvUrl() {
+            const input = document.getElementById('csv-url-input').value.trim();
+            if (input) {
+                localStorage.setItem('google_sheet_csv_url', input);
+                fetchGoogleSheetCsv(input);
+                toggleConfigModal();
+            }
+        }
+
+        function toggleConfigModal() {
+            document.getElementById('config-modal').classList.toggle('hidden');
+        }
+
+        function showToast(msg) {
+            const badge = document.getElementById('sync-status-badge');
+            badge.innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> <span>${msg}</span>`;
+        }
+    </script>
+</body>
+</html>
