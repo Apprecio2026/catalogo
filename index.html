@@ -14,7 +14,7 @@
     <meta property="og:url" content="https://apprecio2026.github.io/catalogo/">
     <meta property="og:title" content="Catálogo de Gift Cards Colombia — Apprecio">
     <meta property="og:description" content="Un gran programa de reconocimientos donde canjeas puntos por gift cards y cupones digitales.">
-    <meta property="og:image" content="https://raw.githubusercontent.com/Apprecio2026/catalogo/main/banner-apprecio.png">
+    <meta property="og:image" content="https://raw.githubusercontent.com/Apprecio2026/catalogo/main/banner-apprecio.png.png">
     <meta property="og:site_name" content="Apprecio Colombia">
 
     <!-- Twitter Card Metadata -->
@@ -22,7 +22,7 @@
     <meta name="twitter:url" content="https://apprecio2026.github.io/catalogo/">
     <meta name="twitter:title" content="Catálogo de Gift Cards Colombia — Apprecio">
     <meta name="twitter:description" content="Un gran programa de reconocimientos donde canjeas puntos por gift cards y cupones digitales.">
-    <meta name="twitter:image" content="https://raw.githubusercontent.com/Apprecio2026/catalogo/main/banner-apprecio.png">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/Apprecio2026/catalogo/main/banner-apprecio.png.png">
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23fa335e%22/><text y=%22.9em%22 x=%2222%22 font-size=%2265%22 font-weight=%22bold%22 fill=%22white%22>a</text></svg>">
@@ -144,7 +144,7 @@
                     <div class="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-white/20 aspect-[16/9] md:aspect-[4/3] bg-white/10 backdrop-blur-sm group">
                         <img 
                             id="hero-banner-img"
-                            src="banner-apprecio.png" 
+                            src="banner-apprecio.png.png" 
                             alt="Apprecio Banner" 
                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                             onerror="handleHeroImgError(this)"
@@ -223,7 +223,7 @@
                 </button>
             </div>
 
-            <!-- Modal Content - Logical Groupings without 'Entrega Catalogo' -->
+            <!-- Modal Content - Logical Groupings -->
             <div class="p-6 overflow-y-auto space-y-6 text-slate-700 text-sm flex-grow">
 
                 <!-- SECTION 1: Detalles de la Gift Card y Oferta -->
@@ -359,7 +359,6 @@
 
     <!-- JavaScript Logic -->
     <script>
-        // Google Sheet endpoints with strict order parsing
         const SHEET_ID = "14w_8kJekDgHq6-YxBY1ZKo1XfoCuwd0dB9giCd7Q2rI";
         const GID = "1041963400";
         
@@ -377,11 +376,12 @@
 
         function handleHeroImgError(img) {
             const paths = [
+                'https://raw.githubusercontent.com/Apprecio2026/catalogo/main/banner-apprecio.png.png',
+                'banner-apprecio.png.png',
                 'https://raw.githubusercontent.com/Apprecio2026/catalogo/main/banner-apprecio.png',
-                'banner-apprecio.jpg',
+                'banner-apprecio.png',
                 'https://raw.githubusercontent.com/Apprecio2026/catalogo/main/banner-apprecio.jpg',
-                'banner-apprecio.jpg..png',
-                'banner-apprecio.jpeg'
+                'banner-apprecio.jpg'
             ];
             const idx = parseInt(img.getAttribute('data-try-idx') || '0');
             if (idx < paths.length) {
@@ -555,7 +555,7 @@
             document.getElementById('field-vigencia').innerText = cleanVal(item.vigencia);
             document.getElementById('field-beneficiosExtra').innerText = cleanVal(item.beneficiosExtra);
 
-            // Section 2: Delivery & Activation (with ¿Cobro Extra?)
+            // Section 2: Delivery & Activation
             document.getElementById('field-tiempoEntregaProveedor').innerText = cleanVal(item.tiempoEntregaProveedor);
             document.getElementById('field-activacionInmediata').innerText = cleanVal(item.activacionInmediata);
             document.getElementById('field-tiempoActivacion').innerText = cleanVal(item.tiempoActivacion);
@@ -745,7 +745,6 @@
             return lines;
         }
 
-        // Initialize application on load
         window.addEventListener('DOMContentLoaded', () => {
             fetchGoogleSheetCsv();
 
