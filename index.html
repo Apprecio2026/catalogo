@@ -14,7 +14,7 @@
     <meta property="og:url" content="https://apprecio2026.github.io/catalogo/">
     <meta property="og:title" content="Catálogo de Gift Cards Colombia — Apprecio">
     <meta property="og:description" content="Un gran programa de reconocimientos donde canjeas puntos por gift cards y cupones digitales.">
-    <meta property="og:image" content="https://placehold.co/1200x630/fa335e/ffffff?text=Apprecio+Gift+Cards+Colombia">
+    <meta property="og:image" content="https://raw.githubusercontent.com/Apprecio2026/catalogo/main/banner-apprecio.jpg">
     <meta property="og:site_name" content="Apprecio Colombia">
 
     <!-- Twitter Card Metadata -->
@@ -22,7 +22,7 @@
     <meta name="twitter:url" content="https://apprecio2026.github.io/catalogo/">
     <meta name="twitter:title" content="Catálogo de Gift Cards Colombia — Apprecio">
     <meta name="twitter:description" content="Un gran programa de reconocimientos donde canjeas puntos por gift cards y cupones digitales.">
-    <meta name="twitter:image" content="https://placehold.co/1200x630/fa335e/ffffff?text=Apprecio+Gift+Cards+Colombia">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/Apprecio2026/catalogo/main/banner-apprecio.jpg">
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23fa335e%22/><text y=%22.9em%22 x=%2222%22 font-size=%2265%22 font-weight=%22bold%22 fill=%22white%22>a</text></svg>">
@@ -87,7 +87,6 @@
 </head>
 <body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased">
 
-    <!-- Header / Navbar Apprecio -->
     <header class="sticky top-0 z-40 bg-white border-b border-apprecio-light shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <div class="flex items-center gap-3">
@@ -116,7 +115,6 @@
         </div>
     </header>
 
-    <!-- Main Content -->
     <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
 
         <!-- Banner Hero Section -->
@@ -139,7 +137,7 @@
                     </p>
                 </div>
 
-                <!-- Banner Image Card -->
+                <!-- Banner Image Card with Multi-Source Direct CDN Fallbacks -->
                 <div class="w-full md:w-80 lg:w-96 shrink-0">
                     <div class="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-white/20 aspect-[16/9] md:aspect-[4/3] bg-white/10 backdrop-blur-sm group">
                         <img 
@@ -148,7 +146,16 @@
                             alt="Apprecio Banner" 
                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                             onerror="
-                                const paths = ['banner-apprecio.png', 'banner-apprecio.jpeg', 'banner-apprecio.jpg..png', 'banner-apprecio.JPG', 'banner-apprecio.PNG'];
+                                const paths = [
+                                    'https://raw.githubusercontent.com/Apprecio2026/catalogo/main/banner-apprecio.jpg',
+                                    'https://raw.githubusercontent.com/Apprecio2026/catalogo/main/banner-apprecio.png',
+                                    'https://raw.githubusercontent.com/Apprecio2026/catalogo/main/banner-apprecio.jpeg',
+                                    'https://raw.githubusercontent.com/Apprecio2026/catalogo/main/banner-apprecio.jpg..png',
+                                    './banner-apprecio.jpg',
+                                    'banner-apprecio.png',
+                                    'banner-apprecio.jpeg',
+                                    'banner-apprecio.jpg..png'
+                                ];
                                 const idx = parseInt(this.getAttribute('data-try-idx') || '0');
                                 if (idx < paths.length) {
                                     this.setAttribute('data-try-idx', idx + 1);
@@ -164,7 +171,6 @@
             </div>
         </section>
 
-        <!-- Filters & Search Bar Section -->
         <section id="catalogo" class="space-y-6">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
                 
@@ -202,7 +208,6 @@
 
     </main>
 
-    <!-- Footer Apprecio Style -->
     <footer class="bg-white border-t border-slate-200 mt-12 py-8 text-center text-xs text-slate-500 space-y-2">
         <div class="flex items-center justify-center gap-2 text-base font-extrabold text-slate-900">
             <span class="text-apprecio-red font-black text-lg">apprecio</span>
@@ -385,44 +390,6 @@
         </div>
     </div>
 
-    <!-- Configuration Modal (Google Sheets Connection) -->
-    <div id="config-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 space-y-6 shadow-2xl relative animate-fade-in border border-apprecio-light">
-            <button onclick="toggleConfigModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600">
-                <i class="fa-solid fa-xmark text-xl"></i>
-            </button>
-
-            <div class="space-y-2">
-                <div class="w-10 h-10 rounded-xl bg-apprecio-red text-white flex items-center justify-center text-lg font-bold shadow-md">
-                    <i class="fa-solid fa-link"></i>
-                </div>
-                <h3 class="text-xl font-bold text-slate-900">Origen de Datos de Google Sheets</h3>
-                <p class="text-xs text-slate-600 leading-relaxed">
-                    La página consulta dinámicamente tu enlace CSV de Google Sheets para mantener el catálogo actualizado.
-                </p>
-            </div>
-
-            <div class="space-y-2">
-                <label class="text-xs font-bold text-slate-700 block">URL de consulta CSV de Google Sheet:</label>
-                <input 
-                    type="text" 
-                    id="csv-url-input" 
-                    placeholder="https://docs.google.com/spreadsheets/d/.../gviz/tq?tqx=out:csv&gid=..." 
-                    class="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl text-xs bg-slate-50 focus:bg-white focus:ring-2 focus:ring-apprecio-red outline-none">
-            </div>
-
-            <div class="flex gap-3">
-                <button onclick="saveCsvUrl()" class="flex-1 py-2.5 bg-apprecio-red hover:bg-apprecio-red-dark text-white font-bold rounded-xl text-xs transition-all shadow-md">
-                    Guardar y Cargar Datos
-                </button>
-                <button onclick="toggleConfigModal()" class="px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-xl text-xs transition-all">
-                    Cerrar
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- JavaScript Logic -->
     <script>
         const DEFAULT_SHEET_URL = "https://docs.google.com/spreadsheets/d/14w_8kJekDgHq6-YxBY1ZKo1XfoCuwd0dB9giCd7Q2rI/gviz/tq?tqx=out:csv&gid=1041963400";
 
@@ -492,7 +459,6 @@
                 else if (catLower.includes('hogar') || catLower.includes('tech') || catLower.includes('electro')) { iconClass = "fa-laptop"; }
                 else if (catLower.includes('entretenimiento') || catLower.includes('direct')) { iconClass = "fa-tv"; }
 
-                // Gift Card image / logo component placed directly next to the commerce name
                 const logoHtml = (item.imagenUrl && item.imagenUrl.trim() !== '') ? 
                     `<img src="${item.imagenUrl}" alt="${item.comercio}" class="w-full h-full object-contain p-0.5 bg-white rounded-xl shadow-2xl" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\\'w-full h-full flex items-center justify-center bg-apprecio-light rounded-xl border border-apprecio-light\\'><i class=\\'fa-solid ${iconClass} text-apprecio-red text-lg\\'></i></div>';">` : 
                     `<div class="w-full h-full flex items-center justify-center bg-apprecio-light rounded-xl border border-apprecio-light"><i class="fa-solid ${iconClass} text-apprecio-red text-lg"></i></div>`;
@@ -515,7 +481,6 @@
                         <!-- Commerce Header featuring Logo/Card Image directly NEXT to the Name -->
                         <div class="p-5 space-y-4">
                             <div class="flex items-center gap-3.5">
-                                <!-- Styled Mini Gift Card Image Thumbnail -->
                                 <div class="w-16 h-12 rounded-xl shrink-0 bg-white border border-apprecio-light flex items-center justify-center shadow-sm overflow-hidden p-0.5 group-hover:scale-105 transition-transform">
                                     ${logoHtml}
                                 </div>
@@ -572,7 +537,6 @@
             document.getElementById('modal-comercio').innerText = cleanVal(item.comercio);
             document.getElementById('modal-categoria').innerText = cleanVal(item.categoria) !== '-' ? item.categoria : 'Gift Card';
 
-            // Mapping 22 fields sequentially
             document.getElementById('field-montos').innerText = cleanVal(item.montos);
             document.getElementById('field-tiempoEntregaCatalogo').innerText = cleanVal(item.tiempoEntregaCatalogo);
             document.getElementById('field-tiempoEntregaProveedor').innerText = cleanVal(item.tiempoEntregaProveedor);
@@ -660,19 +624,6 @@
             }
         }
 
-        function saveCsvUrl() {
-            const input = document.getElementById('csv-url-input').value.trim();
-            if (input) {
-                localStorage.setItem('google_sheet_csv_url', input);
-                fetchGoogleSheetCsv(input);
-                toggleConfigModal();
-            }
-        }
-
-        function toggleConfigModal() {
-            document.getElementById('config-modal').classList.toggle('hidden');
-        }
-
         function updateStatusBadge(msg, success) {
             const badge = document.getElementById('sync-status-badge');
             const text = document.getElementById('sync-text');
@@ -725,7 +676,7 @@
             const icon = document.getElementById('refresh-icon');
             if (icon) icon.classList.add('fa-spin');
             
-            const storedUrl = localStorage.getItem('google_sheet_csv_url') || DEFAULT_SHEET_URL;
+            const storedUrl = DEFAULT_SHEET_URL;
             fetchGoogleSheetCsv(storedUrl).finally(() => {
                 if (icon) icon.classList.remove('fa-spin');
             });
@@ -769,16 +720,10 @@
         }
 
         window.addEventListener('DOMContentLoaded', () => {
-            const savedUrl = localStorage.getItem('google_sheet_csv_url') || DEFAULT_SHEET_URL;
-            const input = document.getElementById('csv-url-input');
-            if (input) input.value = savedUrl;
-            
-            fetchGoogleSheetCsv(savedUrl);
+            fetchGoogleSheetCsv(DEFAULT_SHEET_URL);
 
-            // Auto refresh every 60 seconds
             setInterval(() => {
-                const url = localStorage.getItem('google_sheet_csv_url') || DEFAULT_SHEET_URL;
-                fetchGoogleSheetCsv(url, true);
+                fetchGoogleSheetCsv(DEFAULT_SHEET_URL, true);
             }, 60000);
         });
     </script>
