@@ -376,8 +376,8 @@
 
         function handleHeroImgError(img) {
             const paths = [
-                'https://raw.githubusercontent.com/Apprecio2026/catalogo/main/banner-apprecio.png.png',
                 'banner-apprecio.png.png',
+                'https://raw.githubusercontent.com/Apprecio2026/catalogo/main/banner-apprecio.png.png',
                 'https://raw.githubusercontent.com/Apprecio2026/catalogo/main/banner-apprecio.png',
                 'banner-apprecio.png',
                 'https://raw.githubusercontent.com/Apprecio2026/catalogo/main/banner-apprecio.jpg',
@@ -475,6 +475,8 @@
 
                 const montosClean = cleanVal(item.montos);
                 const cobroExtraClean = cleanVal(item.cobroExtra);
+                const redParcialClean = cleanVal(item.redencionParcial);
+                const redTotalClean = cleanVal(item.redencionTotal);
 
                 card.innerHTML = `
                     <div>
@@ -500,11 +502,19 @@
                                 </div>
                             </div>
 
-                            <!-- Summary Container: Showing ¿Cobro Extra? -->
+                            <!-- Summary Container: Displaying Montos, Parcial, Total and Cobro Extra -->
                             <div class="space-y-1.5 pt-3 border-t border-slate-100 text-xs">
                                 <div class="flex justify-between text-slate-600">
                                     <span class="text-slate-400 font-medium">Montos:</span>
                                     <span class="font-bold text-slate-900 truncate max-w-[150px]">${montosClean}</span>
+                                </div>
+                                <div class="flex justify-between text-slate-600">
+                                    <span class="text-slate-400 font-medium">Permite Redención Parcial:</span>
+                                    <span class="font-bold text-slate-900 truncate max-w-[120px]">${redParcialClean}</span>
+                                </div>
+                                <div class="flex justify-between text-slate-600">
+                                    <span class="text-slate-400 font-medium">Solo redención Total:</span>
+                                    <span class="font-bold text-slate-900 truncate max-w-[120px]">${redTotalClean}</span>
                                 </div>
                                 <div class="flex justify-between text-slate-600">
                                     <span class="text-slate-400 font-medium">¿Cobro Extra?:</span>
