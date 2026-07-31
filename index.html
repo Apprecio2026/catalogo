@@ -143,10 +143,21 @@
                 <div class="w-full md:w-80 lg:w-96 shrink-0">
                     <div class="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-white/20 aspect-[16/9] md:aspect-[4/3] bg-white/10 backdrop-blur-sm group">
                         <img 
+                            id="hero-banner-img"
                             src="banner-apprecio.jpg" 
                             alt="Apprecio Banner" 
                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                            onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\\'w-full h-full flex flex-col items-center justify-center p-6 text-center bg-white/10\\'><i class=\\'fa-solid fa-gift text-4xl text-white mb-2\\'></i><span class=\\'text-xs font-bold text-white\\'>Apprecio Gift Cards</span></div>';"
+                            onerror="
+                                const paths = ['banner-apprecio.png', 'banner-apprecio.jpeg', 'banner-apprecio.jpg..png', 'banner-apprecio.JPG', 'banner-apprecio.PNG'];
+                                const idx = parseInt(this.getAttribute('data-try-idx') || '0');
+                                if (idx < paths.length) {
+                                    this.setAttribute('data-try-idx', idx + 1);
+                                    this.src = paths[idx];
+                                } else {
+                                    this.onerror = null;
+                                    this.parentElement.innerHTML = '<div class=\\'w-full h-full flex flex-col items-center justify-center p-6 text-center bg-white/10 backdrop-blur-sm\\'><i class=\\'fa-solid fa-gift text-5xl text-white mb-2 animate-bounce\\'></i><span class=\\'text-sm font-extrabold text-white tracking-wide\\'>Apprecio Gift Cards</span><span class=\\'text-[11px] text-white/80 mt-1\\'>Catálogo Digital Colombia</span></div>';
+                                }
+                            "
                         >
                     </div>
                 </div>
