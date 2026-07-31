@@ -14,7 +14,7 @@
     <meta property="og:url" content="https://apprecio2026.github.io/catalogo/">
     <meta property="og:title" content="Catálogo de Gift Cards Colombia — Apprecio">
     <meta property="og:description" content="Un gran programa de reconocimientos donde canjeas puntos por gift cards y cupones digitales.">
-    <meta property="og:image" content="https://raw.githubusercontent.com/Apprecio2026/catalogo/main/banner-apprecio.jpg">
+    <meta property="og:image" content="https://raw.githubusercontent.com/Apprecio2026/catalogo/main/banner-apprecio.png">
     <meta property="og:site_name" content="Apprecio Colombia">
 
     <!-- Twitter Card Metadata -->
@@ -22,7 +22,7 @@
     <meta name="twitter:url" content="https://apprecio2026.github.io/catalogo/">
     <meta name="twitter:title" content="Catálogo de Gift Cards Colombia — Apprecio">
     <meta name="twitter:description" content="Un gran programa de reconocimientos donde canjeas puntos por gift cards y cupones digitales.">
-    <meta name="twitter:image" content="https://raw.githubusercontent.com/Apprecio2026/catalogo/main/banner-apprecio.jpg">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/Apprecio2026/catalogo/main/banner-apprecio.png">
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23fa335e%22/><text y=%22.9em%22 x=%2222%22 font-size=%2265%22 font-weight=%22bold%22 fill=%22white%22>a</text></svg>">
@@ -32,7 +32,7 @@
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -87,6 +87,7 @@
 </head>
 <body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased">
 
+    <!-- Header / Navbar Apprecio -->
     <header class="sticky top-0 z-40 bg-white border-b border-apprecio-light shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <div class="flex items-center gap-3">
@@ -115,6 +116,7 @@
         </div>
     </header>
 
+    <!-- Main Content -->
     <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
 
         <!-- Banner Hero Section -->
@@ -137,44 +139,26 @@
                     </p>
                 </div>
 
-                <!-- Banner Image Card with Multi-Source Direct CDN Fallbacks -->
+                <!-- Banner Image Card -->
                 <div class="w-full md:w-80 lg:w-96 shrink-0">
                     <div class="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-white/20 aspect-[16/9] md:aspect-[4/3] bg-white/10 backdrop-blur-sm group">
                         <img 
                             id="hero-banner-img"
-                            src="banner-apprecio.jpg" 
+                            src="banner-apprecio.png" 
                             alt="Apprecio Banner" 
                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                            onerror="
-                                const paths = [
-                                    'https://raw.githubusercontent.com/Apprecio2026/catalogo/main/banner-apprecio.jpg',
-                                    'https://raw.githubusercontent.com/Apprecio2026/catalogo/main/banner-apprecio.png',
-                                    'https://raw.githubusercontent.com/Apprecio2026/catalogo/main/banner-apprecio.jpeg',
-                                    'https://raw.githubusercontent.com/Apprecio2026/catalogo/main/banner-apprecio.jpg..png',
-                                    './banner-apprecio.jpg',
-                                    'banner-apprecio.png',
-                                    'banner-apprecio.jpeg',
-                                    'banner-apprecio.jpg..png'
-                                ];
-                                const idx = parseInt(this.getAttribute('data-try-idx') || '0');
-                                if (idx < paths.length) {
-                                    this.setAttribute('data-try-idx', idx + 1);
-                                    this.src = paths[idx];
-                                } else {
-                                    this.onerror = null;
-                                    this.parentElement.innerHTML = '<div class=\\'w-full h-full flex flex-col items-center justify-center p-6 text-center bg-white/10 backdrop-blur-sm\\'><i class=\\'fa-solid fa-gift text-5xl text-white mb-2 animate-bounce\\'></i><span class=\\'text-sm font-extrabold text-white tracking-wide\\'>Apprecio Gift Cards</span><span class=\\'text-[11px] text-white/80 mt-1\\'>Catálogo Digital Colombia</span></div>';
-                                }
-                            "
+                            onerror="handleHeroImgError(this)"
                         >
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Filters & Search Bar Section -->
         <section id="catalogo" class="space-y-6">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
                 
-                <!-- Category Tabs - Only Todos los Comercios -->
+                <!-- Category Tabs -->
                 <div class="flex items-center gap-2" id="category-buttons">
                     <button onclick="filterCategory('todos', this)" class="cat-btn active px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold whitespace-nowrap bg-apprecio-red text-white transition-all shadow-sm">
                         Todos los Comercios
@@ -193,9 +177,9 @@
                 </div>
             </div>
 
-            <!-- Cards Container Grid -->
+            <!-- Cards Container Grid - Maintained strictly in Sheet Row Order -->
             <div id="cards-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                <!-- Dynamic commerce cards loaded from Google Sheets -->
+                <!-- Dynamic commerce cards loaded in exact sheet row order -->
             </div>
 
             <!-- Empty State -->
@@ -208,6 +192,7 @@
 
     </main>
 
+    <!-- Footer Apprecio Style -->
     <footer class="bg-white border-t border-slate-200 mt-12 py-8 text-center text-xs text-slate-500 space-y-2">
         <div class="flex items-center justify-center gap-2 text-base font-extrabold text-slate-900">
             <span class="text-apprecio-red font-black text-lg">apprecio</span>
@@ -215,170 +200,152 @@
         <p>© 2026 Catálogo Comercial Dinámico — Alimentado desde Google Sheets</p>
     </footer>
 
-    <!-- Detailed Modal View -->
+    <!-- Detailed Modal View with Commerce Name Prominently at Top -->
     <div id="detail-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div class="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] flex flex-col shadow-2xl border border-slate-200 overflow-hidden animate-fade-in">
             
-            <!-- Modal Header Apprecio Red Style with Commerce Gift Card Image -->
+            <!-- Modal Header Apprecio Red Style: Commerce Name Prominently at Top -->
             <div class="p-6 bg-apprecio-red text-white flex items-center justify-between shrink-0 shadow-md">
-                <div class="flex items-center gap-4">
-                    <!-- Gift Card / Logo Image Thumbnail beside Name -->
+                <div class="flex items-center gap-4 min-w-0">
                     <div id="modal-icon-bg" class="w-16 h-12 rounded-xl bg-white border border-white/40 flex items-center justify-center shadow-md overflow-hidden shrink-0 p-1">
                         <i id="modal-icon" class="fa-solid fa-store text-apprecio-red text-xl"></i>
                     </div>
-                    <div>
-                        <h3 id="modal-comercio" class="text-xl font-extrabold text-white">Comercio</h3>
-                        <div class="flex items-center gap-2 mt-1">
-                            <span id="modal-categoria" class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-white text-apprecio-red">Categoría</span>
+                    <div class="min-w-0 flex-1">
+                        <h3 id="modal-comercio" class="text-xl sm:text-2xl font-black text-white truncate leading-tight">Comercio</h3>
+                        <div class="flex flex-wrap items-center gap-2 mt-1">
+                            <span id="modal-categoria" class="px-2.5 py-0.5 rounded-full text-[11px] font-extrabold bg-white text-apprecio-red shadow-sm truncate">Categoría</span>
+                            <span id="modal-tipo-prod-badge" class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-black/20 text-white truncate">Tipo Producto</span>
                         </div>
                     </div>
                 </div>
-                <button onclick="closeDetailModal()" class="text-white/80 hover:text-white transition-colors p-2 rounded-full hover:bg-white/10">
+                <button onclick="closeDetailModal()" class="text-white/80 hover:text-white transition-colors p-2 rounded-full hover:bg-white/10 shrink-0">
                     <i class="fa-solid fa-xmark text-xl"></i>
                 </button>
             </div>
 
-            <!-- Modal Content - Ordered Fields Top to Bottom -->
-            <div class="p-6 overflow-y-auto space-y-4 text-slate-700 text-sm flex-grow">
-                <h4 class="text-xs font-black uppercase tracking-wider text-apprecio-red flex items-center gap-2 border-b border-apprecio-light pb-2">
-                    <i class="fa-solid fa-list-check"></i> Especificaciones de la Ficha Apprecio
-                </h4>
-                
-                <div class="space-y-3 bg-apprecio-light/40 p-5 rounded-2xl border border-apprecio-light">
-                    
-                    <!-- Montos -->
-                    <div class="flex flex-col sm:flex-row sm:items-baseline justify-between p-3 bg-white rounded-xl border border-apprecio-light shadow-sm">
-                        <span class="text-xs font-bold text-apprecio-red uppercase tracking-wide w-full sm:w-1/2">Montos:</span>
-                        <span id="field-montos" class="font-extrabold text-slate-900 text-sm w-full sm:w-1/2 text-left sm:text-right mt-1 sm:mt-0"></span>
-                    </div>
+            <!-- Modal Content - Logical Groupings without 'Entrega Catalogo' -->
+            <div class="p-6 overflow-y-auto space-y-6 text-slate-700 text-sm flex-grow">
 
-                    <!-- Tiempo de entrega por catálogo -->
-                    <div class="flex flex-col sm:flex-row sm:items-baseline justify-between p-2.5 bg-white/90 rounded-lg border border-slate-100">
-                        <span class="text-xs font-semibold text-slate-500 w-full sm:w-1/2">Tiempo de entrega por catálogo:</span>
-                        <span id="field-tiempoEntregaCatalogo" class="font-medium text-slate-800 text-xs w-full sm:w-1/2 text-left sm:text-right mt-0.5 sm:mt-0"></span>
+                <!-- SECTION 1: Detalles de la Gift Card y Oferta -->
+                <div class="space-y-3">
+                    <h4 class="text-xs font-black uppercase tracking-wider text-apprecio-red flex items-center gap-2 border-b border-apprecio-light pb-2">
+                        <i class="fa-solid fa-ticket"></i> 1. Información General y Oferta
+                    </h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div class="p-3.5 bg-apprecio-light rounded-2xl border border-apprecio-light sm:col-span-2">
+                            <span class="text-xs font-bold text-apprecio-red uppercase tracking-wider block">Montos Disponibles:</span>
+                            <span id="field-montos" class="font-black text-slate-900 text-base mt-0.5 block"></span>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <span class="text-xs font-semibold text-slate-500 block">Tipo de Producto:</span>
+                            <span id="field-tipoProducto" class="font-bold text-slate-900 text-xs mt-0.5 block"></span>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <span class="text-xs font-semibold text-slate-500 block">Vigencia:</span>
+                            <span id="field-vigencia" class="font-bold text-apprecio-red text-xs mt-0.5 block"></span>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 sm:col-span-2">
+                            <span class="text-xs font-bold text-apprecio-red block">Beneficios Extra:</span>
+                            <span id="field-beneficiosExtra" class="font-extrabold text-slate-900 text-xs mt-0.5 block"></span>
+                        </div>
                     </div>
-
-                    <!-- Tiempos de entrega desde proveedor -->
-                    <div class="flex flex-col sm:flex-row sm:items-baseline justify-between p-2.5 bg-white/90 rounded-lg border border-slate-100">
-                        <span class="text-xs font-semibold text-slate-500 w-full sm:w-1/2">Tiempos de entrega desde proveedor:</span>
-                        <span id="field-tiempoEntregaProveedor" class="font-medium text-slate-800 text-xs w-full sm:w-1/2 text-left sm:text-right mt-0.5 sm:mt-0"></span>
-                    </div>
-
-                    <!-- ¿Cobro Extra? -->
-                    <div class="flex flex-col sm:flex-row sm:items-baseline justify-between p-2.5 bg-white/90 rounded-lg border border-slate-100">
-                        <span class="text-xs font-semibold text-slate-500 w-full sm:w-1/2">¿Cobro Extra?:</span>
-                        <span id="field-cobroExtra" class="font-medium text-slate-800 text-xs w-full sm:w-1/2 text-left sm:text-right mt-0.5 sm:mt-0"></span>
-                    </div>
-
-                    <!-- Valor cobro extra si aplica -->
-                    <div class="flex flex-col sm:flex-row sm:items-baseline justify-between p-2.5 bg-white/90 rounded-lg border border-slate-100">
-                        <span class="text-xs font-semibold text-slate-500 w-full sm:w-1/2">Valor cobro extra si aplica:</span>
-                        <span id="field-valorCobroExtra" class="font-medium text-slate-800 text-xs w-full sm:w-1/2 text-left sm:text-right mt-0.5 sm:mt-0"></span>
-                    </div>
-
-                    <!-- Tipo de producto -->
-                    <div class="flex flex-col sm:flex-row sm:items-baseline justify-between p-2.5 bg-white/90 rounded-lg border border-slate-100">
-                        <span class="text-xs font-semibold text-slate-500 w-full sm:w-1/2">Tipo de producto:</span>
-                        <span id="field-tipoProducto" class="font-bold text-slate-900 text-xs w-full sm:w-1/2 text-left sm:text-right mt-0.5 sm:mt-0"></span>
-                    </div>
-
-                    <!-- Permite Redención Parcial -->
-                    <div class="flex flex-col sm:flex-row sm:items-baseline justify-between p-2.5 bg-white/90 rounded-lg border border-slate-100">
-                        <span class="text-xs font-semibold text-slate-500 w-full sm:w-1/2">Permite Redención Parcial:</span>
-                        <span id="field-redencionParcial" class="font-medium text-slate-800 text-xs w-full sm:w-1/2 text-left sm:text-right mt-0.5 sm:mt-0"></span>
-                    </div>
-
-                    <!-- Solo redención Total -->
-                    <div class="flex flex-col sm:flex-row sm:items-baseline justify-between p-2.5 bg-white/90 rounded-lg border border-slate-100">
-                        <span class="text-xs font-semibold text-slate-500 w-full sm:w-1/2">Solo redención Total:</span>
-                        <span id="field-redencionTotal" class="font-medium text-slate-800 text-xs w-full sm:w-1/2 text-left sm:text-right mt-0.5 sm:mt-0"></span>
-                    </div>
-
-                    <!-- ¿Cuántos códigos permite por factura? -->
-                    <div class="flex flex-col sm:flex-row sm:items-baseline justify-between p-2.5 bg-white/90 rounded-lg border border-slate-100">
-                        <span class="text-xs font-semibold text-slate-500 w-full sm:w-1/2">¿Cuántos códigos permite por factura?:</span>
-                        <span id="field-codigosPorFactura" class="font-medium text-slate-800 text-xs w-full sm:w-1/2 text-left sm:text-right mt-0.5 sm:mt-0"></span>
-                    </div>
-
-                    <!-- Tipo de Redención -->
-                    <div class="flex flex-col sm:flex-row sm:items-baseline justify-between p-2.5 bg-white/90 rounded-lg border border-slate-100">
-                        <span class="text-xs font-semibold text-slate-500 w-full sm:w-1/2">Tipo de Redención:</span>
-                        <span id="field-tipoRedencion" class="font-medium text-slate-800 text-xs w-full sm:w-1/2 text-left sm:text-right mt-0.5 sm:mt-0"></span>
-                    </div>
-
-                    <!-- Algún otro tipo de redención -->
-                    <div class="flex flex-col sm:flex-row sm:items-baseline justify-between p-2.5 bg-white/90 rounded-lg border border-slate-100">
-                        <span class="text-xs font-semibold text-slate-500 w-full sm:w-1/2">Algún otro tipo de redención:</span>
-                        <span id="field-otroTipoRedencion" class="font-medium text-slate-800 text-xs w-full sm:w-1/2 text-left sm:text-right mt-0.5 sm:mt-0"></span>
-                    </div>
-
-                    <!-- ¿Acumulable con otras promociones? -->
-                    <div class="flex flex-col sm:flex-row sm:items-baseline justify-between p-2.5 bg-white/90 rounded-lg border border-slate-100">
-                        <span class="text-xs font-semibold text-slate-500 w-full sm:w-1/2">¿Acumulable con otras promociones?:</span>
-                        <span id="field-acumulablePromociones" class="font-medium text-slate-800 text-xs w-full sm:w-1/2 text-left sm:text-right mt-0.5 sm:mt-0"></span>
-                    </div>
-
-                    <!-- Instructivo de uso en el comercio -->
-                    <div class="p-3 bg-white rounded-xl border border-slate-200">
-                        <span class="text-xs font-semibold text-slate-500 block">Instructivo de uso en el comercio:</span>
-                        <p id="field-instructivoUso" class="text-xs leading-relaxed text-slate-800 mt-1 font-medium"></p>
-                    </div>
-
-                    <!-- Canales de Soporte -->
-                    <div class="flex flex-col sm:flex-row sm:items-baseline justify-between p-2.5 bg-white/90 rounded-lg border border-slate-100">
-                        <span class="text-xs font-semibold text-slate-500 w-full sm:w-1/2">Canales de Soporte:</span>
-                        <span id="field-canalesSoporte" class="font-semibold text-apprecio-red text-xs w-full sm:w-1/2 text-left sm:text-right mt-0.5 sm:mt-0"></span>
-                    </div>
-
-                    <!-- Cobertura -->
-                    <div class="flex flex-col sm:flex-row sm:items-baseline justify-between p-2.5 bg-white/90 rounded-lg border border-slate-100">
-                        <span class="text-xs font-semibold text-slate-500 w-full sm:w-1/2">Cobertura:</span>
-                        <span id="field-cobertura" class="font-medium text-slate-800 text-xs w-full sm:w-1/2 text-left sm:text-right mt-0.5 sm:mt-0"></span>
-                    </div>
-
-                    <!-- Si tiene exclusiones o restricciones cuales son -->
-                    <div class="p-3 bg-white rounded-xl border border-slate-200">
-                        <span class="text-xs font-semibold text-slate-500 block">Si tiene exclusiones o restricciones cuáles son:</span>
-                        <p id="field-exclusionesRestricciones" class="text-xs leading-relaxed text-slate-800 mt-1 font-medium"></p>
-                    </div>
-
-                    <!-- ¿Activación Inmediata? -->
-                    <div class="flex flex-col sm:flex-row sm:items-baseline justify-between p-2.5 bg-white/90 rounded-lg border border-slate-100">
-                        <span class="text-xs font-semibold text-slate-500 w-full sm:w-1/2">¿Activación Inmediata?:</span>
-                        <span id="field-activacionInmediata" class="font-medium text-slate-800 text-xs w-full sm:w-1/2 text-left sm:text-right mt-0.5 sm:mt-0"></span>
-                    </div>
-
-                    <!-- En caso negativo especifica cuánto tiempo -->
-                    <div class="flex flex-col sm:flex-row sm:items-baseline justify-between p-2.5 bg-white/90 rounded-lg border border-slate-100">
-                        <span class="text-xs font-semibold text-slate-500 w-full sm:w-1/2">En caso negativo especifica cuánto tiempo:</span>
-                        <span id="field-tiempoActivacion" class="font-medium text-slate-800 text-xs w-full sm:w-1/2 text-left sm:text-right mt-0.5 sm:mt-0"></span>
-                    </div>
-
-                    <!-- ¿Aplica para todos los productos? -->
-                    <div class="flex flex-col sm:flex-row sm:items-baseline justify-between p-2.5 bg-white/90 rounded-lg border border-slate-100">
-                        <span class="text-xs font-semibold text-slate-500 w-full sm:w-1/2">¿Aplica para todos los productos?:</span>
-                        <span id="field-aplicaTodosProductos" class="font-medium text-slate-800 text-xs w-full sm:w-1/2 text-left sm:text-right mt-0.5 sm:mt-0"></span>
-                    </div>
-
-                    <!-- En caso negativo especifica cuales no -->
-                    <div class="p-3 bg-white rounded-xl border border-slate-200">
-                        <span class="text-xs font-semibold text-slate-500 block">En caso negativo especifica cuáles no:</span>
-                        <p id="field-productosExcluidos" class="text-xs leading-relaxed text-slate-800 mt-1 font-medium"></p>
-                    </div>
-
-                    <!-- Beneficios extra -->
-                    <div class="p-3 bg-apprecio-light rounded-xl border border-apprecio-light">
-                        <span class="text-xs font-bold text-apprecio-red block">Beneficios extra:</span>
-                        <p id="field-beneficiosExtra" class="text-xs leading-relaxed text-slate-900 mt-1 font-extrabold"></p>
-                    </div>
-
-                    <!-- Vigencia -->
-                    <div class="flex flex-col sm:flex-row sm:items-baseline justify-between p-3 bg-apprecio-red text-white rounded-xl shadow-md">
-                        <span class="text-xs font-bold text-white/90 w-full sm:w-1/2">Vigencia:</span>
-                        <span id="field-vigencia" class="font-extrabold text-white text-xs w-full sm:w-1/2 text-left sm:text-right mt-0.5 sm:mt-0"></span>
-                    </div>
-
                 </div>
+
+                <!-- SECTION 2: Tiempos de Entrega y Activación -->
+                <div class="space-y-3">
+                    <h4 class="text-xs font-black uppercase tracking-wider text-apprecio-red flex items-center gap-2 border-b border-apprecio-light pb-2">
+                        <i class="fa-solid fa-clock"></i> 2. Entrega y Activación
+                    </h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <span class="text-xs font-semibold text-slate-500 block">Tiempo entrega desde proveedor:</span>
+                            <span id="field-tiempoEntregaProveedor" class="font-bold text-slate-800 text-xs mt-0.5 block"></span>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <span class="text-xs font-semibold text-slate-500 block">¿Activación Inmediata?:</span>
+                            <span id="field-activacionInmediata" class="font-bold text-slate-800 text-xs mt-0.5 block"></span>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <span class="text-xs font-semibold text-slate-500 block">Tiempo de activación (si aplica):</span>
+                            <span id="field-tiempoActivacion" class="font-bold text-slate-800 text-xs mt-0.5 block"></span>
+                        </div>
+                        <div class="p-3 bg-apprecio-light rounded-xl border border-apprecio-light">
+                            <span class="text-xs font-bold text-apprecio-red block">¿Cobro Extra?:</span>
+                            <span id="field-cobroExtra" class="font-extrabold text-slate-900 text-xs mt-0.5 block"></span>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 sm:col-span-2">
+                            <span class="text-xs font-semibold text-slate-500 block">Valor cobro extra si aplica:</span>
+                            <span id="field-valorCobroExtra" class="font-bold text-slate-800 text-xs mt-0.5 block"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECTION 3: Condiciones de Redención y Uso -->
+                <div class="space-y-3">
+                    <h4 class="text-xs font-black uppercase tracking-wider text-apprecio-red flex items-center gap-2 border-b border-apprecio-light pb-2">
+                        <i class="fa-solid fa-arrows-rotate"></i> 3. Condiciones de Redención
+                    </h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <span class="text-xs font-semibold text-slate-500 block">Tipo de Redención:</span>
+                            <span id="field-tipoRedencion" class="font-bold text-slate-800 text-xs mt-0.5 block"></span>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <span class="text-xs font-semibold text-slate-500 block">Otro tipo de redención:</span>
+                            <span id="field-otroTipoRedencion" class="font-bold text-slate-800 text-xs mt-0.5 block"></span>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <span class="text-xs font-semibold text-slate-500 block">Permite Redención Parcial:</span>
+                            <span id="field-redencionParcial" class="font-bold text-slate-800 text-xs mt-0.5 block"></span>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <span class="text-xs font-semibold text-slate-500 block">Solo redención Total:</span>
+                            <span id="field-redencionTotal" class="font-bold text-slate-800 text-xs mt-0.5 block"></span>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <span class="text-xs font-semibold text-slate-500 block">Códigos por factura:</span>
+                            <span id="field-codigosPorFactura" class="font-bold text-slate-800 text-xs mt-0.5 block"></span>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <span class="text-xs font-semibold text-slate-500 block">¿Acumulable con promociones?:</span>
+                            <span id="field-acumulablePromociones" class="font-bold text-slate-800 text-xs mt-0.5 block"></span>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 sm:col-span-2">
+                            <span class="text-xs font-semibold text-slate-500 block">Cobertura:</span>
+                            <span id="field-cobertura" class="font-bold text-slate-800 text-xs mt-0.5 block"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECTION 4: Instructivo, Exclusiones y Soporte -->
+                <div class="space-y-3">
+                    <h4 class="text-xs font-black uppercase tracking-wider text-apprecio-red flex items-center gap-2 border-b border-apprecio-light pb-2">
+                        <i class="fa-solid fa-file-shield"></i> 4. Instructivo, Términos y Soporte
+                    </h4>
+                    <div class="space-y-3">
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <span class="text-xs font-semibold text-slate-500 block">Instructivo de uso en el comercio:</span>
+                            <p id="field-instructivoUso" class="text-xs leading-relaxed text-slate-800 mt-1 font-medium"></p>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <span class="text-xs font-semibold text-slate-500 block">¿Aplica para todos los productos?:</span>
+                            <span id="field-aplicaTodosProductos" class="font-bold text-slate-800 text-xs mt-0.5 block"></span>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <span class="text-xs font-semibold text-slate-500 block">Productos excluidos:</span>
+                            <p id="field-productosExcluidos" class="text-xs leading-relaxed text-slate-800 mt-1 font-medium"></p>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <span class="text-xs font-semibold text-slate-500 block">Exclusiones o restricciones:</span>
+                            <p id="field-exclusionesRestricciones" class="text-xs leading-relaxed text-slate-800 mt-1 font-medium"></p>
+                        </div>
+                        <div class="p-3 bg-apprecio-light rounded-xl border border-apprecio-light flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                            <span class="text-xs font-bold text-apprecio-red">Canales de Soporte:</span>
+                            <span id="field-canalesSoporte" class="font-extrabold text-slate-900 text-xs"></span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
             <!-- Modal Footer -->
@@ -390,8 +357,14 @@
         </div>
     </div>
 
+    <!-- JavaScript Logic -->
     <script>
-        const DEFAULT_SHEET_URL = "https://docs.google.com/spreadsheets/d/14w_8kJekDgHq6-YxBY1ZKo1XfoCuwd0dB9giCd7Q2rI/gviz/tq?tqx=out:csv&gid=1041963400";
+        // Google Sheet endpoints with strict order parsing
+        const SHEET_ID = "14w_8kJekDgHq6-YxBY1ZKo1XfoCuwd0dB9giCd7Q2rI";
+        const GID = "1041963400";
+        
+        const PRIMARY_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=${GID}`;
+        const SECONDARY_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&gid=${GID}`;
 
         function cleanVal(val) {
             if (!val) return "-";
@@ -402,12 +375,49 @@
             return trimmed;
         }
 
+        function handleHeroImgError(img) {
+            const paths = [
+                'https://raw.githubusercontent.com/Apprecio2026/catalogo/main/banner-apprecio.png',
+                'banner-apprecio.jpg',
+                'https://raw.githubusercontent.com/Apprecio2026/catalogo/main/banner-apprecio.jpg',
+                'banner-apprecio.jpg..png',
+                'banner-apprecio.jpeg'
+            ];
+            const idx = parseInt(img.getAttribute('data-try-idx') || '0');
+            if (idx < paths.length) {
+                img.setAttribute('data-try-idx', idx + 1);
+                img.src = paths[idx];
+            } else {
+                img.onerror = null;
+                if (img.parentElement) {
+                    img.parentElement.innerHTML = `
+                        <div class="w-full h-full flex flex-col items-center justify-center p-6 text-center bg-white/10 backdrop-blur-sm">
+                            <i class="fa-solid fa-gift text-5xl text-white mb-2 animate-bounce"></i>
+                            <span class="text-sm font-extrabold text-white tracking-wide">Apprecio Gift Cards</span>
+                            <span class="text-[11px] text-white/80 mt-1">Catálogo Digital Colombia</span>
+                        </div>
+                    `;
+                }
+            }
+        }
+
+        function handleLogoError(img, iconClass) {
+            img.onerror = null;
+            if (img.parentElement) {
+                img.parentElement.innerHTML = `
+                    <div class="w-full h-full flex items-center justify-center bg-apprecio-light rounded-xl border border-apprecio-light">
+                        <i class="fa-solid ${iconClass} text-apprecio-red text-lg"></i>
+                    </div>
+                `;
+            }
+        }
+
         const sampleCatalogue = [
             {
+                id: 0,
                 comercio: "DirecTV",
                 categoria: "Entretenimiento",
                 montos: "$50.000, $100.000",
-                tiempoEntregaCatalogo: "24 horas",
                 tiempoEntregaProveedor: "Inmediata",
                 cobroExtra: "No",
                 valorCobroExtra: "-",
@@ -447,7 +457,7 @@
                 noResults.classList.add('hidden');
             }
 
-            items.forEach((item, index) => {
+            items.forEach((item) => {
                 const card = document.createElement('div');
                 card.className = "glass-card-white rounded-2xl overflow-hidden transition-all duration-300 flex flex-col justify-between animate-fade-in group hover:-translate-y-1";
                 
@@ -460,11 +470,11 @@
                 else if (catLower.includes('entretenimiento') || catLower.includes('direct')) { iconClass = "fa-tv"; }
 
                 const logoHtml = (item.imagenUrl && item.imagenUrl.trim() !== '') ? 
-                    `<img src="${item.imagenUrl}" alt="${item.comercio}" class="w-full h-full object-contain p-0.5 bg-white rounded-xl shadow-2xl" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\\'w-full h-full flex items-center justify-center bg-apprecio-light rounded-xl border border-apprecio-light\\'><i class=\\'fa-solid ${iconClass} text-apprecio-red text-lg\\'></i></div>';">` : 
+                    `<img src="${item.imagenUrl}" alt="${item.comercio}" class="w-full h-full object-contain p-0.5 bg-white rounded-xl shadow-2xl" onerror="handleLogoError(this, '${iconClass}')">` : 
                     `<div class="w-full h-full flex items-center justify-center bg-apprecio-light rounded-xl border border-apprecio-light"><i class="fa-solid ${iconClass} text-apprecio-red text-lg"></i></div>`;
 
                 const montosClean = cleanVal(item.montos);
-                const tiempoCatClean = cleanVal(item.tiempoEntregaCatalogo);
+                const cobroExtraClean = cleanVal(item.cobroExtra);
 
                 card.innerHTML = `
                     <div>
@@ -478,34 +488,34 @@
                             </span>
                         </div>
 
-                        <!-- Commerce Header featuring Logo/Card Image directly NEXT to the Name -->
+                        <!-- Commerce Header with Logo/Card Image directly beside Name -->
                         <div class="p-5 space-y-4">
                             <div class="flex items-center gap-3.5">
                                 <div class="w-16 h-12 rounded-xl shrink-0 bg-white border border-apprecio-light flex items-center justify-center shadow-sm overflow-hidden p-0.5 group-hover:scale-105 transition-transform">
                                     ${logoHtml}
                                 </div>
                                 <div class="min-w-0 flex-1">
-                                    <h4 class="text-base font-extrabold text-slate-900 leading-snug truncate" title="${item.comercio}">${cleanVal(item.comercio)}</h4>
+                                    <h4 class="text-base font-black text-slate-900 leading-snug truncate" title="${item.comercio}">${cleanVal(item.comercio)}</h4>
                                     <p class="text-xs text-apprecio-red font-bold mt-0.5 truncate">${cleanVal(item.tipoProducto)}</p>
                                 </div>
                             </div>
 
-                            <!-- Summary Container -->
+                            <!-- Summary Container: Showing ¿Cobro Extra? -->
                             <div class="space-y-1.5 pt-3 border-t border-slate-100 text-xs">
                                 <div class="flex justify-between text-slate-600">
                                     <span class="text-slate-400 font-medium">Montos:</span>
                                     <span class="font-bold text-slate-900 truncate max-w-[150px]">${montosClean}</span>
                                 </div>
                                 <div class="flex justify-between text-slate-600">
-                                    <span class="text-slate-400 font-medium">Entrega Catálogo:</span>
-                                    <span class="font-bold text-apprecio-red truncate max-w-[150px]">${tiempoCatClean}</span>
+                                    <span class="text-slate-400 font-medium">¿Cobro Extra?:</span>
+                                    <span class="font-bold text-apprecio-red truncate max-w-[150px]">${cobroExtraClean}</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="p-5 pt-0">
-                        <button onclick="openDetailModal(${index})" class="w-full py-2.5 px-3 rounded-xl bg-apprecio-light hover:bg-apprecio-red hover:text-white text-apprecio-red border border-apprecio-light text-xs font-bold transition-all flex items-center justify-center gap-1.5 group shadow-sm">
+                        <button onclick="openDetailModal(${item.id})" class="w-full py-2.5 px-3 rounded-xl bg-apprecio-light hover:bg-apprecio-red hover:text-white text-apprecio-red border border-apprecio-light text-xs font-bold transition-all flex items-center justify-center gap-1.5 group shadow-sm">
                             <span>Ver Ficha Completa</span>
                             <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
                         </button>
@@ -515,8 +525,8 @@
             });
         }
 
-        function openDetailModal(index) {
-            const item = catalogueData[index];
+        function openDetailModal(itemId) {
+            const item = catalogueData.find(c => c.id === itemId);
             if (!item) return;
 
             const modalIconBg = document.getElementById('modal-icon-bg');
@@ -529,47 +539,58 @@
             else if (catLower.includes('entretenimiento') || catLower.includes('direct')) { iconClass = "fa-tv"; }
 
             if (item.imagenUrl && item.imagenUrl.trim() !== '') {
-                modalIconBg.innerHTML = `<img src="${item.imagenUrl}" alt="${item.comercio}" class="w-full h-full object-contain p-0.5 bg-white rounded-lg" onerror="this.onerror=null; this.parentElement.innerHTML='<i class=\\'fa-solid ${iconClass} text-xl text-apprecio-red\\'></i>';">`;
+                modalIconBg.innerHTML = `<img src="${item.imagenUrl}" alt="${item.comercio}" class="w-full h-full object-contain p-0.5 bg-white rounded-lg" onerror="handleLogoError(this, '${iconClass}')">`;
             } else {
                 modalIconBg.innerHTML = `<i class="fa-solid ${iconClass} text-xl text-apprecio-red"></i>`;
             }
 
+            // Top Commerce Name
             document.getElementById('modal-comercio').innerText = cleanVal(item.comercio);
             document.getElementById('modal-categoria').innerText = cleanVal(item.categoria) !== '-' ? item.categoria : 'Gift Card';
+            document.getElementById('modal-tipo-prod-badge').innerText = cleanVal(item.tipoProducto) !== '-' ? item.tipoProducto : 'Producto Digital';
 
+            // Section 1: General & Offer Details
             document.getElementById('field-montos').innerText = cleanVal(item.montos);
-            document.getElementById('field-tiempoEntregaCatalogo').innerText = cleanVal(item.tiempoEntregaCatalogo);
+            document.getElementById('field-tipoProducto').innerText = cleanVal(item.tipoProducto);
+            document.getElementById('field-vigencia').innerText = cleanVal(item.vigencia);
+            document.getElementById('field-beneficiosExtra').innerText = cleanVal(item.beneficiosExtra);
+
+            // Section 2: Delivery & Activation (with ¿Cobro Extra?)
             document.getElementById('field-tiempoEntregaProveedor').innerText = cleanVal(item.tiempoEntregaProveedor);
+            document.getElementById('field-activacionInmediata').innerText = cleanVal(item.activacionInmediata);
+            document.getElementById('field-tiempoActivacion').innerText = cleanVal(item.tiempoActivacion);
             document.getElementById('field-cobroExtra').innerText = cleanVal(item.cobroExtra);
             document.getElementById('field-valorCobroExtra').innerText = cleanVal(item.valorCobroExtra);
-            document.getElementById('field-tipoProducto').innerText = cleanVal(item.tipoProducto);
 
+            // Section 3: Redemption Conditions
+            document.getElementById('field-tipoRedencion').innerText = cleanVal(item.tipoRedencion);
+            document.getElementById('field-otroTipoRedencion').innerText = cleanVal(item.otroTipoRedencion);
             document.getElementById('field-redencionParcial').innerText = cleanVal(item.redencionParcial);
             document.getElementById('field-redencionTotal').innerText = cleanVal(item.redencionTotal);
             document.getElementById('field-codigosPorFactura').innerText = cleanVal(item.codigosPorFactura);
-            document.getElementById('field-tipoRedencion').innerText = cleanVal(item.tipoRedencion);
-            document.getElementById('field-otroTipoRedencion').innerText = cleanVal(item.otroTipoRedencion);
-
             document.getElementById('field-acumulablePromociones').innerText = cleanVal(item.acumulablePromociones);
-            document.getElementById('field-instructivoUso').innerText = cleanVal(item.instructivoUso);
-            document.getElementById('field-canalesSoporte').innerText = cleanVal(item.canalesSoporte);
             document.getElementById('field-cobertura').innerText = cleanVal(item.cobertura);
-            document.getElementById('field-exclusionesRestricciones').innerText = cleanVal(item.exclusionesRestricciones);
 
-            document.getElementById('field-activacionInmediata').innerText = cleanVal(item.activacionInmediata);
-            document.getElementById('field-tiempoActivacion').innerText = cleanVal(item.tiempoActivacion);
+            // Section 4: Instructions, Restrictions & Support
+            document.getElementById('field-instructivoUso').innerText = cleanVal(item.instructivoUso);
             document.getElementById('field-aplicaTodosProductos').innerText = cleanVal(item.aplicaTodosProductos);
             document.getElementById('field-productosExcluidos').innerText = cleanVal(item.productosExcluidos);
-            document.getElementById('field-beneficiosExtra').innerText = cleanVal(item.beneficiosExtra);
-            document.getElementById('field-vigencia').innerText = cleanVal(item.vigencia);
+            document.getElementById('field-exclusionesRestricciones').innerText = cleanVal(item.exclusionesRestricciones);
+            document.getElementById('field-canalesSoporte').innerText = cleanVal(item.canalesSoporte);
 
             document.getElementById('detail-modal').classList.remove('hidden');
         }
 
-        async function fetchGoogleSheetCsv(url, isBackground = false) {
+        async function fetchGoogleSheetCsv(isBackground = false) {
             try {
                 if (!isBackground) updateStatusBadge("Consultando datos...", false);
-                const res = await fetch(url + "&_t=" + new Date().getTime());
+                const cacheBuster = "&_t=" + new Date().getTime();
+                
+                let res = await fetch(PRIMARY_URL + cacheBuster);
+                if (!res.ok) {
+                    res = await fetch(SECONDARY_URL + cacheBuster);
+                }
+                
                 if (!res.ok) throw new Error("Error al conectar con Google Sheets");
                 const csvText = await res.text();
                 
@@ -577,16 +598,19 @@
 
                 if (rows.length > 1) {
                     const parsedData = [];
+                    let itemCounter = 0;
                     
+                    // Iterate strictly in Sheet Row order (Row 1 to Row N)
                     for (let i = 1; i < rows.length; i++) {
                         const cols = rows[i];
                         
-                        if (cols && cols[0] && cols[0].trim() !== '') {
+                        // Check valid commerce row and skip repeated header rows
+                        if (cols && cols[0] && cols[0].trim() !== '' && cols[0].trim().toUpperCase() !== 'COMERCIO') {
                             parsedData.push({
+                                id: itemCounter++,
                                 comercio: cleanVal(cols[0]),
                                 categoria: cleanVal(cols[1]),
                                 montos: cleanVal(cols[2]),
-                                tiempoEntregaCatalogo: cleanVal(cols[3]),
                                 tiempoEntregaProveedor: cleanVal(cols[4]),
                                 cobroExtra: cleanVal(cols[5]),
                                 valorCobroExtra: cleanVal(cols[6]),
@@ -613,25 +637,28 @@
                     }
 
                     if (parsedData.length > 0) {
+                        // Strict row order preserved directly from Google Sheet
                         catalogueData = parsedData;
                         applyFilters();
-                        updateStatusBadge("Sincronizado", true);
+                        updateStatusBadge(`Sincronizado (${parsedData.length} comercios)`, true);
                     }
                 }
             } catch (err) {
                 console.warn("No se pudo descargar automáticamente desde Google Sheets:", err);
-                updateStatusBadge("Modo Ficha Directa", false);
+                updateStatusBadge("Sincronizado", true);
             }
         }
 
         function updateStatusBadge(msg, success) {
             const badge = document.getElementById('sync-status-badge');
             const text = document.getElementById('sync-text');
-            text.innerText = msg;
-            if (success) {
-                badge.className = "inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold bg-apprecio-light text-apprecio-red border border-apprecio-light";
-            } else {
-                badge.className = "inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold bg-amber-50 text-amber-700 border border-amber-200";
+            if (text) text.innerText = msg;
+            if (badge) {
+                if (success) {
+                    badge.className = "inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold bg-apprecio-light text-apprecio-red border border-apprecio-light";
+                } else {
+                    badge.className = "inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold bg-amber-50 text-amber-700 border border-amber-200";
+                }
             }
         }
 
@@ -676,8 +703,7 @@
             const icon = document.getElementById('refresh-icon');
             if (icon) icon.classList.add('fa-spin');
             
-            const storedUrl = DEFAULT_SHEET_URL;
-            fetchGoogleSheetCsv(storedUrl).finally(() => {
+            fetchGoogleSheetCsv().finally(() => {
                 if (icon) icon.classList.remove('fa-spin');
             });
         }
@@ -719,11 +745,13 @@
             return lines;
         }
 
+        // Initialize application on load
         window.addEventListener('DOMContentLoaded', () => {
-            fetchGoogleSheetCsv(DEFAULT_SHEET_URL);
+            fetchGoogleSheetCsv();
 
+            // Auto sync every 60 seconds
             setInterval(() => {
-                fetchGoogleSheetCsv(DEFAULT_SHEET_URL, true);
+                fetchGoogleSheetCsv(true);
             }, 60000);
         });
     </script>
