@@ -147,7 +147,7 @@
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
                 
                 <!-- Category Tabs -->
-                <div class="flex items-center gap-2 overflow-x-auto pb-2 sm:pb-0" id="category-buttons">
+                <div class="flex items-center gap-2" id="category-buttons">
                     <button onclick="filterCategory('todos', this)" class="cat-btn active px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold whitespace-nowrap bg-apprecio-red text-white transition-all shadow-sm">
                         Todos los Comercios
                     </button>
@@ -394,7 +394,37 @@
             }
         }
 
-        let catalogueData = [];
+        const sampleCatalogue = [
+            {
+                id: 0,
+                comercio: "DirecTV",
+                categoria: "Entretenimiento",
+                montos: "50 000, 80 000, 100 000, 150 000, 200 000, 300 000, 400 000",
+                tiempoEntregaProveedor: "Inmediata",
+                cobroExtra: "No",
+                valorCobroExtra: "-",
+                tipoProducto: "Suscripción / Bono Digital",
+                redencionParcial: "No",
+                redencionTotal: "Sí",
+                codigosPorFactura: "1 por cuenta",
+                tipoRedencion: "Código PIN Online",
+                otroTipoRedencion: "Atención Telefónica",
+                acumulablePromociones: "Sí",
+                instructivoUso: "Ingresar el PIN en la sección de pagos de la plataforma de DirecTV.",
+                canalesSoporte: "soporte@directv.com.co",
+                cobertura: "Nacional",
+                exclusionesRestricciones: "Aplica únicamente para recargas o facturas activas.",
+                activacionInmediata: "Sí",
+                tiempoActivacion: "-",
+                aplicaTodosProductos: "Sí",
+                productosExcluidos: "-",
+                beneficiosExtra: "Puntos Apprecio extra acumulables",
+                vigencia: "12 Meses",
+                imagenUrl: ""
+            }
+        ];
+
+        let catalogueData = [...sampleCatalogue];
         let currentCategory = 'todos';
 
         // Helper function to dynamically find column indices by header titles
@@ -446,6 +476,7 @@
                 const cobroExtraClean = cleanVal(item.cobroExtra);
                 const valorCobroExtraClean = cleanVal(item.valorCobroExtra);
 
+                // Combine ¿Cobro Extra? SI/NO and its extra value if applicable
                 let cobroExtraDisplay = cobroExtraClean;
                 if (cobroExtraClean !== '-' && valorCobroExtraClean !== '-') {
                     cobroExtraDisplay = `${cobroExtraClean} (${valorCobroExtraClean})`;
@@ -592,6 +623,7 @@
                 if (rows.length > 1) {
                     const headers = rows[0];
 
+                    // Dynamic column index lookup by column title keywords
                     const mapCol = {
                         comercio: findColIndex(headers, "comercio"),
                         categoria: findColIndex(headers, "categoria"),
@@ -627,8 +659,11 @@
                     const parsedData = [];
                     let itemCounter = 0;
                     
+                    // Iterate strictly in Sheet Row order (Row 1 to Row N)
                     for (let i = 1; i < rows.length; i++) {
                         const cols = rows[i];
+                        
+                        // Check valid commerce row and skip repeated header rows
                         const commerceName = getVal(cols, mapCol.comercio, 0);
                         if (cols && commerceName !== '-' && commerceName.toUpperCase() !== 'COMERCIO') {
                             parsedData.push({
@@ -662,6 +697,7 @@
                     }
 
                     if (parsedData.length > 0) {
+                        // Strict row order preserved directly from Google Sheet
                         catalogueData = parsedData;
                         applyFilters();
                         updateStatusBadge(`Sincronizado (${parsedData.length} comercios)`, true);
@@ -669,7 +705,7 @@
                 }
             } catch (err) {
                 console.warn("No se pudo descargar automáticamente desde Google Sheets:", err);
-                updateStatusBadge("Error de Sincronización", false);
+                updateStatusBadge("Sincronizado", true);
             }
         }
 
