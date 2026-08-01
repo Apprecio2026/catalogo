@@ -30,41 +30,41 @@
         :root {
             --apprecio-red: #fa335e;
             --apprecio-red-dark: #d81e46;
-            --apprecio-red-light: #fff0f4;
             --pantone-gray: #5e5e5e;
+            --pantone-gray-dark: #4d5562;
         }
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
-            background-color: #f1f5f9;
-            color: #1e293b;
+            background-color: #e2e8f0;
+            color: #0f172a;
         }
         .bg-apprecio-red { background-color: var(--apprecio-red); }
         .bg-apprecio-red-dark { background-color: var(--apprecio-red-dark); }
-        .bg-apprecio-light { background-color: var(--apprecio-red-light); }
         .text-apprecio-red { color: var(--apprecio-red); }
         .border-apprecio-red { border-color: var(--apprecio-red); }
+        .bg-pantone-gray { background-color: var(--pantone-gray); }
         
         .card-shadow {
-            box-shadow: 0 4px 15px -3px rgba(0, 0, 0, 0.05), 0 2px 6px -2px rgba(0, 0, 0, 0.03);
+            box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.06), 0 2px 5px -1px rgba(0, 0, 0, 0.04);
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .card-shadow:hover {
             transform: translateY(-4px);
-            box-shadow: 0 16px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 16px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
         }
         .animate-fade-in {
             animation: fadeIn 0.3s ease-out forwards;
         }
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(8px); }
             to { opacity: 1; transform: translateY(0); }
         }
         ::-webkit-scrollbar { width: 6px; height: 6px; }
-        ::-webkit-scrollbar-track { background: #f1f5f9; }
-        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-track { background: #cbd5e1; }
+        ::-webkit-scrollbar-thumb { background: #64748b; border-radius: 4px; }
     </style>
 </head>
-<body class="bg-slate-100 text-slate-800 min-h-screen flex flex-col antialiased">
+<body class="bg-slate-200 text-slate-900 min-h-screen flex flex-col antialiased">
 
     <!-- Header / Navbar Apprecio -->
     <header class="sticky top-0 z-40 bg-apprecio-red text-white shadow-md border-b border-rose-600">
@@ -83,11 +83,11 @@
             </div>
 
             <div class="flex items-center gap-2.5">
-                <button onclick="refreshDataManual()" id="btn-refresh" class="inline-flex items-center gap-2 px-3 py-2 rounded-xl border border-white/20 bg-slate-800/90 text-white text-xs font-bold hover:bg-slate-900 transition-all shadow-sm active:scale-95">
+                <button onclick="refreshDataManual()" id="btn-refresh" class="inline-flex items-center gap-2 px-3 py-2 rounded-xl border border-white/20 bg-slate-800 text-white text-xs font-bold hover:bg-slate-900 transition-all shadow-sm active:scale-95">
                     <i class="fa-solid fa-rotate-right" id="refresh-icon"></i>
                     <span class="hidden sm:inline">Sincronizar</span>
                 </button>
-                <span id="sync-status-badge" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold bg-slate-800/90 text-white border border-slate-700">
+                <span id="sync-status-badge" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold bg-slate-800 text-white border border-slate-700">
                     <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                     <span id="sync-text">Sincronizado</span>
                 </span>
@@ -99,28 +99,40 @@
     <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
 
         <!-- Banner Hero Section -->
-        <section class="bg-slate-200 rounded-3xl p-6 sm:p-8 text-slate-800 shadow-sm relative overflow-hidden border border-slate-300">
+        <section class="bg-slate-300 rounded-3xl p-6 sm:p-8 text-slate-900 shadow-sm relative overflow-hidden border border-slate-400">
             <div class="flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
                 <div class="max-w-xl space-y-3 text-center md:text-left">
-                    <div class="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1 rounded-lg bg-white text-slate-700 border border-slate-300 shadow-sm">
+                    <div class="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1 rounded-lg bg-white text-slate-800 border border-slate-300 shadow-sm">
                         <i class="fa-solid fa-gift text-apprecio-red"></i> Catálogo Apprecio
                     </div>
                     <h2 class="text-3xl sm:text-4xl font-black tracking-tight text-slate-900 leading-tight">
                         Catálogo <span class="text-apprecio-red">Apprecio</span>
                     </h2>
-                    <p class="text-slate-600 text-xs sm:text-sm leading-relaxed font-medium">
+                    <p class="text-slate-700 text-xs sm:text-sm leading-relaxed font-semibold">
                         Un gran programa de reconocimientos donde canjeas puntos por gift cards y cupones digitales en todo Colombia.
                     </p>
                 </div>
 
-                <!-- Banner Feature Cards -->
-                <div class="w-full md:w-auto flex items-center justify-center gap-3">
+                <!-- Banner Feature Graphic & Counter -->
+                <div class="w-full md:w-auto flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <!-- Graphic Illustration -->
+                    <div class="hidden sm:flex items-center gap-2 bg-white/80 backdrop-blur p-3 rounded-2xl border border-slate-300 shadow-sm">
+                        <div class="w-10 h-10 rounded-xl bg-apprecio-red text-white flex items-center justify-center text-lg font-black shadow">
+                            <i class="fa-solid fa-credit-card"></i>
+                        </div>
+                        <div class="text-left pr-2">
+                            <span class="block text-[11px] font-black text-slate-800">Gift Cards Digitales</span>
+                            <span class="block text-[10px] font-bold text-slate-600">Canje Inmediato</span>
+                        </div>
+                    </div>
+
+                    <!-- Counter Card -->
                     <div class="bg-white p-4 rounded-2xl border border-slate-300 shadow-sm flex items-center gap-3">
-                        <div class="w-12 h-12 rounded-xl bg-apprecio-light flex items-center justify-center text-apprecio-red font-black text-xl">
+                        <div class="w-12 h-12 rounded-xl bg-slate-200 flex items-center justify-center text-apprecio-red font-black text-xl border border-slate-300">
                             <i class="fa-solid fa-store"></i>
                         </div>
                         <div>
-                            <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider block">Total Comercios</span>
+                            <span class="text-[11px] font-bold text-slate-600 uppercase tracking-wider block">Total Comercios</span>
                             <span id="total-comercios-count" class="text-lg font-black text-slate-900">Cargando...</span>
                         </div>
                     </div>
@@ -130,21 +142,21 @@
 
         <!-- Search & Filter Bar -->
         <section id="catalogo" class="space-y-6">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-4 rounded-2xl border border-slate-300 shadow-sm">
                 
                 <!-- Search Input -->
                 <div class="relative w-full sm:max-w-md">
-                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500 text-sm"></i>
                     <input 
                         type="text" 
                         id="search-input" 
                         oninput="handleSearch()" 
                         placeholder="Buscar comercio, marca o valor..." 
-                        class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-800 focus:bg-white transition-all">
+                        class="w-full pl-10 pr-4 py-2.5 bg-slate-100 border border-slate-300 rounded-xl text-sm text-slate-900 font-medium placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-800 focus:bg-white transition-all">
                 </div>
 
                 <!-- Filter Info -->
-                <div class="text-xs font-bold text-slate-500 text-right" id="filter-status-text">
+                <div class="text-xs font-bold text-slate-600 text-right" id="filter-status-text">
                     Mostrando todos los comercios
                 </div>
             </div>
@@ -155,8 +167,8 @@
             </div>
 
             <!-- Empty State -->
-            <div id="no-results" class="hidden text-center py-16 space-y-3 bg-white rounded-2xl border border-slate-200 shadow-sm">
-                <i class="fa-solid fa-store-slash text-4xl text-slate-300"></i>
+            <div id="no-results" class="hidden text-center py-16 space-y-3 bg-white rounded-2xl border border-slate-300 shadow-sm">
+                <i class="fa-solid fa-store-slash text-4xl text-slate-400"></i>
                 <h3 class="text-base font-bold text-slate-800">No se encontraron comercios</h3>
                 <p class="text-xs text-slate-500">Prueba ajustando el término de búsqueda.</p>
             </div>
@@ -165,48 +177,48 @@
     </main>
 
     <!-- Detailed Modal View -->
-    <div id="detail-modal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] flex flex-col shadow-2xl border border-slate-200 overflow-hidden animate-fade-in">
+    <div id="detail-modal" class="fixed inset-0 bg-slate-900/75 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] flex flex-col shadow-2xl border border-slate-300 overflow-hidden animate-fade-in">
             
-            <!-- Modal Header Slate Style with Red Accent -->
-            <div class="p-5 bg-slate-200 text-slate-800 flex items-center justify-between shrink-0 shadow-sm relative border-b border-slate-300">
+            <!-- Modal Header Slate Style -->
+            <div class="p-5 bg-slate-300 text-slate-900 flex items-center justify-between shrink-0 shadow-sm relative border-b border-slate-400">
                 <div class="absolute top-0 left-0 right-0 h-1.5 bg-apprecio-red"></div>
                 <div class="flex items-center gap-3.5 min-w-0">
-                    <div id="modal-logo-container" class="w-14 h-12 rounded-xl bg-white border border-slate-300 flex items-center justify-center shadow-sm p-1 shrink-0 overflow-hidden">
-                        <!-- Dynamic Logo inside Modal -->
+                    <div class="w-10 h-10 rounded-xl bg-apprecio-red flex items-center justify-center text-white font-black text-lg shadow-sm shrink-0">
+                        <i class="fa-solid fa-gift"></i>
                     </div>
                     <div class="min-w-0 flex-1">
                         <div class="flex items-center gap-2">
                             <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-apprecio-red text-white">Apprecio</span>
                             <h3 id="modal-comercio" class="text-xl font-black text-slate-900 truncate">Comercio</h3>
                         </div>
-                        <p id="modal-categoria" class="text-xs font-semibold text-slate-600 mt-0.5 truncate">Categoría</p>
+                        <p id="modal-categoria" class="text-xs font-bold text-slate-700 mt-0.5 truncate">Categoría</p>
                     </div>
                 </div>
-                <button onclick="closeDetailModal()" class="text-slate-500 hover:text-slate-800 transition-colors p-2 rounded-full hover:bg-slate-300/50 shrink-0">
+                <button onclick="closeDetailModal()" class="text-slate-600 hover:text-slate-900 transition-colors p-2 rounded-full hover:bg-slate-400/40 shrink-0">
                     <i class="fa-solid fa-xmark text-xl"></i>
                 </button>
             </div>
 
             <!-- Modal Content -->
-            <div class="p-6 overflow-y-auto space-y-5 text-slate-700 text-sm flex-grow">
+            <div class="p-6 overflow-y-auto space-y-5 text-slate-800 text-sm flex-grow">
 
                 <!-- SECTION 1: Oferta y Montos -->
                 <div class="space-y-2.5">
-                    <h4 class="text-xs font-black uppercase tracking-wider text-slate-800 bg-slate-100 px-3.5 py-2 rounded-xl border-l-4 border-apprecio-red flex items-center gap-2">
+                    <h4 class="text-xs font-black uppercase tracking-wider text-slate-900 bg-slate-200 px-3.5 py-2 rounded-xl border-l-4 border-apprecio-red flex items-center gap-2">
                         <i class="fa-solid fa-ticket text-apprecio-red"></i> 1. Oferta y Montos
                     </h4>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 sm:col-span-2">
-                            <span class="text-xs font-bold text-slate-500 uppercase block">Montos Disponibles:</span>
+                        <div class="p-3 bg-slate-100 rounded-xl border border-slate-300 sm:col-span-2">
+                            <span class="text-xs font-bold text-slate-600 uppercase block">Montos Disponibles:</span>
                             <span id="field-montos" class="font-extrabold text-slate-900 text-sm mt-0.5 block"></span>
                         </div>
-                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
-                            <span class="text-xs font-semibold text-slate-500 block">Tipo de Producto:</span>
+                        <div class="p-3 bg-slate-100 rounded-xl border border-slate-300">
+                            <span class="text-xs font-bold text-slate-600 block">Tipo de Producto:</span>
                             <span id="field-tipoProducto" class="font-bold text-slate-900 text-xs mt-0.5 block"></span>
                         </div>
-                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
-                            <span class="text-xs font-semibold text-slate-500 block">Vigencia:</span>
+                        <div class="p-3 bg-slate-100 rounded-xl border border-slate-300">
+                            <span class="text-xs font-bold text-slate-600 block">Vigencia:</span>
                             <span id="field-vigencia" class="font-bold text-slate-900 text-xs mt-0.5 block"></span>
                         </div>
                     </div>
@@ -214,16 +226,16 @@
 
                 <!-- SECTION 2: Entrega y Activación -->
                 <div class="space-y-2.5">
-                    <h4 class="text-xs font-black uppercase tracking-wider text-slate-800 bg-slate-100 px-3.5 py-2 rounded-xl border-l-4 border-apprecio-red flex items-center gap-2">
+                    <h4 class="text-xs font-black uppercase tracking-wider text-slate-900 bg-slate-200 px-3.5 py-2 rounded-xl border-l-4 border-apprecio-red flex items-center gap-2">
                         <i class="fa-solid fa-clock text-apprecio-red"></i> 2. Entrega y Activación
                     </h4>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
-                            <span class="text-xs font-semibold text-slate-500 block">Tiempo de Entrega:</span>
-                            <span id="field-tiempoEntregaProveedor" class="font-bold text-slate-800 text-xs mt-0.5 block"></span>
+                        <div class="p-3 bg-slate-100 rounded-xl border border-slate-300">
+                            <span class="text-xs font-bold text-slate-600 block">Tiempo de Entrega:</span>
+                            <span id="field-tiempoEntregaProveedor" class="font-bold text-slate-900 text-xs mt-0.5 block"></span>
                         </div>
-                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
-                            <span class="text-xs font-semibold text-slate-500 block">¿Cobro Extra?:</span>
+                        <div class="p-3 bg-slate-100 rounded-xl border border-slate-300">
+                            <span class="text-xs font-bold text-slate-600 block">¿Cobro Extra?:</span>
                             <span id="field-cobroExtra" class="font-bold text-slate-900 text-xs mt-0.5 block"></span>
                         </div>
                     </div>
@@ -231,38 +243,38 @@
 
                 <!-- SECTION 3: Condiciones de Redención -->
                 <div class="space-y-2.5">
-                    <h4 class="text-xs font-black uppercase tracking-wider text-slate-800 bg-slate-100 px-3.5 py-2 rounded-xl border-l-4 border-apprecio-red flex items-center gap-2">
+                    <h4 class="text-xs font-black uppercase tracking-wider text-slate-900 bg-slate-200 px-3.5 py-2 rounded-xl border-l-4 border-apprecio-red flex items-center gap-2">
                         <i class="fa-solid fa-arrows-rotate text-apprecio-red"></i> 3. Condiciones de Redención
                     </h4>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
-                            <span class="text-xs font-semibold text-slate-500 block">Permite Redención Parcial:</span>
-                            <span id="field-redencionParcial" class="font-bold text-slate-800 text-xs mt-0.5 block"></span>
+                        <div class="p-3 bg-slate-100 rounded-xl border border-slate-300">
+                            <span class="text-xs font-bold text-slate-600 block">Permite Redención Parcial:</span>
+                            <span id="field-redencionParcial" class="font-bold text-slate-900 text-xs mt-0.5 block"></span>
                         </div>
-                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
-                            <span class="text-xs font-semibold text-slate-500 block">Solo Redención Total:</span>
-                            <span id="field-redencionTotal" class="font-bold text-slate-800 text-xs mt-0.5 block"></span>
+                        <div class="p-3 bg-slate-100 rounded-xl border border-slate-300">
+                            <span class="text-xs font-bold text-slate-600 block">Solo Redención Total:</span>
+                            <span id="field-redencionTotal" class="font-bold text-slate-900 text-xs mt-0.5 block"></span>
                         </div>
-                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 sm:col-span-2">
-                            <span class="text-xs font-semibold text-slate-500 block">Cobertura:</span>
-                            <span id="field-cobertura" class="font-bold text-slate-800 text-xs mt-0.5 block"></span>
+                        <div class="p-3 bg-slate-100 rounded-xl border border-slate-300 sm:col-span-2">
+                            <span class="text-xs font-bold text-slate-600 block">Cobertura:</span>
+                            <span id="field-cobertura" class="font-bold text-slate-900 text-xs mt-0.5 block"></span>
                         </div>
                     </div>
                 </div>
 
                 <!-- SECTION 4: Instructivo y Restricciones -->
                 <div class="space-y-2.5">
-                    <h4 class="text-xs font-black uppercase tracking-wider text-slate-800 bg-slate-100 px-3.5 py-2 rounded-xl border-l-4 border-apprecio-red flex items-center gap-2">
+                    <h4 class="text-xs font-black uppercase tracking-wider text-slate-900 bg-slate-200 px-3.5 py-2 rounded-xl border-l-4 border-apprecio-red flex items-center gap-2">
                         <i class="fa-solid fa-file-shield text-apprecio-red"></i> 4. Instructivo y Restricciones
                     </h4>
                     <div class="space-y-3">
-                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
-                            <span class="text-xs font-semibold text-slate-500 block">Instructivo de Uso:</span>
-                            <p id="field-instructivoUso" class="text-xs leading-relaxed text-slate-800 mt-1 font-medium"></p>
+                        <div class="p-3 bg-slate-100 rounded-xl border border-slate-300">
+                            <span class="text-xs font-bold text-slate-600 block">Instructivo de Uso:</span>
+                            <p id="field-instructivoUso" class="text-xs leading-relaxed text-slate-900 mt-1 font-semibold"></p>
                         </div>
-                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
-                            <span class="text-xs font-semibold text-slate-500 block">Exclusiones o Restricciones:</span>
-                            <p id="field-exclusionesRestricciones" class="text-xs leading-relaxed text-slate-800 mt-1 font-medium"></p>
+                        <div class="p-3 bg-slate-100 rounded-xl border border-slate-300">
+                            <span class="text-xs font-bold text-slate-600 block">Exclusiones o Restricciones:</span>
+                            <p id="field-exclusionesRestricciones" class="text-xs leading-relaxed text-slate-900 mt-1 font-semibold"></p>
                         </div>
                     </div>
                 </div>
@@ -270,7 +282,7 @@
             </div>
 
             <!-- Modal Footer -->
-            <div class="p-4 bg-slate-100 border-t border-slate-200 flex justify-end shrink-0">
+            <div class="p-4 bg-slate-200 border-t border-slate-300 flex justify-end shrink-0">
                 <button onclick="closeDetailModal()" class="px-5 py-2 bg-slate-800 hover:bg-slate-900 text-white font-bold rounded-xl text-xs transition-all shadow-sm">
                     Cerrar Ficha
                 </button>
@@ -303,84 +315,6 @@
             return trimmed;
         }
 
-        // Domain mapping for realistic brand logo assets
-        const BRAND_DOMAINS = {
-            "ÉXITO": "exito.com",
-            "EXITO": "exito.com",
-            "FALABELLA": "falabella.com.co",
-            "PEPE GANGA": "pepeganga.com",
-            "DAFITI": "dafiti.com.co",
-            "INKANTA": "inkanta.com.co",
-            "HOMECENTER": "homecenter.com.co",
-            "CASA IDEAS": "casaideas.com.co",
-            "KTRONIX": "ktronix.com",
-            "JUMBO": "tiendasjumbo.co",
-            "METRO": "tiendasmetro.co",
-            "CARULLA": "carulla.com",
-            "SUPER INTER": "superinter.com.co",
-            "SURTIMAX": "surtimax.com.co",
-            "OLÍMPICA": "olimpica.com",
-            "OLIMPICA": "olimpica.com",
-            "TIENDAS D1": "tiendasd1.com",
-            "ARA": "aratiendas.com",
-            "ISIMO": "tiendasisimo.com",
-            "MAKRO": "makro.com.co",
-            "CREPES & WAFFLES": "crepesywaffles.com",
-            "POPSY": "heladospopsy.com",
-            "DUNKIN": "dunkin.com.co",
-            "STARBUCKS": "starbucks.com.co",
-            "TOSTAO’": "tostao.com",
-            "FRISBY": "frisby.com.co",
-            "KOKORIKO": "kokoriko.com.co",
-            "DOMINO’S": "dominos.com.co",
-            "EL CORRAL": "elcorral.com",
-            "BURGER KING": "burgerking.com.co",
-            "PRESTO": "presto.com.co",
-            "OMA": "cafecolombiano.com",
-            "PAPA JOHNS": "papajohns.com.co",
-            "QBANO": "qbano.com",
-            "GEF": "gef.co",
-            "PUNTO BLANCO": "puntoblanco.co",
-            "PATPRIMO": "patprimo.com",
-            "SEVEN SEVEN": "sevenseven.com",
-            "TOTTO": "totto.com",
-            "DECATHLON": "decathlon.com.co",
-            "NEW BALANCE": "newbalance.com.co",
-            "KOAJ": "koaj.co",
-            "LEVIS": "levis.com.co",
-            "DESIGUAL": "desigual.com",
-            "PANAMERICANA": "panamericana.com.co",
-            "CRUZ VERDE": "cruzverde.com.co",
-            "SPOTIFY": "spotify.com",
-            "XBOX": "xbox.com",
-            "NETFLIX": "netflix.com",
-            "CINEMARK": "cinemark.com.co",
-            "TERPEL": "terpel.com",
-            "CABIFY": "cabify.com",
-            "PRIMAX": "primax.com.co",
-            "UBER": "uber.com",
-            "LAIKA": "laika.com.co",
-            "DIRECTV": "directvgo.com"
-        };
-
-        function getBrandLogoHTML(brandName, customUrl) {
-            const cleanName = (brandName || 'Apprecio').trim().toUpperCase();
-            
-            if (customUrl && customUrl.trim() !== '' && customUrl !== '-') {
-                return `<img src="${customUrl}" alt="${brandName}" class="w-full h-full object-contain p-1" onerror="this.onerror=null; this.src='https://logo.clearbit.com/${BRAND_DOMAINS[cleanName] || 'apprecio.com'}';">`;
-            }
-
-            const domain = BRAND_DOMAINS[cleanName] || `${cleanName.toLowerCase().replace(/[^a-z0-9]/g, '')}.com`;
-            const firstChar = cleanName.charAt(0);
-
-            return `
-                <img src="https://logo.clearbit.com/${domain}" 
-                     alt="${brandName}" 
-                     class="w-full h-full object-contain p-1" 
-                     onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-full bg-slate-100 rounded-lg flex items-center justify-center font-black text-slate-800 text-lg\'>${firstChar}</div>';">
-            `;
-        }
-
         const sampleCatalogue = [
             {
                 id: 0,
@@ -395,8 +329,7 @@
                 redencionTotal: "No",
                 instructivoUso: "Presentar código en caja.",
                 cobertura: "Nacional",
-                exclusionesRestricciones: "Aplica en todas las sedes Éxito.",
-                imagenUrl: ""
+                exclusionesRestricciones: "Aplica en todas las sedes Éxito."
             },
             {
                 id: 1,
@@ -411,8 +344,7 @@
                 redencionTotal: "No",
                 instructivoUso: "Presentar en tienda física o asesor WhatsApp.",
                 cobertura: "Nacional",
-                exclusionesRestricciones: "Válido en tiendas físicas y WhatsApp.",
-                imagenUrl: ""
+                exclusionesRestricciones: "Válido en tiendas físicas y WhatsApp."
             }
         ];
 
@@ -452,7 +384,7 @@
 
             items.forEach((item) => {
                 const card = document.createElement('div');
-                card.className = "bg-white rounded-2xl border border-slate-200 overflow-hidden card-shadow flex flex-col justify-between animate-fade-in group";
+                card.className = "bg-white rounded-2xl border border-slate-300 overflow-hidden card-shadow flex flex-col justify-between animate-fade-in group";
 
                 const montosClean = cleanVal(item.montos);
                 const redParcialClean = cleanVal(item.redencionParcial);
@@ -467,53 +399,44 @@
                     cobroExtraDisplay = valorCobroExtraClean;
                 }
 
-                const logoHTML = getBrandLogoHTML(item.comercio, item.imagenUrl);
-
                 card.innerHTML = `
                     <div>
-                        <!-- Top Header Bar (Light Gray with Dark Bold Typography & App Badge) -->
-                        <div class="bg-slate-200 border-b border-slate-300 px-3.5 py-2.5 flex items-center gap-2">
+                        <!-- Top Header Bar (Darker Slate Gray with Dark Bold Typography & Red Badge) -->
+                        <div class="bg-slate-300 border-b border-slate-400 px-3.5 py-2.5 flex items-center gap-2">
                             <span class="bg-apprecio-red text-white text-[10px] font-extrabold px-1.5 py-0.5 rounded shadow-sm shrink-0">
                                 App
                             </span>
-                            <h4 class="text-sm font-extrabold text-slate-900 truncate leading-snug tracking-tight" title="${item.comercio}">
+                            <h4 class="text-sm font-black text-slate-900 truncate leading-snug tracking-tight" title="${item.comercio}">
                                 ${cleanVal(item.comercio)}
                             </h4>
                         </div>
 
-                        <!-- Centered Prominent Logo Container -->
-                        <div class="p-4 flex items-center justify-center bg-white border-b border-slate-100 min-h-[110px]">
-                            <div class="w-full h-24 max-w-[180px] flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
-                                ${logoHTML}
-                            </div>
-                        </div>
-
-                        <!-- Key Details Summary (Dark Typography - No Red Text) -->
-                        <div class="p-4 space-y-1.5 text-xs text-slate-700">
-                            <div class="flex justify-between items-start gap-2">
-                                <span class="font-bold text-slate-800 shrink-0">Montos:</span>
+                        <!-- Key Details Summary (Sobresaliente Tipografía Oscura Sobria) -->
+                        <div class="p-4 space-y-2 text-xs text-slate-800">
+                            <div class="flex justify-between items-start gap-2 py-1 border-b border-slate-100">
+                                <span class="font-bold text-slate-700 shrink-0">Montos:</span>
                                 <span class="font-extrabold text-slate-900 text-right truncate max-w-[150px]">${montosClean}</span>
                             </div>
-                            <div class="flex justify-between items-center gap-2">
+                            <div class="flex justify-between items-center gap-2 py-1 border-b border-slate-100">
                                 <span class="font-semibold text-slate-700 shrink-0">Redención Parcial:</span>
                                 <span class="font-bold text-slate-900 text-right">${redParcialClean}</span>
                             </div>
-                            <div class="flex justify-between items-center gap-2">
+                            <div class="flex justify-between items-center gap-2 py-1 border-b border-slate-100">
                                 <span class="font-semibold text-slate-700 shrink-0">Solo Redención Total:</span>
                                 <span class="font-bold text-slate-900 text-right">${redTotalClean}</span>
                             </div>
-                            <div class="flex justify-between items-center gap-2 pt-1 border-t border-slate-100">
+                            <div class="flex justify-between items-center gap-2 pt-1">
                                 <span class="font-semibold text-slate-700 shrink-0">Cobro Extra:</span>
                                 <span class="font-extrabold text-slate-900 text-right">${cobroExtraDisplay}</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Bottom Action Button -->
-                    <div class="p-3 pt-0">
-                        <button onclick="openDetailModal(${item.id})" class="w-full py-2.5 px-4 rounded-xl bg-apprecio-red hover:bg-rose-600 text-white font-extrabold text-xs transition-all duration-200 flex items-center justify-between shadow-md hover:shadow-lg active:scale-98 group/btn">
+                    <!-- Bottom Action Button in Apprecio Red with Hover Animation -->
+                    <div class="p-3 pt-1">
+                        <button onclick="openDetailModal(${item.id})" class="w-full py-2.5 px-4 rounded-xl bg-apprecio-red hover:bg-rose-600 text-white font-extrabold text-xs transition-all duration-200 flex items-center justify-between shadow-md hover:shadow-lg active:scale-95 group/btn">
                             <span>Ver Ficha Completa</span>
-                            <i class="fa-solid fa-chevron-right text-[11px] group-hover/btn:translate-x-1 transition-transform"></i>
+                            <i class="fa-solid fa-chevron-right text-[11px] group-hover/btn:translate-x-1.5 transition-transform"></i>
                         </button>
                     </div>
                 `;
@@ -524,9 +447,6 @@
         function openDetailModal(itemId) {
             const item = catalogueData.find(c => c.id === itemId);
             if (!item) return;
-
-            const modalLogoContainer = document.getElementById('modal-logo-container');
-            modalLogoContainer.innerHTML = getBrandLogoHTML(item.comercio, item.imagenUrl);
 
             document.getElementById('modal-comercio').innerText = cleanVal(item.comercio);
             document.getElementById('modal-categoria').innerText = cleanVal(item.categoria) !== '-' ? item.categoria : 'Gift Card Colombia';
@@ -588,8 +508,7 @@
                         instructivoUso: findColIndex(headers, "instructivo de uso", "instructivo"),
                         cobertura: findColIndex(headers, "cobertura"),
                         exclusionesRestricciones: findColIndex(headers, "exclusiones o restricciones", "exclusiones"),
-                        vigencia: findColIndex(headers, "vigencia"),
-                        imagenUrl: findColIndex(headers, "imagen", "logo", "url")
+                        vigencia: findColIndex(headers, "vigencia")
                     };
 
                     const getVal = (cols, colIdx, fallbackIdx) => {
@@ -618,8 +537,7 @@
                                 instructivoUso: getVal(cols, mapCol.instructivoUso, 14),
                                 cobertura: getVal(cols, mapCol.cobertura, 16),
                                 exclusionesRestricciones: getVal(cols, mapCol.exclusionesRestricciones, 17),
-                                vigencia: getVal(cols, mapCol.vigencia, 23),
-                                imagenUrl: (mapCol.imagenUrl !== -1 && cols[mapCol.imagenUrl]) ? cols[mapCol.imagenUrl].trim() : ''
+                                vigencia: getVal(cols, mapCol.vigencia, 23)
                             });
                         }
                     }
@@ -642,7 +560,7 @@
             if (text) text.innerText = msg;
             if (badge) {
                 if (success) {
-                    badge.className = "inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold bg-slate-800/90 text-white border border-slate-700";
+                    badge.className = "inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold bg-slate-800 text-white border border-slate-700";
                 } else {
                     badge.className = "inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold bg-amber-500 text-slate-950 border border-amber-400";
                 }
