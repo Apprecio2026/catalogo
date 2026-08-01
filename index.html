@@ -38,9 +38,9 @@
         :root {
             --apprecio-red: #fa335e;
             --apprecio-red-dark: #d81e46;
+            --apprecio-red-light: #fff0f4;
+            --apprecio-red-border: #fcd5df;
             --apprecio-gray-header: #1e293b;
-            --apprecio-gray-light: #f8fafc;
-            --apprecio-border: #e2e8f0;
         }
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
@@ -48,15 +48,18 @@
             color: #0F172A;
         }
         .bg-apprecio-red { background-color: var(--apprecio-red); }
-        .bg-card-header { background-color: var(--apprecio-gray-header); }
+        .bg-apprecio-red-dark { background-color: var(--apprecio-red-dark); }
+        .bg-apprecio-light { background-color: var(--apprecio-red-light); }
+        .text-apprecio-red { color: var(--apprecio-red); }
+        .border-apprecio-light { border-color: var(--apprecio-red-border); }
         .glass-card-white {
             background: #FFFFFF;
             border: 1px solid #E2E8F0;
             box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
         }
         .glass-card-white:hover {
-            border-color: #64748B;
-            box-shadow: 0 12px 28px -4px rgba(0, 0, 0, 0.12);
+            border-color: rgba(250, 51, 94, 0.4);
+            box-shadow: 0 12px 28px -4px rgba(250, 51, 94, 0.15);
         }
         .animate-fade-in {
             animation: fadeIn 0.25s ease-out forwards;
@@ -82,19 +85,19 @@
                 <div class="hidden sm:block border-l border-slate-200 h-8 mx-1"></div>
                 <div class="hidden sm:block">
                     <h1 class="text-base font-extrabold text-slate-900 leading-tight">Catálogo de Gift Cards Colombia</h1>
-                    <p class="text-[11px] text-slate-600 font-semibold flex items-center gap-1">
-                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Sincronizado en Vivo con Google Sheets
+                    <p class="text-[11px] text-[#fa335e] font-semibold flex items-center gap-1">
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#fa335e] animate-pulse"></span> Sincronizado en Vivo con Google Sheets
                     </p>
                 </div>
             </div>
 
             <div class="flex items-center gap-3">
-                <button onclick="refreshDataManual()" id="btn-refresh" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl border border-slate-200 bg-slate-100 text-slate-900 text-xs font-bold hover:bg-slate-950 hover:text-white transition-all shadow-sm active:scale-95">
-                    <i class="fa-solid fa-rotate-right text-slate-700" id="refresh-icon"></i>
+                <button onclick="refreshDataManual()" id="btn-refresh" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl border border-apprecio-light bg-apprecio-light text-[#fa335e] text-xs font-bold hover:bg-[#fa335e] hover:text-white transition-all shadow-sm active:scale-95">
+                    <i class="fa-solid fa-rotate-right text-[#fa335e] group-hover:text-white" id="refresh-icon"></i>
                     <span>Sincronizar</span>
                 </button>
-                <span id="sync-status-badge" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold bg-slate-100 text-slate-900 border border-slate-200">
-                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span id="sync-status-badge" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold bg-apprecio-light text-[#fa335e] border border-apprecio-light">
+                    <span class="w-2 h-2 rounded-full bg-[#fa335e] animate-pulse"></span>
                     <span id="sync-text">Sincronizado</span>
                 </span>
             </div>
@@ -145,7 +148,7 @@
                 
                 <!-- Category Tabs -->
                 <div class="flex items-center gap-2" id="category-buttons">
-                    <button onclick="filterCategory('todos', this)" class="cat-btn active px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold whitespace-nowrap bg-slate-950 text-white transition-all shadow-sm">
+                    <button onclick="filterCategory('todos', this)" class="cat-btn active px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold whitespace-nowrap bg-[#fa335e] text-white transition-all shadow-sm">
                         Todos los Comercios
                     </button>
                 </div>
@@ -158,7 +161,7 @@
                         id="search-input" 
                         oninput="handleSearch()" 
                         placeholder="Buscar comercio o monto..." 
-                        class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-950 focus:bg-white transition-all">
+                        class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#fa335e] focus:bg-white transition-all">
                 </div>
             </div>
 
@@ -180,7 +183,7 @@
     <!-- Footer Apprecio Style -->
     <footer class="bg-white border-t border-slate-200 mt-12 py-8 text-center text-xs text-slate-500 space-y-2">
         <div class="flex items-center justify-center gap-2 text-base font-extrabold text-slate-900">
-            <span class="text-slate-950 font-black text-lg">Apprecio</span>
+            <span class="text-[#fa335e] font-black text-lg">Apprecio</span>
         </div>
         <p>© 2026 Catálogo Comercial Dinámico — Alimentado desde Google Sheets</p>
     </footer>
@@ -189,17 +192,17 @@
     <div id="detail-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div class="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] flex flex-col shadow-2xl border border-slate-200 overflow-hidden animate-fade-in">
             
-            <!-- Modal Header Slate 950 -->
-            <div class="p-6 bg-slate-950 text-white flex items-center justify-between shrink-0 shadow-md">
+            <!-- Modal Header en Rojo Apprecio -->
+            <div class="p-6 bg-[#fa335e] text-white flex items-center justify-between shrink-0 shadow-md">
                 <div class="flex items-center gap-4 min-w-0">
                     <div id="modal-icon-bg" class="w-16 h-12 rounded-xl bg-white border border-white/40 flex items-center justify-center shadow-md overflow-hidden shrink-0 p-1">
-                        <i id="modal-icon" class="fa-solid fa-store text-slate-900 text-xl"></i>
+                        <i id="modal-icon" class="fa-solid fa-store text-[#fa335e] text-xl"></i>
                     </div>
                     <div class="min-w-0 flex-1">
                         <h3 id="modal-comercio" class="text-xl sm:text-2xl font-black text-white truncate leading-tight">Comercio</h3>
                         <div class="flex flex-wrap items-center gap-2 mt-1">
-                            <span id="modal-categoria" class="px-2.5 py-0.5 rounded-full text-[11px] font-extrabold bg-white text-slate-950 shadow-sm truncate">Categoría</span>
-                            <span id="modal-tipo-prod-badge" class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-white/20 text-white truncate">Tipo Producto</span>
+                            <span id="modal-categoria" class="px-2.5 py-0.5 rounded-full text-[11px] font-extrabold bg-white text-[#fa335e] shadow-sm truncate">Categoría</span>
+                            <span id="modal-tipo-prod-badge" class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-black/20 text-white truncate">Tipo Producto</span>
                         </div>
                     </div>
                 </div>
@@ -213,12 +216,12 @@
 
                 <!-- SECTION 1: Detalles de la Gift Card y Oferta -->
                 <div class="space-y-3">
-                    <h4 class="text-xs font-black uppercase tracking-wider text-slate-900 flex items-center gap-2 border-b border-slate-200 pb-2">
-                        <i class="fa-solid fa-ticket text-slate-700"></i> 1. Información General y Oferta
+                    <h4 class="text-xs font-black uppercase tracking-wider text-[#fa335e] flex items-center gap-2 border-b border-apprecio-light pb-2">
+                        <i class="fa-solid fa-ticket text-[#fa335e]"></i> 1. Información General y Oferta
                     </h4>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <div class="p-3.5 bg-slate-100 rounded-2xl border border-slate-200 sm:col-span-2">
-                            <span class="text-xs font-bold text-slate-900 uppercase tracking-wider block">Montos Disponibles:</span>
+                        <div class="p-3.5 bg-apprecio-light rounded-2xl border border-apprecio-light sm:col-span-2">
+                            <span class="text-xs font-bold text-[#fa335e] uppercase tracking-wider block">Montos Disponibles:</span>
                             <span id="field-montos" class="font-black text-slate-900 text-sm sm:text-base mt-0.5 block leading-relaxed"></span>
                         </div>
                         <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
@@ -238,8 +241,8 @@
 
                 <!-- SECTION 2: Tiempos de Entrega y Activación -->
                 <div class="space-y-3">
-                    <h4 class="text-xs font-black uppercase tracking-wider text-slate-900 flex items-center gap-2 border-b border-slate-200 pb-2">
-                        <i class="fa-solid fa-clock text-slate-700"></i> 2. Entrega y Activación
+                    <h4 class="text-xs font-black uppercase tracking-wider text-[#fa335e] flex items-center gap-2 border-b border-apprecio-light pb-2">
+                        <i class="fa-solid fa-clock text-[#fa335e]"></i> 2. Entrega y Activación
                     </h4>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
@@ -254,8 +257,8 @@
                             <span class="text-xs font-semibold text-slate-500 block">Tiempo de activación (si aplica):</span>
                             <span id="field-tiempoActivacion" class="font-bold text-slate-800 text-xs mt-0.5 block"></span>
                         </div>
-                        <div class="p-3 bg-slate-100 rounded-xl border border-slate-200">
-                            <span class="text-xs font-bold text-slate-900 block">¿Cobro Extra?:</span>
+                        <div class="p-3 bg-apprecio-light rounded-xl border border-apprecio-light">
+                            <span class="text-xs font-bold text-[#fa335e] block">¿Cobro Extra?:</span>
                             <span id="field-cobroExtra" class="font-extrabold text-slate-900 text-xs mt-0.5 block"></span>
                         </div>
                     </div>
@@ -263,8 +266,8 @@
 
                 <!-- SECTION 3: Condiciones de Redención y Uso -->
                 <div class="space-y-3">
-                    <h4 class="text-xs font-black uppercase tracking-wider text-slate-900 flex items-center gap-2 border-b border-slate-200 pb-2">
-                        <i class="fa-solid fa-arrows-rotate text-slate-700"></i> 3. Condiciones de Redención
+                    <h4 class="text-xs font-black uppercase tracking-wider text-[#fa335e] flex items-center gap-2 border-b border-apprecio-light pb-2">
+                        <i class="fa-solid fa-arrows-rotate text-[#fa335e]"></i> 3. Condiciones de Redención
                     </h4>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
@@ -300,8 +303,8 @@
 
                 <!-- SECTION 4: Instructivo, Exclusiones y Soporte -->
                 <div class="space-y-3">
-                    <h4 class="text-xs font-black uppercase tracking-wider text-slate-900 flex items-center gap-2 border-b border-slate-200 pb-2">
-                        <i class="fa-solid fa-file-shield text-slate-700"></i> 4. Instructivo, Términos y Soporte
+                    <h4 class="text-xs font-black uppercase tracking-wider text-[#fa335e] flex items-center gap-2 border-b border-apprecio-light pb-2">
+                        <i class="fa-solid fa-file-shield text-[#fa335e]"></i> 4. Instructivo, Términos y Soporte
                     </h4>
                     <div class="space-y-3">
                         <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
@@ -320,8 +323,8 @@
                             <span class="text-xs font-semibold text-slate-500 block">Exclusiones o restricciones:</span>
                             <p id="field-exclusionesRestricciones" class="text-xs leading-relaxed text-slate-800 mt-1 font-medium"></p>
                         </div>
-                        <div class="p-3 bg-slate-100 rounded-xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-                            <span class="text-xs font-bold text-slate-900">Canales de Soporte:</span>
+                        <div class="p-3 bg-apprecio-light rounded-xl border border-apprecio-light flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                            <span class="text-xs font-bold text-[#fa335e]">Canales de Soporte:</span>
                             <span id="field-canalesSoporte" class="font-extrabold text-slate-900 text-xs"></span>
                         </div>
                     </div>
@@ -331,7 +334,7 @@
 
             <!-- Modal Footer -->
             <div class="p-4 bg-slate-50 border-t border-slate-200 flex justify-end shrink-0">
-                <button onclick="closeDetailModal()" class="px-5 py-2.5 bg-slate-950 hover:bg-slate-800 text-white font-bold rounded-xl text-xs transition-all shadow-md">
+                <button onclick="closeDetailModal()" class="px-5 py-2.5 bg-[#fa335e] hover:bg-[#d81e46] text-white font-bold rounded-xl text-xs transition-all shadow-md">
                     Cerrar Ficha
                 </button>
             </div>
@@ -384,8 +387,8 @@
             img.onerror = null;
             if (img.parentElement) {
                 img.parentElement.innerHTML = `
-                    <div class="w-full h-full flex items-center justify-center bg-slate-100 rounded-xl border border-slate-200">
-                        <i class="fa-solid ${iconClass} text-slate-700 text-lg"></i>
+                    <div class="w-full h-full flex items-center justify-center bg-apprecio-light rounded-xl border border-apprecio-light">
+                        <i class="fa-solid ${iconClass} text-[#fa335e] text-lg"></i>
                     </div>
                 `;
             }
@@ -462,9 +465,10 @@
                 else if (catLower.includes('hogar') || catLower.includes('tech') || catLower.includes('electro')) { iconClass = "fa-laptop"; }
                 else if (catLower.includes('entretenimiento') || catLower.includes('direct')) { iconClass = "fa-tv"; }
 
+                // Ícono / Contenedor con borde y fondo rojo sutil
                 const logoHtml = (item.imagenUrl && item.imagenUrl.trim() !== '') ? 
                     `<img src="${item.imagenUrl}" alt="${item.comercio}" class="w-full h-full object-contain p-0.5 bg-white rounded-xl shadow-md" onerror="handleLogoError(this, '${iconClass}')">` : 
-                    `<div class="w-full h-full flex items-center justify-center bg-slate-100 rounded-xl border border-slate-200"><i class="fa-solid ${iconClass} text-slate-700 text-lg"></i></div>`;
+                    `<div class="w-full h-full flex items-center justify-center bg-apprecio-light rounded-xl border border-apprecio-light"><i class="fa-solid ${iconClass} text-[#fa335e] text-lg"></i></div>`;
 
                 const montosClean = cleanVal(item.montos);
                 const redParcialClean = cleanVal(item.redencionParcial);
@@ -491,10 +495,10 @@
                             </span>
                         </div>
 
-                        <!-- Commerce Header -->
+                        <!-- Commerce Header con Ícono destacado en Rojo al lado del Nombre -->
                         <div class="p-5 space-y-4">
                             <div class="flex items-center gap-3.5">
-                                <div class="w-16 h-12 rounded-xl shrink-0 bg-white border border-slate-200 flex items-center justify-center shadow-sm overflow-hidden p-0.5 group-hover:scale-105 transition-transform">
+                                <div class="w-16 h-12 rounded-xl shrink-0 bg-apprecio-light border border-apprecio-light flex items-center justify-center shadow-sm overflow-hidden p-0.5 group-hover:scale-105 transition-transform">
                                     ${logoHtml}
                                 </div>
                                 <div class="min-w-0 flex-1">
@@ -525,9 +529,9 @@
                         </div>
                     </div>
 
-                    <!-- Botón Abajo con A mayúscula en Apprecio -->
+                    <!-- Botón "Ver Ficha Completa Apprecio" con Rojo Sólido Apprecio -->
                     <div class="p-5 pt-0">
-                        <button onclick="openDetailModal(${item.id})" class="w-full py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-slate-950 hover:text-white text-slate-900 border border-slate-200 text-xs font-bold transition-all flex items-center justify-center gap-1.5 group shadow-sm">
+                        <button onclick="openDetailModal(${item.id})" class="w-full py-2.5 px-3 rounded-xl bg-[#fa335e] hover:bg-[#d81e46] text-white text-xs font-bold transition-all flex items-center justify-center gap-1.5 group shadow-md hover:shadow-lg active:scale-95">
                             <span>Ver Ficha Completa Apprecio</span>
                             <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
                         </button>
@@ -553,7 +557,7 @@
             if (item.imagenUrl && item.imagenUrl.trim() !== '') {
                 modalIconBg.innerHTML = `<img src="${item.imagenUrl}" alt="${item.comercio}" class="w-full h-full object-contain p-0.5 bg-white rounded-lg" onerror="handleLogoError(this, '${iconClass}')">`;
             } else {
-                modalIconBg.innerHTML = `<i class="fa-solid ${iconClass} text-xl text-slate-900"></i>`;
+                modalIconBg.innerHTML = `<i class="fa-solid ${iconClass} text-xl text-[#fa335e]"></i>`;
             }
 
             document.getElementById('modal-comercio').innerText = cleanVal(item.comercio);
@@ -702,7 +706,7 @@
             if (text) text.innerText = msg;
             if (badge) {
                 if (success) {
-                    badge.className = "inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold bg-slate-100 text-slate-900 border border-slate-200";
+                    badge.className = "inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold bg-apprecio-light text-[#fa335e] border border-apprecio-light";
                 } else {
                     badge.className = "inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold bg-amber-50 text-amber-800 border border-amber-200";
                 }
