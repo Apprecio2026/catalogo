@@ -40,7 +40,6 @@
             --apprecio-red-dark: #d81e46;
             --apprecio-red-light: #fff0f4;
             --apprecio-red-border: #fcd5df;
-            --apprecio-gray-header: #1e293b;
         }
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
@@ -80,21 +79,22 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <div class="flex items-center gap-3">
                 <div class="h-11 px-4 rounded-2xl bg-slate-950 flex items-center justify-center text-white font-extrabold text-xl shadow-md tracking-wider">
-                    <span class="text-white">Apprecio</span>
+                    <span><span class="text-[#fa335e]">A</span>pprecio</span>
                 </div>
                 <div class="hidden sm:block border-l border-slate-200 h-8 mx-1"></div>
                 <div class="hidden sm:block">
                     <h1 class="text-base font-extrabold text-slate-900 leading-tight">Catálogo de Gift Cards Colombia</h1>
-                    <p class="text-[11px] text-[#fa335e] font-semibold flex items-center gap-1">
+                    <p class="text-[11px] text-slate-600 font-semibold flex items-center gap-1">
                         <span class="w-1.5 h-1.5 rounded-full bg-[#fa335e] animate-pulse"></span> Sincronizado en Vivo con Google Sheets
                     </p>
                 </div>
             </div>
 
             <div class="flex items-center gap-3">
-                <button onclick="refreshDataManual()" id="btn-refresh" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl border border-apprecio-light bg-apprecio-light text-[#fa335e] text-xs font-bold hover:bg-[#fa335e] hover:text-white transition-all shadow-sm active:scale-95">
-                    <i class="fa-solid fa-rotate-right text-[#fa335e] group-hover:text-white" id="refresh-icon"></i>
-                    <span>Sincronizar</span>
+                <!-- Botón Sincronizar en Rojo Apprecio -->
+                <button onclick="refreshDataManual()" id="btn-refresh" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#fa335e] hover:bg-[#d81e46] text-white text-xs font-bold transition-all shadow-md active:scale-95">
+                    <i class="fa-solid fa-rotate-right" id="refresh-icon"></i>
+                    <span>Sincronizar <span class="text-[#fa335e]">Apprecio</span></span>
                 </button>
                 <span id="sync-status-badge" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold bg-apprecio-light text-[#fa335e] border border-apprecio-light">
                     <span class="w-2 h-2 rounded-full bg-[#fa335e] animate-pulse"></span>
@@ -116,7 +116,7 @@
                 <div class="max-w-xl space-y-4">
                     <div class="flex items-center gap-2">
                         <span class="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest font-extrabold px-3.5 py-1 rounded-full bg-white text-[#fa335e] shadow-sm">
-                            <i class="fa-solid fa-gift text-[#fa335e]"></i> Catálogo Apprecio
+                            <i class="fa-solid fa-gift text-[#fa335e]"></i> Catálogo <span class="text-[#fa335e]">Apprecio</span>
                         </span>
                     </div>
                     <h2 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight text-white">
@@ -183,7 +183,7 @@
     <!-- Footer Apprecio Style -->
     <footer class="bg-white border-t border-slate-200 mt-12 py-8 text-center text-xs text-slate-500 space-y-2">
         <div class="flex items-center justify-center gap-2 text-base font-extrabold text-slate-900">
-            <span class="text-[#fa335e] font-black text-lg">Apprecio</span>
+            <span class="font-black text-lg"><span class="text-[#fa335e]">A</span>pprecio</span>
         </div>
         <p>© 2026 Catálogo Comercial Dinámico — Alimentado desde Google Sheets</p>
     </footer>
@@ -332,7 +332,7 @@
 
             </div>
 
-            <!-- Modal Footer -->
+            <!-- Modal Footer Botón en Rojo Apprecio -->
             <div class="p-4 bg-slate-50 border-t border-slate-200 flex justify-end shrink-0">
                 <button onclick="closeDetailModal()" class="px-5 py-2.5 bg-[#fa335e] hover:bg-[#d81e46] text-white font-bold rounded-xl text-xs transition-all shadow-md">
                     Cerrar Ficha
@@ -375,7 +375,7 @@
                     img.parentElement.innerHTML = `
                         <div class="w-full h-full flex flex-col items-center justify-center p-6 text-center bg-white/10 backdrop-blur-sm">
                             <i class="fa-solid fa-gift text-5xl text-white mb-2 animate-bounce"></i>
-                            <span class="text-sm font-extrabold text-white tracking-wide">Apprecio Gift Cards</span>
+                            <span class="text-sm font-extrabold text-white tracking-wide"><span class="text-[#fa335e]">A</span>pprecio Gift Cards</span>
                             <span class="text-[11px] text-white/80 mt-1">Catálogo Digital Colombia</span>
                         </div>
                     `;
@@ -465,7 +465,6 @@
                 else if (catLower.includes('hogar') || catLower.includes('tech') || catLower.includes('electro')) { iconClass = "fa-laptop"; }
                 else if (catLower.includes('entretenimiento') || catLower.includes('direct')) { iconClass = "fa-tv"; }
 
-                // Ícono / Contenedor con borde y fondo rojo sutil
                 const logoHtml = (item.imagenUrl && item.imagenUrl.trim() !== '') ? 
                     `<img src="${item.imagenUrl}" alt="${item.comercio}" class="w-full h-full object-contain p-0.5 bg-white rounded-xl shadow-md" onerror="handleLogoError(this, '${iconClass}')">` : 
                     `<div class="w-full h-full flex items-center justify-center bg-apprecio-light rounded-xl border border-apprecio-light"><i class="fa-solid ${iconClass} text-[#fa335e] text-lg"></i></div>`;
@@ -491,11 +490,11 @@
                                 ${cleanVal(item.categoria) !== '-' ? item.categoria : 'Gift Card'}
                             </span>
                             <span class="text-[10px] font-bold text-white/90 bg-black/30 px-2 py-0.5 rounded-full flex items-center gap-1">
-                                <i class="fa-solid fa-bolt text-[9px]"></i> Apprecio
+                                <i class="fa-solid fa-bolt text-[9px]"></i> <span class="text-[#fa335e]">A</span>pprecio
                             </span>
                         </div>
 
-                        <!-- Commerce Header con Ícono destacado en Rojo al lado del Nombre -->
+                        <!-- Commerce Header -->
                         <div class="p-5 space-y-4">
                             <div class="flex items-center gap-3.5">
                                 <div class="w-16 h-12 rounded-xl shrink-0 bg-apprecio-light border border-apprecio-light flex items-center justify-center shadow-sm overflow-hidden p-0.5 group-hover:scale-105 transition-transform">
@@ -529,10 +528,10 @@
                         </div>
                     </div>
 
-                    <!-- Botón "Ver Ficha Completa Apprecio" con Rojo Sólido Apprecio -->
+                    <!-- Botón "Ver Ficha Completa Apprecio" en Rojo Sólido -->
                     <div class="p-5 pt-0">
                         <button onclick="openDetailModal(${item.id})" class="w-full py-2.5 px-3 rounded-xl bg-[#fa335e] hover:bg-[#d81e46] text-white text-xs font-bold transition-all flex items-center justify-center gap-1.5 group shadow-md hover:shadow-lg active:scale-95">
-                            <span>Ver Ficha Completa Apprecio</span>
+                            <span>Ver Ficha Completa <span class="text-[#fa335e]">Apprecio</span></span>
                             <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
                         </button>
                     </div>
