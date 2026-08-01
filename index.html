@@ -3,743 +3,779 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo Apprecio Colombia 2026</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Catálogo Comercial Apprecio</title>
+    
+    <!-- Canonical & SEO Meta Tags -->
+    <link rel="canonical" href="https://apprecio2026.github.io/catalogo/">
+    <meta name="description" content="Catálogo de Gift Cards Colombia — Un gran programa de reconocimientos donde canjeas puntos por gift cards y cupones digitales.">
+    
+    <!-- Open Graph / WhatsApp / Facebook Share Metadata -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://apprecio2026.github.io/catalogo/">
+    <meta property="og:title" content="Catálogo de Gift Cards Colombia — Apprecio">
+    <meta property="og:description" content="Un gran programa de reconocimientos donde canjeas puntos por gift cards y cupones digitales.">
+    <meta property="og:image" content="banner-apprecio.png.png">
+    <meta property="og:site_name" content="Apprecio Colombia">
+
+    <!-- Twitter Card Metadata -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://apprecio2026.github.io/catalogo/">
+    <meta name="twitter:title" content="Catálogo de Gift Cards Colombia — Apprecio">
+    <meta name="twitter:description" content="Un gran programa de reconocimientos donde canjeas puntos por gift cards y cupones digitales.">
+    <meta name="twitter:image" content="banner-apprecio.png.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23fa335e%22/><text y=%22.9em%22 x=%2222%22 font-size=%2265%22 font-weight=%22bold%22 fill=%22white%22>a</text></svg>">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --primary: #1e40af;
-            --primary-dark: #1e3a8a;
-            --primary-light: #eff6ff;
-            --accent: #3b82f6;
-            --bg-body: #f8fafc;
-            --card-bg: #ffffff;
-            --text-main: #0f172a;
-            --text-muted: #64748b;
-            --border-color: #e2e8f0;
-            --radius: 12px;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
-            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+            --apprecio-red: #fa335e;
+            --apprecio-red-dark: #d81e46;
+            --apprecio-red-light: #fff0f4;
+            --apprecio-red-border: #fcd5df;
         }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: #FAFAFA;
+            color: #1E293B;
         }
-
-        body {
-            background-color: var(--bg-body);
-            color: var(--text-main);
-            line-height: 1.5;
-            -webkit-font-smoothing: antialiased;
+        .bg-apprecio-red { background-color: var(--apprecio-red); }
+        .bg-apprecio-red-dark { background-color: var(--apprecio-red-dark); }
+        .bg-apprecio-light { background-color: var(--apprecio-red-light); }
+        .text-apprecio-red { color: var(--apprecio-red); }
+        .border-apprecio-red { border-color: var(--apprecio-red); }
+        .border-apprecio-light { border-color: var(--apprecio-red-border); }
+        .glass-card-white {
+            background: #FFFFFF;
+            border: 1px solid #F1F5F9;
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04);
         }
-
-        /* Hero Header */
-        header {
-            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
-            color: white;
-            text-align: center;
-            padding: 3rem 1.5rem 3rem;
-            position: relative;
-            box-shadow: var(--shadow-md);
+        .glass-card-white:hover {
+            border-color: rgba(250, 51, 94, 0.35);
+            box-shadow: 0 12px 28px -4px rgba(250, 51, 94, 0.15);
         }
-
-        .header-content {
-            max-width: 900px;
-            margin: 0 auto;
+        .animate-fade-in {
+            animation: fadeIn 0.25s ease-out forwards;
         }
-
-        .banner-img-container {
-            margin-bottom: 2rem;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-
-        .banner-img {
-            max-width: 100%;
-            height: auto;
-            max-height: 220px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-lg);
-            object-fit: cover;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .badge-tag {
-            display: inline-block;
-            background-color: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(8px);
-            padding: 0.35rem 1rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            margin-bottom: 1rem;
-        }
-
-        header h1 {
-            font-size: 2.75rem;
-            font-weight: 700;
-            margin-bottom: 0.75rem;
-            letter-spacing: -0.5px;
-        }
-
-        header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            font-weight: 300;
-            max-width: 600px;
-            margin: 0 auto 1.5rem;
-        }
-
-        /* Stats Bar */
-        .stats-bar {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-num {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #93c5fd;
-        }
-
-        .stat-desc {
-            font-size: 0.85rem;
-            opacity: 0.8;
-        }
-
-        /* Main Container */
-        .container {
-            max-width: 1240px;
-            margin: 0 auto;
-            padding: 2.5rem 1.5rem;
-        }
-
-        /* Controls: Search & Filters */
-        .controls-section {
-            background: var(--card-bg);
-            padding: 1.5rem;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--border-color);
-            margin-bottom: 2.5rem;
-        }
-
-        .search-box {
-            margin-bottom: 1.25rem;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 0.85rem 1.25rem;
-            font-size: 1rem;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            outline: none;
-            transition: all 0.2s ease;
-            background-color: #f8fafc;
-        }
-
-        .search-input:focus {
-            border-color: var(--accent);
-            background-color: #fff;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
-        }
-
-        .filter-tabs {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-
-        .tab-btn {
-            background-color: #f1f5f9;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--text-muted);
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .tab-btn:hover {
-            background-color: #e2e8f0;
-            color: var(--text-main);
-        }
-
-        .tab-btn.active {
-            background-color: var(--primary);
-            color: white;
-        }
-
-        /* Catalog Grid */
-        .category-section {
-            margin-bottom: 3rem;
-        }
-
-        .category-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-main);
-            margin-bottom: 1.25rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .category-title::before {
-            content: '';
-            display: inline-block;
-            width: 4px;
-            height: 1.25rem;
-            background-color: var(--accent);
-            border-radius: 2px;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-
-        /* Individual Cards */
-        .card {
-            background-color: var(--card-bg);
-            border-radius: var(--radius);
-            padding: 1.5rem;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--border-color);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-            border-color: #cbd5e1;
-        }
-
-        .card-header {
-            margin-bottom: 1rem;
-        }
-
-        .card-tag {
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            color: var(--accent);
-            letter-spacing: 0.5px;
-            margin-bottom: 0.35rem;
-            display: block;
-        }
-
-        .card h3 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--text-main);
-        }
-
-        .montos-container {
-            background-color: #f8fafc;
-            padding: 1rem;
-            border-radius: 8px;
-            border: 1px solid #f1f5f9;
-        }
-
-        .montos-label {
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            margin-bottom: 0.6rem;
-            display: block;
-        }
-
-        .pills-wrapper {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.4rem;
-        }
-
-        .monto-pill {
-            background-color: var(--primary-light);
-            color: var(--primary);
-            padding: 0.25rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.825rem;
-            font-weight: 600;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 2.5rem 1rem;
-            background-color: #0f172a;
-            color: #94a3b8;
-            font-size: 0.9rem;
-            border-top: 1px solid #1e293b;
-        }
-
-        footer p strong {
-            color: #f8fafc;
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            header {
-                padding: 2rem 1rem 1.5rem;
-            }
-            header h1 {
-                font-size: 2rem;
-            }
-            .stats-bar {
-                gap: 1.25rem;
-            }
-            .container {
-                padding: 1.5rem 1rem;
-            }
-            .grid {
-                grid-template-columns: 1fr;
-            }
-        }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #FAFAFA; }
+        ::-webkit-scrollbar-thumb { background: #fa335e; border-radius: 4px; }
     </style>
 </head>
-<body>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased">
 
-    <!-- Header / Banner Hero -->
-    <header>
-        <div class="header-content">
-            <div class="banner-img-container">
-                <img src="banner-apprecio.png.png" alt="Banner Apprecio" class="banner-img">
+    <!-- Header / Navbar Apprecio -->
+    <header class="sticky top-0 z-40 bg-white border-b border-apprecio-light shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="h-11 px-4 rounded-2xl bg-apprecio-red flex items-center justify-center text-white font-extrabold text-xl shadow-md shadow-pink-500/20 tracking-wider">
+                    <span class="text-white">apprecio</span>
+                </div>
+                <div class="hidden sm:block border-l border-slate-200 h-8 mx-1"></div>
+                <div class="hidden sm:block">
+                    <h1 class="text-base font-extrabold text-slate-900 leading-tight">Catálogo de Gift Cards Colombia</h1>
+                    <p class="text-[11px] text-apprecio-red font-semibold flex items-center gap-1">
+                        <span class="w-1.5 h-1.5 rounded-full bg-apprecio-red animate-pulse"></span> Sincronizado en Vivo con Google Sheets
+                    </p>
+                </div>
             </div>
-            <span class="badge-tag">Catálogo Oficial 2026</span>
-            <h1>Apprecio Colombia</h1>
-            <p>Canjea tus Puntos Apprecio por Gift Cards digitales en los mejores comercios del país.</p>
-            
-            <div class="stats-bar">
-                <div class="stat-item">
-                    <div class="stat-num">+10.000</div>
-                    <div class="stat-desc">Tiendas en Latam</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-num">100%</div>
-                    <div class="stat-desc">Digital e Inmediato</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-num">$0</div>
-                    <div class="stat-desc">Costo de Gestión</div>
-                </div>
+
+            <div class="flex items-center gap-3">
+                <button onclick="refreshDataManual()" id="btn-refresh" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl border border-apprecio-light bg-apprecio-light text-apprecio-red text-xs font-bold hover:bg-apprecio-red hover:text-white transition-all shadow-sm active:scale-95">
+                    <i class="fa-solid fa-rotate-right" id="refresh-icon"></i>
+                    <span>Sincronizar</span>
+                </button>
+                <span id="sync-status-badge" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold bg-apprecio-light text-apprecio-red border border-apprecio-light">
+                    <span class="w-2 h-2 rounded-full bg-apprecio-red animate-pulse"></span>
+                    <span id="sync-text">Sincronizado</span>
+                </span>
             </div>
         </div>
     </header>
 
-    <div class="container">
+    <!-- Main Content -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
 
-        <!-- Buscador y Filtros -->
-        <div class="controls-section">
-            <div class="search-box">
-                <input type="text" id="searchInput" class="search-input" placeholder="🔍 Buscar marcas o montos (ej. Falabella, Éxito, $50.000)...">
+        <!-- Banner Hero Section -->
+        <section class="bg-apprecio-red rounded-3xl p-6 sm:p-10 text-white shadow-xl relative overflow-hidden">
+            <div class="absolute -right-12 -bottom-12 w-80 h-80 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
+            <div class="absolute right-1/4 -top-12 w-64 h-64 bg-white/5 rounded-full blur-2xl pointer-events-none"></div>
+            
+            <div class="flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
+                <div class="max-w-xl space-y-4">
+                    <div class="flex items-center gap-2">
+                        <span class="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest font-extrabold px-3.5 py-1 rounded-full bg-white text-apprecio-red shadow-sm">
+                            <i class="fa-solid fa-gift text-apprecio-red"></i> Catálogo Apprecio
+                        </span>
+                    </div>
+                    <h2 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight text-white">
+                        Catálogo de<br>Gift Cards Colombia
+                    </h2>
+                    <p class="text-white/95 text-sm sm:text-base leading-relaxed font-semibold">
+                        Un gran programa de reconocimientos donde<br class="hidden sm:inline"> canjeas puntos por gift cards y cupones digitales
+                    </p>
+                </div>
+
+                <!-- Banner Image Card -->
+                <div class="w-full md:w-80 lg:w-96 shrink-0">
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-white/20 aspect-[16/9] md:aspect-[4/3] bg-white/10 backdrop-blur-sm group">
+                        <img 
+                            id="hero-banner-img"
+                            src="banner-apprecio.png.png" 
+                            alt="Apprecio Banner" 
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            onerror="handleHeroImgError(this)"
+                        >
+                    </div>
+                </div>
             </div>
-            <div class="filter-tabs">
-                <button class="tab-btn active" onclick="filterCategory('all')">Todos</button>
-                <button class="tab-btn" onclick="filterCategory('supermercados')">Supermercados</button>
-                <button class="tab-btn" onclick="filterCategory('restaurantes')">Restaurantes</button>
-                <button class="tab-btn" onclick="filterCategory('hogar')">Hogar y Tecno</button>
-                <button class="tab-btn" onclick="filterCategory('moda')">Moda</button>
-                <button class="tab-btn" onclick="filterCategory('entretenimiento')">Entretenimiento</button>
+        </section>
+
+        <!-- Filters & Search Bar Section -->
+        <section id="catalogo" class="space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
+                
+                <!-- Category Tabs -->
+                <div class="flex items-center gap-2 overflow-x-auto pb-2 sm:pb-0" id="category-buttons">
+                    <button onclick="filterCategory('todos', this)" class="cat-btn active px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold whitespace-nowrap bg-apprecio-red text-white transition-all shadow-sm">
+                        Todos los Comercios
+                    </button>
+                </div>
+
+                <!-- Search Input -->
+                <div class="relative min-w-[280px] flex-1 sm:max-w-md">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                    <input 
+                        type="text" 
+                        id="search-input" 
+                        oninput="handleSearch()" 
+                        placeholder="Buscar comercio o monto..." 
+                        class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-apprecio-red focus:bg-white transition-all">
+                </div>
             </div>
+
+            <!-- Cards Container Grid - Maintained strictly in Sheet Row Order -->
+            <div id="cards-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Dynamic commerce cards loaded in exact sheet row order -->
+            </div>
+
+            <!-- Empty State -->
+            <div id="no-results" class="hidden text-center py-16 space-y-3 bg-white rounded-2xl border border-slate-200 shadow-sm">
+                <i class="fa-solid fa-store-slash text-4xl text-slate-300"></i>
+                <h3 class="text-base font-bold text-slate-800">No se encontraron comercios</h3>
+                <p class="text-xs text-slate-500">Prueba ajustando el término de búsqueda.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Apprecio Style -->
+    <footer class="bg-white border-t border-slate-200 mt-12 py-8 text-center text-xs text-slate-500 space-y-2">
+        <div class="flex items-center justify-center gap-2 text-base font-extrabold text-slate-900">
+            <span class="text-apprecio-red font-black text-lg">apprecio</span>
         </div>
-
-        <!-- Supermercados y Retail -->
-        <div class="category-section" data-category="supermercados">
-            <h2 class="category-title">Supermercados y Grandes Superficies</h2>
-            <div class="grid">
-                <div class="card" data-name="falabella">
-                    <div class="card-header">
-                        <span class="card-tag">Retail / Tiendas</span>
-                        <h3>Falabella</h3>
-                    </div>
-                    <div class="montos-container">
-                        <span class="montos-label">Montos Disponibles</span>
-                        <div class="pills-wrapper">
-                            <span class="monto-pill">$20.000</span>
-                            <span class="monto-pill">$30.000</span>
-                            <span class="monto-pill">$50.000</span>
-                            <span class="monto-pill">$80.000</span>
-                            <span class="monto-pill">$100.000</span>
-                            <span class="monto-pill">$150.000</span>
-                            <span class="monto-pill">$200.000</span>
-                            <span class="monto-pill">$300.000</span>
-                            <span class="monto-pill">$500.000</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-name="exito">
-                    <div class="card-header">
-                        <span class="card-tag">Supermercado</span>
-                        <h3>Éxito</h3>
-                    </div>
-                    <div class="montos-container">
-                        <span class="montos-label">Montos Disponibles</span>
-                        <div class="pills-wrapper">
-                            <span class="monto-pill">$10.500</span>
-                            <span class="monto-pill">$21.000</span>
-                            <span class="monto-pill">$31.500</span>
-                            <span class="monto-pill">$52.500</span>
-                            <span class="monto-pill">$105.000</span>
-                            <span class="monto-pill">$210.000</span>
-                            <span class="monto-pill">$525.000</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-name="jumbo metro">
-                    <div class="card-header">
-                        <span class="card-tag">Supermercado</span>
-                        <h3>Jumbo / Metro</h3>
-                    </div>
-                    <div class="montos-container">
-                        <span class="montos-label">Montos Disponibles</span>
-                        <div class="pills-wrapper">
-                            <span class="monto-pill">$20.000</span>
-                            <span class="monto-pill">$30.000</span>
-                            <span class="monto-pill">$50.000</span>
-                            <span class="monto-pill">$70.000</span>
-                            <span class="monto-pill">$100.000</span>
-                            <span class="monto-pill">$150.000</span>
-                            <span class="monto-pill">$200.000</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-name="tiendas d1">
-                    <div class="card-header">
-                        <span class="card-tag">Descuento / Mercado</span>
-                        <h3>Tiendas D1</h3>
-                    </div>
-                    <div class="montos-container">
-                        <span class="montos-label">Montos Disponibles</span>
-                        <div class="pills-wrapper">
-                            <span class="monto-pill">$11.000</span>
-                            <span class="monto-pill">$22.000</span>
-                            <span class="monto-pill">$33.000</span>
-                            <span class="monto-pill">$55.000</span>
-                            <span class="monto-pill">$88.000</span>
-                            <span class="monto-pill">$110.000</span>
-                            <span class="monto-pill">$220.000</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Restaurantes y Heladerías -->
-        <div class="category-section" data-category="restaurantes">
-            <h2 class="category-title">Restaurantes y Heladerías</h2>
-            <div class="grid">
-                <div class="card" data-name="crepes waffles">
-                    <div class="card-header">
-                        <span class="card-tag">Restaurante</span>
-                        <h3>Crepes & Waffles</h3>
-                    </div>
-                    <div class="montos-container">
-                        <span class="montos-label">Montos Disponibles</span>
-                        <div class="pills-wrapper">
-                            <span class="monto-pill">$10.000</span>
-                            <span class="monto-pill">$20.000</span>
-                            <span class="monto-pill">$30.000</span>
-                            <span class="monto-pill">$50.000</span>
-                            <span class="monto-pill">$70.000</span>
-                            <span class="monto-pill">$100.000</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-name="dunkin donuts">
-                    <div class="card-header">
-                        <span class="card-tag">Cafetería</span>
-                        <h3>Dunkin' Donuts</h3>
-                    </div>
-                    <div class="montos-container">
-                        <span class="montos-label">Opciones Fijas / Bonos</span>
-                        <div class="pills-wrapper">
-                            <span class="monto-pill">1 Donut ($6.000)</span>
-                            <span class="monto-pill">Combo ($19.500)</span>
-                            <span class="monto-pill">Bono $18.000</span>
-                            <span class="monto-pill">Bono $30.000</span>
-                            <span class="monto-pill">12 Donuts ($60.000)</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-name="starbucks">
-                    <div class="card-header">
-                        <span class="card-tag">Cafetería</span>
-                        <h3>Starbucks</h3>
-                    </div>
-                    <div class="montos-container">
-                        <span class="montos-label">Montos Disponibles</span>
-                        <div class="pills-wrapper">
-                            <span class="monto-pill">$10.000</span>
-                            <span class="monto-pill">$20.000</span>
-                            <span class="monto-pill">$30.000</span>
-                            <span class="monto-pill">$50.000</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-name="helados popsy">
-                    <div class="card-header">
-                        <span class="card-tag">Heladería</span>
-                        <h3>Helados Popsy</h3>
-                    </div>
-                    <div class="montos-container">
-                        <span class="montos-label">Opciones Fijas / Bonos</span>
-                        <div class="pills-wrapper">
-                            <span class="monto-pill">Cono ($7.500)</span>
-                            <span class="monto-pill">Malteada ($17.500)</span>
-                            <span class="monto-pill">Bono $10.000</span>
-                            <span class="monto-pill">Bono $30.000</span>
-                            <span class="monto-pill">Bono $50.000</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Hogar y Tecnología -->
-        <div class="category-section" data-category="hogar">
-            <h2 class="category-title">Hogar y Tecnología</h2>
-            <div class="grid">
-                <div class="card" data-name="homecenter">
-                    <div class="card-header">
-                        <span class="card-tag">Hogar / Construcción</span>
-                        <h3>Homecenter</h3>
-                    </div>
-                    <div class="montos-container">
-                        <span class="montos-label">Montos Disponibles</span>
-                        <div class="pills-wrapper">
-                            <span class="monto-pill">$10.000</span>
-                            <span class="monto-pill">$20.000</span>
-                            <span class="monto-pill">$50.000</span>
-                            <span class="monto-pill">$100.000</span>
-                            <span class="monto-pill">$200.000</span>
-                            <span class="monto-pill">$300.000</span>
-                            <span class="monto-pill">$600.000</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-name="k-tronix ktronix">
-                    <div class="card-header">
-                        <span class="card-tag">Tecnología</span>
-                        <h3>K-Tronix</h3>
-                    </div>
-                    <div class="montos-container">
-                        <span class="montos-label">Montos Disponibles</span>
-                        <div class="pills-wrapper">
-                            <span class="monto-pill">$30.000</span>
-                            <span class="monto-pill">$50.000</span>
-                            <span class="monto-pill">$100.000</span>
-                            <span class="monto-pill">$200.000</span>
-                            <span class="monto-pill">$300.000</span>
-                            <span class="monto-pill">$500.000</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-name="casa ideas casaideas">
-                    <div class="card-header">
-                        <span class="card-tag">Decoración / Hogar</span>
-                        <h3>Casa Ideas</h3>
-                    </div>
-                    <div class="montos-container">
-                        <span class="montos-label">Montos Disponibles</span>
-                        <div class="pills-wrapper">
-                            <span class="monto-pill">$50.000</span>
-                            <span class="monto-pill">$70.000</span>
-                            <span class="monto-pill">$100.000</span>
-                            <span class="monto-pill">$150.000</span>
-                            <span class="monto-pill">$200.000</span>
-                            <span class="monto-pill">$300.000</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Moda y Accesorios -->
-        <div class="category-section" data-category="moda">
-            <h2 class="category-title">Moda y Accesorios</h2>
-            <div class="grid">
-                <div class="card" data-name="dafiti">
-                    <div class="card-header">
-                        <span class="card-tag">Moda Online</span>
-                        <h3>Dafiti</h3>
-                    </div>
-                    <div class="montos-container">
-                        <span class="montos-label">Montos Disponibles</span>
-                        <div class="pills-wrapper">
-                            <span class="monto-pill">$30.000</span>
-                            <span class="monto-pill">$50.000</span>
-                            <span class="monto-pill">$80.000</span>
-                            <span class="monto-pill">$100.000</span>
-                            <span class="monto-pill">$150.000</span>
-                            <span class="monto-pill">$200.000</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-name="totto">
-                    <div class="card-header">
-                        <span class="card-tag">Maletines / Ropa</span>
-                        <h3>Totto</h3>
-                    </div>
-                    <div class="montos-container">
-                        <span class="montos-label">Montos Disponibles</span>
-                        <div class="pills-wrapper">
-                            <span class="monto-pill">$20.000</span>
-                            <span class="monto-pill">$50.000</span>
-                            <span class="monto-pill">$70.000</span>
-                            <span class="monto-pill">$100.000</span>
-                            <span class="monto-pill">$200.000</span>
-                            <span class="monto-pill">$300.000</span>
-                            <span class="monto-pill">$500.000</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-name="nike decathlon">
-                    <div class="card-header">
-                        <span class="card-tag">Deportes</span>
-                        <h3>Nike / Decathlon</h3>
-                    </div>
-                    <div class="montos-container">
-                        <span class="montos-label">Montos Disponibles</span>
-                        <div class="pills-wrapper">
-                            <span class="monto-pill">$30.000</span>
-                            <span class="monto-pill">$50.000</span>
-                            <span class="monto-pill">$100.000</span>
-                            <span class="monto-pill">$200.000</span>
-                            <span class="monto-pill">$300.000</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Entretenimiento -->
-        <div class="category-section" data-category="entretenimiento">
-            <h2 class="category-title">Entretenimiento y Suscripciones</h2>
-            <div class="grid">
-                <div class="card" data-name="netflix spotify">
-                    <div class="card-header">
-                        <span class="card-tag">Streaming</span>
-                        <h3>Netflix & Spotify</h3>
-                    </div>
-                    <div class="montos-container">
-                        <span class="montos-label">Suscripciones</span>
-                        <div class="pills-wrapper">
-                            <span class="monto-pill">Netflix ($31.000)</span>
-                            <span class="monto-pill">Spotify ($47.900)</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-name="cinemark cine">
-                    <div class="card-header">
-                        <span class="card-tag">Cine / Boletas</span>
-                        <h3>Cinemark</h3>
-                    </div>
-                    <div class="montos-container">
-                        <span class="montos-label">Boletas y Combos</span>
-                        <div class="pills-wrapper">
-                            <span class="monto-pill">Boleto 2D ($19.000)</span>
-                            <span class="monto-pill">Boleto 3D ($20.500)</span>
-                            <span class="monto-pill">Combos desde $13.500</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-name="directv television">
-                    <div class="card-header">
-                        <span class="card-tag">TV / Entretenimiento</span>
-                        <h3>DirecTV</h3>
-                    </div>
-                    <div class="montos-container">
-                        <span class="montos-label">Montos Disponibles</span>
-                        <div class="pills-wrapper">
-                            <span class="monto-pill">$64.000</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <p><strong>Apprecio Colombia 2026</strong> &bull; Soluciones de Fidelización y Reconocimientos Digitales</p>
-        <p style="margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.7;">Todos los derechos reservados.</p>
+        <p>© 2026 Catálogo Comercial Dinámico — Alimentado desde Google Sheets</p>
     </footer>
 
-    <!-- Script para Búsqueda y Filtros -->
-    <script>
-        function filterCategory(cat) {
-            const buttons = document.querySelectorAll('.tab-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+    <!-- Detailed Modal View -->
+    <div id="detail-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] flex flex-col shadow-2xl border border-slate-200 overflow-hidden animate-fade-in">
+            
+            <!-- Modal Header Apprecio Red Style -->
+            <div class="p-6 bg-apprecio-red text-white flex items-center justify-between shrink-0 shadow-md">
+                <div class="flex items-center gap-4 min-w-0">
+                    <div id="modal-icon-bg" class="w-16 h-12 rounded-xl bg-white border border-white/40 flex items-center justify-center shadow-md overflow-hidden shrink-0 p-1">
+                        <i id="modal-icon" class="fa-solid fa-store text-apprecio-red text-xl"></i>
+                    </div>
+                    <div class="min-w-0 flex-1">
+                        <h3 id="modal-comercio" class="text-xl sm:text-2xl font-black text-white truncate leading-tight">Comercio</h3>
+                        <div class="flex flex-wrap items-center gap-2 mt-1">
+                            <span id="modal-categoria" class="px-2.5 py-0.5 rounded-full text-[11px] font-extrabold bg-white text-apprecio-red shadow-sm truncate">Categoría</span>
+                            <span id="modal-tipo-prod-badge" class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-black/20 text-white truncate">Tipo Producto</span>
+                        </div>
+                    </div>
+                </div>
+                <button onclick="closeDetailModal()" class="text-white/80 hover:text-white transition-colors p-2 rounded-full hover:bg-white/10 shrink-0">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
 
-            const sections = document.querySelectorAll('.category-section');
-            sections.forEach(section => {
-                if (cat === 'all' || section.getAttribute('data-category') === cat) {
-                    section.style.display = 'block';
-                } else {
-                    section.style.display = 'none';
+            <!-- Modal Content - Logical Groupings -->
+            <div class="p-6 overflow-y-auto space-y-6 text-slate-700 text-sm flex-grow">
+
+                <!-- SECTION 1: Detalles de la Gift Card y Oferta -->
+                <div class="space-y-3">
+                    <h4 class="text-xs font-black uppercase tracking-wider text-apprecio-red flex items-center gap-2 border-b border-apprecio-light pb-2">
+                        <i class="fa-solid fa-ticket"></i> 1. Información General y Oferta
+                    </h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div class="p-3.5 bg-apprecio-light rounded-2xl border border-apprecio-light sm:col-span-2">
+                            <span class="text-xs font-bold text-apprecio-red uppercase tracking-wider block">Montos Disponibles:</span>
+                            <span id="field-montos" class="font-black text-slate-900 text-sm sm:text-base mt-0.5 block leading-relaxed"></span>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <span class="text-xs font-semibold text-slate-500 block">Tipo de Producto:</span>
+                            <span id="field-tipoProducto" class="font-bold text-slate-900 text-xs mt-0.5 block"></span>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <span class="text-xs font-semibold text-slate-500 block">Vigencia:</span>
+                            <span id="field-vigencia" class="font-bold text-apprecio-red text-xs mt-0.5 block"></span>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 sm:col-span-2">
+                            <span class="text-xs font-bold text-apprecio-red block">Beneficios Extra:</span>
+                            <span id="field-beneficiosExtra" class="font-extrabold text-slate-900 text-xs mt-0.5 block"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECTION 2: Tiempos de Entrega y Activación -->
+                <div class="space-y-3">
+                    <h4 class="text-xs font-black uppercase tracking-wider text-apprecio-red flex items-center gap-2 border-b border-apprecio-light pb-2">
+                        <i class="fa-solid fa-clock"></i> 2. Entrega y Activación
+                    </h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <span class="text-xs font-semibold text-slate-500 block">Tiempo de Entrega:</span>
+                            <span id="field-tiempoEntregaProveedor" class="font-bold text-slate-800 text-xs mt-0.5 block"></span>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <span class="text-xs font-semibold text-slate-500 block">¿Activación Inmediata?:</span>
+                            <span id="field-activacionInmediata" class="font-bold text-slate-800 text-xs mt-0.5 block"></span>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <span class="text-xs font-semibold text-slate-500 block">Tiempo de activación (si aplica):</span>
+                            <span id="field-tiempoActivacion" class="font-bold text-slate-800 text-xs mt-0.5 block"></span>
+                        </div>
+                        <div class="p-3 bg-apprecio-light rounded-xl border border-apprecio-light">
+                            <span class="text-xs font-bold text-apprecio-red block">¿Cobro Extra?:</span>
+                            <span id="field-cobroExtra" class="font-extrabold text-slate-900 text-xs mt-0.5 block"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECTION 3: Condiciones de Redención y Uso -->
+                <div class="space-y-3">
+                    <h4 class="text-xs font-black uppercase tracking-wider text-apprecio-red flex items-center gap-2 border-b border-apprecio-light pb-2">
+                        <i class="fa-solid fa-arrows-rotate"></i> 3. Condiciones de Redención
+                    </h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <span class="text-xs font-semibold text-slate-500 block">Tipo de Redención:</span>
+                            <span id="field-tipoRedencion" class="font-bold text-slate-800 text-xs mt-0.5 block"></span>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <span class="text-xs font-semibold text-slate-500 block">Otro tipo de redención:</span>
+                            <span id="field-otroTipoRedencion" class="font-bold text-slate-800 text-xs mt-0.5 block"></span>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <span class="text-xs font-semibold text-slate-500 block">Permite Redención Parcial:</span>
+                            <span id="field-redencionParcial" class="font-bold text-slate-800 text-xs mt-0.5 block"></span>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <span class="text-xs font-semibold text-slate-500 block">Solo redención Total:</span>
+                            <span id="field-redencionTotal" class="font-bold text-slate-800 text-xs mt-0.5 block"></span>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <span class="text-xs font-semibold text-slate-500 block">Códigos por factura:</span>
+                            <span id="field-codigosPorFactura" class="font-bold text-slate-800 text-xs mt-0.5 block"></span>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <span class="text-xs font-semibold text-slate-500 block">¿Acumulable con promociones?:</span>
+                            <span id="field-acumulablePromociones" class="font-bold text-slate-800 text-xs mt-0.5 block"></span>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 sm:col-span-2">
+                            <span class="text-xs font-semibold text-slate-500 block">Cobertura:</span>
+                            <span id="field-cobertura" class="font-bold text-slate-800 text-xs mt-0.5 block"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECTION 4: Instructivo, Exclusiones y Soporte -->
+                <div class="space-y-3">
+                    <h4 class="text-xs font-black uppercase tracking-wider text-apprecio-red flex items-center gap-2 border-b border-apprecio-light pb-2">
+                        <i class="fa-solid fa-file-shield"></i> 4. Instructivo, Términos y Soporte
+                    </h4>
+                    <div class="space-y-3">
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <span class="text-xs font-semibold text-slate-500 block">Instructivo de uso en el comercio:</span>
+                            <p id="field-instructivoUso" class="text-xs leading-relaxed text-slate-800 mt-1 font-medium"></p>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <span class="text-xs font-semibold text-slate-500 block">¿Aplica para todos los productos?:</span>
+                            <span id="field-aplicaTodosProductos" class="font-bold text-slate-800 text-xs mt-0.5 block"></span>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <span class="text-xs font-semibold text-slate-500 block">Productos excluidos:</span>
+                            <p id="field-productosExcluidos" class="text-xs leading-relaxed text-slate-800 mt-1 font-medium"></p>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                            <span class="text-xs font-semibold text-slate-500 block">Exclusiones o restricciones:</span>
+                            <p id="field-exclusionesRestricciones" class="text-xs leading-relaxed text-slate-800 mt-1 font-medium"></p>
+                        </div>
+                        <div class="p-3 bg-apprecio-light rounded-xl border border-apprecio-light flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                            <span class="text-xs font-bold text-apprecio-red">Canales de Soporte:</span>
+                            <span id="field-canalesSoporte" class="font-extrabold text-slate-900 text-xs"></span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="p-4 bg-slate-50 border-t border-slate-200 flex justify-end shrink-0">
+                <button onclick="closeDetailModal()" class="px-5 py-2.5 bg-apprecio-red hover:bg-apprecio-red-dark text-white font-bold rounded-xl text-xs transition-all shadow-md">
+                    Cerrar Ficha
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        const SHEET_ID = "14w_8kJekDgHq6-YxBY1ZKo1XfoCuwd0dB9giCd7Q2rI";
+        const GID = "1041963400";
+        
+        const PRIMARY_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=${GID}`;
+        const SECONDARY_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&gid=${GID}`;
+
+        function cleanVal(val) {
+            if (!val) return "-";
+            const trimmed = val.trim();
+            if (trimmed.toUpperCase() === "N/A" || trimmed.toUpperCase() === "NA" || trimmed === "" || trimmed === "null" || trimmed === "undefined") {
+                return "-";
+            }
+            return trimmed;
+        }
+
+        function handleHeroImgError(img) {
+            const paths = [
+                'banner-apprecio.png.png',
+                'https://raw.githubusercontent.com/Apprecio2026/catalogo/main/banner-apprecio.png.png',
+                'banner-apprecio.png',
+                'https://raw.githubusercontent.com/Apprecio2026/catalogo/main/banner-apprecio.png'
+            ];
+            const idx = parseInt(img.getAttribute('data-try-idx') || '0');
+            if (idx < paths.length) {
+                img.setAttribute('data-try-idx', idx + 1);
+                img.src = paths[idx];
+            } else {
+                img.onerror = null;
+                if (img.parentElement) {
+                    img.parentElement.innerHTML = `
+                        <div class="w-full h-full flex flex-col items-center justify-center p-6 text-center bg-white/10 backdrop-blur-sm">
+                            <i class="fa-solid fa-gift text-5xl text-white mb-2 animate-bounce"></i>
+                            <span class="text-sm font-extrabold text-white tracking-wide">Apprecio Gift Cards</span>
+                            <span class="text-[11px] text-white/80 mt-1">Catálogo Digital Colombia</span>
+                        </div>
+                    `;
                 }
+            }
+        }
+
+        function handleLogoError(img, iconClass) {
+            img.onerror = null;
+            if (img.parentElement) {
+                img.parentElement.innerHTML = `
+                    <div class="w-full h-full flex items-center justify-center bg-apprecio-light rounded-xl border border-apprecio-light">
+                        <i class="fa-solid ${iconClass} text-apprecio-red text-lg"></i>
+                    </div>
+                `;
+            }
+        }
+
+        let catalogueData = [];
+        let currentCategory = 'todos';
+
+        // Helper function to dynamically find column indices by header titles
+        function findColIndex(headers, ...possibleKeywords) {
+            if (!headers || headers.length === 0) return -1;
+            for (const keyword of possibleKeywords) {
+                const targetKey = keyword.toLowerCase().normalize("NFD").replace(/[\u0300-\u063f]/g, "").trim();
+                const index = headers.findIndex(h => {
+                    if (!h) return false;
+                    const cleanH = h.toLowerCase().normalize("NFD").replace(/[\u0300-\u063f]/g, "").trim();
+                    return cleanH.includes(targetKey);
+                });
+                if (index !== -1) return index;
+            }
+            return -1;
+        }
+
+        function renderCards(items) {
+            const grid = document.getElementById('cards-grid');
+            const noResults = document.getElementById('no-results');
+            grid.innerHTML = '';
+
+            if (!items || items.length === 0) {
+                noResults.classList.remove('hidden');
+                return;
+            } else {
+                noResults.classList.add('hidden');
+            }
+
+            items.forEach((item) => {
+                const card = document.createElement('div');
+                card.className = "glass-card-white rounded-2xl overflow-hidden transition-all duration-300 flex flex-col justify-between animate-fade-in group hover:-translate-y-1";
+                
+                let iconClass = "fa-gift";
+                const catLower = (item.categoria || '').toLowerCase();
+                if (catLower.includes('super')) { iconClass = "fa-cart-shopping"; }
+                else if (catLower.includes('restaurante') || catLower.includes('comida') || catLower.includes('cafe')) { iconClass = "fa-utensils"; }
+                else if (catLower.includes('moda') || catLower.includes('vestuario')) { iconClass = "fa-shirt"; }
+                else if (catLower.includes('hogar') || catLower.includes('tech') || catLower.includes('electro')) { iconClass = "fa-laptop"; }
+                else if (catLower.includes('entretenimiento') || catLower.includes('direct')) { iconClass = "fa-tv"; }
+
+                const logoHtml = (item.imagenUrl && item.imagenUrl.trim() !== '') ? 
+                    `<img src="${item.imagenUrl}" alt="${item.comercio}" class="w-full h-full object-contain p-0.5 bg-white rounded-xl shadow-2xl" onerror="handleLogoError(this, '${iconClass}')">` : 
+                    `<div class="w-full h-full flex items-center justify-center bg-apprecio-light rounded-xl border border-apprecio-light"><i class="fa-solid ${iconClass} text-apprecio-red text-lg"></i></div>`;
+
+                const montosClean = cleanVal(item.montos);
+                const redParcialClean = cleanVal(item.redencionParcial);
+                const redTotalClean = cleanVal(item.redencionTotal);
+                const cobroExtraClean = cleanVal(item.cobroExtra);
+                const valorCobroExtraClean = cleanVal(item.valorCobroExtra);
+
+                let cobroExtraDisplay = cobroExtraClean;
+                if (cobroExtraClean !== '-' && valorCobroExtraClean !== '-') {
+                    cobroExtraDisplay = `${cobroExtraClean} (${valorCobroExtraClean})`;
+                } else if (cobroExtraClean === '-' && valorCobroExtraClean !== '-') {
+                    cobroExtraDisplay = valorCobroExtraClean;
+                }
+
+                card.innerHTML = `
+                    <div>
+                        <!-- Header Banner -->
+                        <div class="h-14 w-full bg-apprecio-red p-3.5 flex items-center justify-between text-white relative">
+                            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-white text-apprecio-red shadow-sm truncate max-w-[170px]">
+                                ${cleanVal(item.categoria) !== '-' ? item.categoria : 'Gift Card'}
+                            </span>
+                            <span class="text-[10px] font-bold text-white/90 bg-black/10 px-2 py-0.5 rounded-full flex items-center gap-1">
+                                <i class="fa-solid fa-bolt text-[9px]"></i> Apprecio
+                            </span>
+                        </div>
+
+                        <!-- Commerce Header with Logo/Card Image directly beside Name -->
+                        <div class="p-5 space-y-4">
+                            <div class="flex items-center gap-3.5">
+                                <div class="w-16 h-12 rounded-xl shrink-0 bg-white border border-apprecio-light flex items-center justify-center shadow-sm overflow-hidden p-0.5 group-hover:scale-105 transition-transform">
+                                    ${logoHtml}
+                                </div>
+                                <div class="min-w-0 flex-1">
+                                    <h4 class="text-base font-black text-slate-900 leading-snug truncate" title="${item.comercio}">${cleanVal(item.comercio)}</h4>
+                                    <p class="text-xs text-apprecio-red font-bold mt-0.5 truncate">${cleanVal(item.tipoProducto)}</p>
+                                </div>
+                            </div>
+
+                            <!-- Summary Box displaying exact requested fields -->
+                            <div class="space-y-2 pt-3 border-t border-slate-100 text-xs">
+                                <div class="flex justify-between items-start text-slate-600 gap-2">
+                                    <span class="text-slate-400 font-medium shrink-0">Montos:</span>
+                                    <span class="font-bold text-slate-900 text-right text-xs leading-snug break-words">${montosClean}</span>
+                                </div>
+                                <div class="flex justify-between items-center text-slate-600 gap-2">
+                                    <span class="text-slate-400 font-medium shrink-0">Permite Redención Parcial:</span>
+                                    <span class="font-bold text-slate-900 text-right text-xs">${redParcialClean}</span>
+                                </div>
+                                <div class="flex justify-between items-center text-slate-600 gap-2">
+                                    <span class="text-slate-400 font-medium shrink-0">Solo redención Total:</span>
+                                    <span class="font-bold text-slate-900 text-right text-xs">${redTotalClean}</span>
+                                </div>
+                                <div class="flex justify-between items-center text-slate-600 gap-2">
+                                    <span class="text-slate-400 font-medium shrink-0">¿Cobro Extra?:</span>
+                                    <span class="font-extrabold text-apprecio-red text-right text-xs">${cobroExtraDisplay}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-5 pt-0">
+                        <button onclick="openDetailModal(${item.id})" class="w-full py-2.5 px-3 rounded-xl bg-apprecio-light hover:bg-apprecio-red hover:text-white text-apprecio-red border border-apprecio-light text-xs font-bold transition-all flex items-center justify-center gap-1.5 group shadow-sm">
+                            <span>Ver Ficha Completa</span>
+                            <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
             });
         }
 
-        document.getElementById('searchInput').addEventListener('input', function(e) {
-            const query = e.target.value.toLowerCase().trim();
-            const cards = document.querySelectorAll('.card');
-            const sections = document.querySelectorAll('.category-section');
+        function openDetailModal(itemId) {
+            const item = catalogueData.find(c => c.id === itemId);
+            if (!item) return;
 
-            cards.forEach(card => {
-                const name = card.getAttribute('data-name');
-                const text = card.textContent.toLowerCase();
-                if (name.includes(query) || text.includes(query)) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
+            const modalIconBg = document.getElementById('modal-icon-bg');
+            let iconClass = "fa-gift";
+            const catLower = (item.categoria || '').toLowerCase();
+            if (catLower.includes('super')) { iconClass = "fa-cart-shopping"; }
+            else if (catLower.includes('restaurante') || catLower.includes('comida') || catLower.includes('cafe')) { iconClass = "fa-utensils"; }
+            else if (catLower.includes('moda') || catLower.includes('vestuario')) { iconClass = "fa-shirt"; }
+            else if (catLower.includes('hogar') || catLower.includes('tech') || catLower.includes('electro')) { iconClass = "fa-laptop"; }
+            else if (catLower.includes('entretenimiento') || catLower.includes('direct')) { iconClass = "fa-tv"; }
+
+            if (item.imagenUrl && item.imagenUrl.trim() !== '') {
+                modalIconBg.innerHTML = `<img src="${item.imagenUrl}" alt="${item.comercio}" class="w-full h-full object-contain p-0.5 bg-white rounded-lg" onerror="handleLogoError(this, '${iconClass}')">`;
+            } else {
+                modalIconBg.innerHTML = `<i class="fa-solid ${iconClass} text-xl text-apprecio-red"></i>`;
+            }
+
+            // Top Commerce Name
+            document.getElementById('modal-comercio').innerText = cleanVal(item.comercio);
+            document.getElementById('modal-categoria').innerText = cleanVal(item.categoria) !== '-' ? item.categoria : 'Gift Card';
+            document.getElementById('modal-tipo-prod-badge').innerText = cleanVal(item.tipoProducto) !== '-' ? item.tipoProducto : 'Producto Digital';
+
+            // Section 1: General & Offer Details
+            document.getElementById('field-montos').innerText = cleanVal(item.montos);
+            document.getElementById('field-tipoProducto').innerText = cleanVal(item.tipoProducto);
+            document.getElementById('field-vigencia').innerText = cleanVal(item.vigencia);
+            document.getElementById('field-beneficiosExtra').innerText = cleanVal(item.beneficiosExtra);
+
+            // Section 2: Delivery & Activation
+            document.getElementById('field-tiempoEntregaProveedor').innerText = cleanVal(item.tiempoEntregaProveedor);
+            document.getElementById('field-activacionInmediata').innerText = cleanVal(item.activacionInmediata);
+            document.getElementById('field-tiempoActivacion').innerText = cleanVal(item.tiempoActivacion);
+            
+            const cobroExtraClean = cleanVal(item.cobroExtra);
+            const valorCobroClean = cleanVal(item.valorCobroExtra);
+            let cobroExtraFormatted = cobroExtraClean;
+            if (cobroExtraClean !== '-' && valorCobroClean !== '-') {
+                cobroExtraFormatted = `${cobroExtraClean} (${valorCobroClean})`;
+            } else if (cobroExtraClean === '-' && valorCobroClean !== '-') {
+                cobroExtraFormatted = valorCobroClean;
+            }
+            document.getElementById('field-cobroExtra').innerText = cobroExtraFormatted;
+
+            // Section 3: Redemption Conditions
+            document.getElementById('field-tipoRedencion').innerText = cleanVal(item.tipoRedencion);
+            document.getElementById('field-otroTipoRedencion').innerText = cleanVal(item.otroTipoRedencion);
+            document.getElementById('field-redencionParcial').innerText = cleanVal(item.redencionParcial);
+            document.getElementById('field-redencionTotal').innerText = cleanVal(item.redencionTotal);
+            document.getElementById('field-codigosPorFactura').innerText = cleanVal(item.codigosPorFactura);
+            document.getElementById('field-acumulablePromociones').innerText = cleanVal(item.acumulablePromociones);
+            document.getElementById('field-cobertura').innerText = cleanVal(item.cobertura);
+
+            // Section 4: Instructions, Restrictions & Support
+            document.getElementById('field-instructivoUso').innerText = cleanVal(item.instructivoUso);
+            document.getElementById('field-aplicaTodosProductos').innerText = cleanVal(item.aplicaTodosProductos);
+            document.getElementById('field-productosExcluidos').innerText = cleanVal(item.productosExcluidos);
+            document.getElementById('field-exclusionesRestricciones').innerText = cleanVal(item.exclusionesRestricciones);
+            document.getElementById('field-canalesSoporte').innerText = cleanVal(item.canalesSoporte);
+
+            document.getElementById('detail-modal').classList.remove('hidden');
+        }
+
+        async function fetchGoogleSheetCsv(isBackground = false) {
+            try {
+                if (!isBackground) updateStatusBadge("Consultando datos...", false);
+                const cacheBuster = "&_t=" + new Date().getTime();
+                
+                let res = await fetch(PRIMARY_URL + cacheBuster);
+                if (!res.ok) {
+                    res = await fetch(SECONDARY_URL + cacheBuster);
                 }
+                
+                if (!res.ok) throw new Error("Error al conectar con Google Sheets");
+                const csvText = await res.text();
+                
+                const rows = parseCSV(csvText);
+
+                if (rows.length > 1) {
+                    const headers = rows[0];
+
+                    const mapCol = {
+                        comercio: findColIndex(headers, "comercio"),
+                        categoria: findColIndex(headers, "categoria"),
+                        montos: findColIndex(headers, "monto"),
+                        tiempoEntregaProveedor: findColIndex(headers, "tiempo entrega", "entrega proveedor"),
+                        cobroExtra: findColIndex(headers, "cobro extra", "¿cobro extra?"),
+                        valorCobroExtra: findColIndex(headers, "valor cobro"),
+                        tipoProducto: findColIndex(headers, "tipo de producto", "tipo producto"),
+                        redencionParcial: findColIndex(headers, "redencion parcial", "permite redencion"),
+                        redencionTotal: findColIndex(headers, "redencion total", "solo redencion"),
+                        codigosPorFactura: findColIndex(headers, "codigos por factura", "factura"),
+                        tipoRedencion: findColIndex(headers, "tipo de redencion", "redencion"),
+                        otroTipoRedencion: findColIndex(headers, "otro tipo de redencion"),
+                        acumulablePromociones: findColIndex(headers, "acumulable"),
+                        instructivoUso: findColIndex(headers, "instructivo"),
+                        canalesSoporte: findColIndex(headers, "soporte", "canales"),
+                        cobertura: findColIndex(headers, "cobertura"),
+                        exclusionesRestricciones: findColIndex(headers, "exclusiones", "restricciones"),
+                        activacionInmediata: findColIndex(headers, "activacion inmediata"),
+                        tiempoActivacion: findColIndex(headers, "tiempo activacion", "tiempo de activacion"),
+                        aplicaTodosProductos: findColIndex(headers, "aplica todos los productos"),
+                        productosExcluidos: findColIndex(headers, "productos excluidos"),
+                        beneficiosExtra: findColIndex(headers, "beneficios extra"),
+                        vigencia: findColIndex(headers, "vigencia"),
+                        imagenUrl: findColIndex(headers, "imagen", "logo", "url")
+                    };
+
+                    const getVal = (cols, colIdx, fallbackIdx) => {
+                        const targetIdx = (colIdx !== -1) ? colIdx : fallbackIdx;
+                        return (targetIdx !== undefined && targetIdx >= 0 && cols[targetIdx] !== undefined) ? cleanVal(cols[targetIdx]) : "-";
+                    };
+
+                    const parsedData = [];
+                    let itemCounter = 0;
+                    
+                    for (let i = 1; i < rows.length; i++) {
+                        const cols = rows[i];
+                        const commerceName = getVal(cols, mapCol.comercio, 0);
+                        if (cols && commerceName !== '-' && commerceName.toUpperCase() !== 'COMERCIO') {
+                            parsedData.push({
+                                id: itemCounter++,
+                                comercio: commerceName,
+                                categoria: getVal(cols, mapCol.categoria, 1),
+                                montos: getVal(cols, mapCol.montos, 2),
+                                tiempoEntregaProveedor: getVal(cols, mapCol.tiempoEntregaProveedor, 4),
+                                cobroExtra: getVal(cols, mapCol.cobroExtra, 5),
+                                valorCobroExtra: getVal(cols, mapCol.valorCobroExtra, 6),
+                                tipoProducto: getVal(cols, mapCol.tipoProducto, 7),
+                                redencionParcial: getVal(cols, mapCol.redencionParcial, 8),
+                                redencionTotal: getVal(cols, mapCol.redencionTotal, 9),
+                                codigosPorFactura: getVal(cols, mapCol.codigosPorFactura, 10),
+                                tipoRedencion: getVal(cols, mapCol.tipoRedencion, 11),
+                                otroTipoRedencion: getVal(cols, mapCol.otroTipoRedencion, 12),
+                                acumulablePromociones: getVal(cols, mapCol.acumulablePromociones, 13),
+                                instructivoUso: getVal(cols, mapCol.instructivoUso, 14),
+                                canalesSoporte: getVal(cols, mapCol.canalesSoporte, 15),
+                                cobertura: getVal(cols, mapCol.cobertura, 16),
+                                exclusionesRestricciones: getVal(cols, mapCol.exclusionesRestricciones, 17),
+                                activacionInmediata: getVal(cols, mapCol.activacionInmediata, 18),
+                                tiempoActivacion: getVal(cols, mapCol.tiempoActivacion, 19),
+                                aplicaTodosProductos: getVal(cols, mapCol.aplicaTodosProductos, 20),
+                                productosExcluidos: getVal(cols, mapCol.productosExcluidos, 21),
+                                beneficiosExtra: getVal(cols, mapCol.beneficiosExtra, 22),
+                                vigencia: getVal(cols, mapCol.vigencia, 23),
+                                imagenUrl: (mapCol.imagenUrl !== -1 && cols[mapCol.imagenUrl]) ? cols[mapCol.imagenUrl].trim() : (cols[24] ? cols[24].trim() : '')
+                            });
+                        }
+                    }
+
+                    if (parsedData.length > 0) {
+                        catalogueData = parsedData;
+                        applyFilters();
+                        updateStatusBadge(`Sincronizado (${parsedData.length} comercios)`, true);
+                    }
+                }
+            } catch (err) {
+                console.warn("No se pudo descargar automáticamente desde Google Sheets:", err);
+                updateStatusBadge("Error de Sincronización", false);
+            }
+        }
+
+        function updateStatusBadge(msg, success) {
+            const badge = document.getElementById('sync-status-badge');
+            const text = document.getElementById('sync-text');
+            if (text) text.innerText = msg;
+            if (badge) {
+                if (success) {
+                    badge.className = "inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold bg-apprecio-light text-apprecio-red border border-apprecio-light";
+                } else {
+                    badge.className = "inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold bg-amber-50 text-amber-700 border border-amber-200";
+                }
+            }
+        }
+
+        function applyFilters() {
+            const query = (document.getElementById('search-input')?.value || '').toLowerCase().trim();
+            
+            const filtered = catalogueData.filter(item => {
+                const catMatch = currentCategory === 'todos' || 
+                    (item.categoria && item.categoria.toLowerCase().includes(currentCategory.toLowerCase()));
+                
+                if (!catMatch) return false;
+                if (!query) return true;
+
+                const searchPool = [
+                    item.comercio,
+                    item.categoria,
+                    item.montos,
+                    item.tipoProducto,
+                    item.tipoRedencion
+                ].map(v => (v || '').toLowerCase()).join(' ');
+
+                return searchPool.includes(query);
             });
 
-            sections.forEach(section => {
-                let hasVisible = false;
-                section.querySelectorAll('.card').forEach(c => {
-                    if (c.style.display !== 'none') hasVisible = true;
-                });
-                section.style.display = hasVisible ? 'block' : 'none';
+            renderCards(filtered);
+        }
+
+        function filterCategory(cat, btn) {
+            currentCategory = cat;
+            applyFilters();
+        }
+
+        function handleSearch() {
+            applyFilters();
+        }
+
+        function closeDetailModal() {
+            document.getElementById('detail-modal').classList.add('hidden');
+        }
+
+        function refreshDataManual() {
+            const icon = document.getElementById('refresh-icon');
+            if (icon) icon.classList.add('fa-spin');
+            
+            fetchGoogleSheetCsv().finally(() => {
+                if (icon) icon.classList.remove('fa-spin');
             });
+        }
+
+        function parseCSV(text) {
+            const lines = [];
+            let row = [];
+            let inQuotes = false;
+            let current = '';
+
+            for (let i = 0; i < text.length; i++) {
+                const char = text[i];
+                const nextChar = text[i + 1];
+
+                if (char === '"') {
+                    if (inQuotes && nextChar === '"') {
+                        current += '"';
+                        i++;
+                    } else {
+                        inQuotes = !inQuotes;
+                    }
+                } else if (char === ',' && !inQuotes) {
+                    row.push(current);
+                    current = '';
+                } else if ((char === '\r' || char === '\n') && !inQuotes) {
+                    if (char === '\r' && nextChar === '\n') i++;
+                    row.push(current);
+                    lines.push(row);
+                    row = [];
+                    current = '';
+                } else {
+                    current += char;
+                }
+            }
+            if (current || row.length > 0) {
+                row.push(current);
+                lines.push(row);
+            }
+            return lines;
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            fetchGoogleSheetCsv();
+
+            // Auto sync every 60 seconds
+            setInterval(() => {
+                fetchGoogleSheetCsv(true);
+            }, 60000);
         });
     </script>
 </body>
