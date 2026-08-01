@@ -35,7 +35,7 @@
         }
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
-            background-color: #e2e8f0;
+            background-color: #cbd5e1;
             color: #0f172a;
         }
         .bg-apprecio-red { background-color: var(--apprecio-red); }
@@ -45,12 +45,12 @@
         .bg-pantone-gray { background-color: var(--pantone-gray); }
         
         .card-shadow {
-            box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.06), 0 2px 5px -1px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.08), 0 2px 5px -1px rgba(0, 0, 0, 0.04);
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .card-shadow:hover {
             transform: translateY(-4px);
-            box-shadow: 0 16px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 16px 25px -5px rgba(0, 0, 0, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.06);
         }
         .animate-fade-in {
             animation: fadeIn 0.3s ease-out forwards;
@@ -64,9 +64,8 @@
         ::-webkit-scrollbar-thumb { background: #64748b; border-radius: 4px; }
     </style>
 </head>
-<body class="bg-slate-200 text-slate-900 min-h-screen flex flex-col antialiased">
+<body class="bg-slate-300 text-slate-900 min-h-screen flex flex-col antialiased">
 
-    <!-- Header / Navbar Apprecio -->
     <header class="sticky top-0 z-40 bg-apprecio-red text-white shadow-md border-b border-rose-600">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
             <div class="flex items-center gap-3">
@@ -83,7 +82,7 @@
             </div>
 
             <div class="flex items-center gap-2.5">
-                <button onclick="refreshDataManual()" id="btn-refresh" class="inline-flex items-center gap-2 px-3 py-2 rounded-xl border border-white/20 bg-slate-800 text-white text-xs font-bold hover:bg-slate-900 transition-all shadow-sm active:scale-95">
+                <button onclick="refreshDataManual()" id="btn-refresh" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl border border-white/20 bg-slate-800 text-white text-xs font-bold hover:bg-slate-900 transition-all shadow-sm active:scale-95">
                     <i class="fa-solid fa-rotate-right" id="refresh-icon"></i>
                     <span class="hidden sm:inline">Sincronizar</span>
                 </button>
@@ -95,11 +94,9 @@
         </div>
     </header>
 
-    <!-- Main Content -->
     <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
 
-        <!-- Banner Hero Section -->
-        <section class="bg-slate-300 rounded-3xl p-6 sm:p-8 text-slate-900 shadow-sm relative overflow-hidden border border-slate-400">
+        <section class="bg-slate-200 rounded-3xl p-6 sm:p-8 text-slate-900 shadow-sm relative overflow-hidden border border-slate-400/80">
             <div class="flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
                 <div class="max-w-xl space-y-3 text-center md:text-left">
                     <div class="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1 rounded-lg bg-white text-slate-800 border border-slate-300 shadow-sm">
@@ -113,22 +110,21 @@
                     </p>
                 </div>
 
-                <!-- Banner Feature Graphic & Counter -->
+                <!-- Banner Feature Graphic Vector & Counter -->
                 <div class="w-full md:w-auto flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <!-- Graphic Illustration -->
-                    <div class="hidden sm:flex items-center gap-2 bg-white/80 backdrop-blur p-3 rounded-2xl border border-slate-300 shadow-sm">
-                        <div class="w-10 h-10 rounded-xl bg-apprecio-red text-white flex items-center justify-center text-lg font-black shadow">
+                    <div class="relative bg-gradient-to-br from-slate-800 to-slate-900 p-4 rounded-2xl border border-slate-700 text-white shadow-md flex items-center gap-3.5 max-w-xs">
+                        <div class="w-11 h-11 rounded-xl bg-apprecio-red text-white flex items-center justify-center text-xl font-black shadow-md shrink-0">
                             <i class="fa-solid fa-credit-card"></i>
                         </div>
-                        <div class="text-left pr-2">
-                            <span class="block text-[11px] font-black text-slate-800">Gift Cards Digitales</span>
-                            <span class="block text-[10px] font-bold text-slate-600">Canje Inmediato</span>
+                        <div class="text-left space-y-0.5">
+                            <span class="block text-xs font-extrabold text-white">Gift Cards Digitales</span>
+                            <span class="block text-[11px] font-medium text-slate-300">Canje Inmediato y Seguro</span>
+                            <span class="inline-block text-[9px] font-bold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">100% Cobertura</span>
                         </div>
                     </div>
 
-                    <!-- Counter Card -->
-                    <div class="bg-white p-4 rounded-2xl border border-slate-300 shadow-sm flex items-center gap-3">
-                        <div class="w-12 h-12 rounded-xl bg-slate-200 flex items-center justify-center text-apprecio-red font-black text-xl border border-slate-300">
+                    <div class="bg-white p-4 rounded-2xl border border-slate-300 shadow-sm flex items-center gap-3 min-w-[170px]">
+                        <div class="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center text-apprecio-red font-black text-xl border border-slate-300">
                             <i class="fa-solid fa-store"></i>
                         </div>
                         <div>
@@ -140,11 +136,9 @@
             </div>
         </section>
 
-        <!-- Search & Filter Bar -->
         <section id="catalogo" class="space-y-6">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-4 rounded-2xl border border-slate-300 shadow-sm">
                 
-                <!-- Search Input -->
                 <div class="relative w-full sm:max-w-md">
                     <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500 text-sm"></i>
                     <input 
@@ -155,18 +149,15 @@
                         class="w-full pl-10 pr-4 py-2.5 bg-slate-100 border border-slate-300 rounded-xl text-sm text-slate-900 font-medium placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-800 focus:bg-white transition-all">
                 </div>
 
-                <!-- Filter Info -->
-                <div class="text-xs font-bold text-slate-600 text-right" id="filter-status-text">
+                <div class="text-xs font-bold text-slate-700 text-right" id="filter-status-text">
                     Mostrando todos los comercios
                 </div>
             </div>
 
-            <!-- Cards Grid -->
             <div id="cards-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
                 <!-- Dynamic cards populated here -->
             </div>
 
-            <!-- Empty State -->
             <div id="no-results" class="hidden text-center py-16 space-y-3 bg-white rounded-2xl border border-slate-300 shadow-sm">
                 <i class="fa-solid fa-store-slash text-4xl text-slate-400"></i>
                 <h3 class="text-base font-bold text-slate-800">No se encontraron comercios</h3>
@@ -176,11 +167,9 @@
 
     </main>
 
-    <!-- Detailed Modal View -->
     <div id="detail-modal" class="fixed inset-0 bg-slate-900/75 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div class="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] flex flex-col shadow-2xl border border-slate-300 overflow-hidden animate-fade-in">
             
-            <!-- Modal Header Slate Style -->
             <div class="p-5 bg-slate-300 text-slate-900 flex items-center justify-between shrink-0 shadow-sm relative border-b border-slate-400">
                 <div class="absolute top-0 left-0 right-0 h-1.5 bg-apprecio-red"></div>
                 <div class="flex items-center gap-3.5 min-w-0">
@@ -200,10 +189,8 @@
                 </button>
             </div>
 
-            <!-- Modal Content -->
             <div class="p-6 overflow-y-auto space-y-5 text-slate-800 text-sm flex-grow">
 
-                <!-- SECTION 1: Oferta y Montos -->
                 <div class="space-y-2.5">
                     <h4 class="text-xs font-black uppercase tracking-wider text-slate-900 bg-slate-200 px-3.5 py-2 rounded-xl border-l-4 border-apprecio-red flex items-center gap-2">
                         <i class="fa-solid fa-ticket text-apprecio-red"></i> 1. Oferta y Montos
@@ -224,7 +211,6 @@
                     </div>
                 </div>
 
-                <!-- SECTION 2: Entrega y Activación -->
                 <div class="space-y-2.5">
                     <h4 class="text-xs font-black uppercase tracking-wider text-slate-900 bg-slate-200 px-3.5 py-2 rounded-xl border-l-4 border-apprecio-red flex items-center gap-2">
                         <i class="fa-solid fa-clock text-apprecio-red"></i> 2. Entrega y Activación
@@ -241,7 +227,6 @@
                     </div>
                 </div>
 
-                <!-- SECTION 3: Condiciones de Redención -->
                 <div class="space-y-2.5">
                     <h4 class="text-xs font-black uppercase tracking-wider text-slate-900 bg-slate-200 px-3.5 py-2 rounded-xl border-l-4 border-apprecio-red flex items-center gap-2">
                         <i class="fa-solid fa-arrows-rotate text-apprecio-red"></i> 3. Condiciones de Redención
@@ -262,7 +247,6 @@
                     </div>
                 </div>
 
-                <!-- SECTION 4: Instructivo y Restricciones -->
                 <div class="space-y-2.5">
                     <h4 class="text-xs font-black uppercase tracking-wider text-slate-900 bg-slate-200 px-3.5 py-2 rounded-xl border-l-4 border-apprecio-red flex items-center gap-2">
                         <i class="fa-solid fa-file-shield text-apprecio-red"></i> 4. Instructivo y Restricciones
@@ -281,7 +265,6 @@
 
             </div>
 
-            <!-- Modal Footer -->
             <div class="p-4 bg-slate-200 border-t border-slate-300 flex justify-end shrink-0">
                 <button onclick="closeDetailModal()" class="px-5 py-2 bg-slate-800 hover:bg-slate-900 text-white font-bold rounded-xl text-xs transition-all shadow-sm">
                     Cerrar Ficha
@@ -290,7 +273,6 @@
         </div>
     </div>
 
-    <!-- Footer -->
     <footer class="bg-slate-900 text-white border-t border-slate-800 mt-12 py-8 text-center text-xs text-slate-400 space-y-2">
         <div class="flex items-center justify-center gap-2 text-base font-extrabold text-white">
             <span class="text-apprecio-red font-black text-lg">Apprecio</span>
@@ -298,7 +280,6 @@
         <p>© 2026 Catálogo Comercial Dinámico — Alimentado desde Google Sheets</p>
     </footer>
 
-    <!-- JavaScript Logic -->
     <script>
         const SHEET_ID = "14w_8kJekDgHq6-YxBY1ZKo1XfoCuwd0dB9giCd7Q2rI";
         const GID = "1041963400";
@@ -401,7 +382,6 @@
 
                 card.innerHTML = `
                     <div>
-                        <!-- Top Header Bar (Darker Slate Gray with Dark Bold Typography & Red Badge) -->
                         <div class="bg-slate-300 border-b border-slate-400 px-3.5 py-2.5 flex items-center gap-2">
                             <span class="bg-apprecio-red text-white text-[10px] font-extrabold px-1.5 py-0.5 rounded shadow-sm shrink-0">
                                 App
@@ -411,7 +391,6 @@
                             </h4>
                         </div>
 
-                        <!-- Key Details Summary (Sobresaliente Tipografía Oscura Sobria) -->
                         <div class="p-4 space-y-2 text-xs text-slate-800">
                             <div class="flex justify-between items-start gap-2 py-1 border-b border-slate-100">
                                 <span class="font-bold text-slate-700 shrink-0">Montos:</span>
@@ -432,7 +411,6 @@
                         </div>
                     </div>
 
-                    <!-- Bottom Action Button in Apprecio Red with Hover Animation -->
                     <div class="p-3 pt-1">
                         <button onclick="openDetailModal(${item.id})" class="w-full py-2.5 px-4 rounded-xl bg-apprecio-red hover:bg-rose-600 text-white font-extrabold text-xs transition-all duration-200 flex items-center justify-between shadow-md hover:shadow-lg active:scale-95 group/btn">
                             <span>Ver Ficha Completa</span>
@@ -635,7 +613,7 @@
             return lines;
         }
 
-        // Initialize Apprecio Catalog
+        // Initialize Apprecio Catalog on DOM load
         window.addEventListener('DOMContentLoaded', () => {
             handleSearch();
             fetchGoogleSheetCsv(true);
