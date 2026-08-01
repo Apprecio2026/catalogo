@@ -3,643 +3,287 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo Comercial Apprecio</title>
-    
-    <!-- Canonical & SEO Meta Tags -->
-    <link rel="canonical" href="https://apprecio2026.github.io/catalogo/">
-    <meta name="description" content="Catálogo de Gift Cards Colombia — Un gran programa de reconocimientos donde canjeas puntos por gift cards y cupones digitales.">
-    
-    <!-- Open Graph / Social Share Metadata -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://apprecio2026.github.io/catalogo/">
-    <meta property="og:title" content="Catálogo de Gift Cards Colombia — Apprecio">
-    <meta property="og:description" content="Un gran programa de reconocimientos donde canjeas puntos por gift cards y cupones digitales.">
-    <meta property="og:site_name" content="Apprecio Colombia">
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23fa335e%22/><text y=%22.9em%22 x=%2222%22 font-size=%2265%22 font-weight=%22bold%22 fill=%22white%22>A</text></svg>">
-
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
+    <title>Catálogo Apprecio Colombia 2026</title>
     <style>
         :root {
-            --apprecio-red: #fa335e;
-            --apprecio-red-dark: #d81e46;
-            --pantone-gray: #5e5e5e;
-            --pantone-gray-dark: #4d5562;
+            --primary-color: #0056b3;
+            --secondary-color: #f4f7f6;
+            --text-color: #333;
+            --card-bg: #ffffff;
+            --hover-shadow: 0 8px 16px rgba(0,0,0,0.1);
         }
-        body { 
-            font-family: 'Plus Jakarta Sans', sans-serif; 
-            background-color: #cbd5e1;
-            color: #0f172a;
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
-        .bg-apprecio-red { background-color: var(--apprecio-red); }
-        .bg-apprecio-red-dark { background-color: var(--apprecio-red-dark); }
-        .text-apprecio-red { color: var(--apprecio-red); }
-        .border-apprecio-red { border-color: var(--apprecio-red); }
-        .bg-pantone-gray { background-color: var(--pantone-gray); }
-        
-        .card-shadow {
-            box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.08), 0 2px 5px -1px rgba(0, 0, 0, 0.04);
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+        body {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            line-height: 1.6;
         }
-        .card-shadow:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 16px 25px -5px rgba(0, 0, 0, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.06);
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-        .animate-fade-in {
-            animation: fadeIn 0.3s ease-out forwards;
+
+        .banner-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
         }
-        @keyframes floatBanner {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
         }
-        .animate-float {
-            animation: floatBanner 3.5s ease-in-out infinite;
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
         }
-        ::-webkit-scrollbar { width: 6px; height: 6px; }
-        ::-webkit-scrollbar-track { background: #cbd5e1; }
-        ::-webkit-scrollbar-thumb { background: #64748b; border-radius: 4px; }
+
+        .category-title {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin: 2rem 0 1rem;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 0.5rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #eaeaea;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #222;
+        }
+
+        .card .montos {
+            background-color: #f8f9fa;
+            padding: 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .card .montos strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: #333;
+            color: white;
+            margin-top: 3rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            .container {
+                padding: 1rem;
+            }
+        }
     </style>
 </head>
-<body class="bg-slate-300 text-slate-900 min-h-screen flex flex-col antialiased">
+<body>
 
-    <header class="sticky top-0 z-40 bg-slate-900 text-white shadow-lg border-b border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <div class="h-10 px-4 rounded-xl bg-apprecio-red flex items-center justify-center text-white font-extrabold text-xl shadow-md border border-rose-500 tracking-wider">
-                    <span>Apprecio</span>
-                </div>
-                <div class="hidden sm:block border-l border-slate-700 h-7 mx-1"></div>
-                <div class="hidden sm:block">
-                    <h1 class="text-sm font-extrabold text-white leading-tight">Catálogo de Gift Cards Colombia</h1>
-                    <p class="text-[11px] text-slate-300 font-medium flex items-center gap-1.5">
-                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Sincronizado en Vivo con Google Sheets
-                    </p>
-                </div>
-            </div>
-
-            <div class="flex items-center gap-2.5">
-                <button onclick="refreshDataManual()" id="btn-refresh" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl border border-slate-700 bg-slate-800 text-white text-xs font-bold hover:bg-slate-700 transition-all shadow-sm active:scale-95">
-                    <i class="fa-solid fa-rotate-right" id="refresh-icon"></i>
-                    <span class="hidden sm:inline">Sincronizar</span>
-                </button>
-                <span id="sync-status-badge" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold bg-slate-800 text-white border border-slate-700">
-                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                    <span id="sync-text">Sincronizado</span>
-                </span>
-            </div>
-        </div>
+    <header>
+        <img src="banner.png" alt="Banner Apprecio" class="banner-img">
+        <h1>Catálogo Apprecio Colombia 2026</h1>
+        <p>Canjea tus Puntos Apprecio por cientos de Gift Cards digitales</p>
     </header>
 
-    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+    <div class="container">
 
-        <section class="bg-slate-200 rounded-3xl p-6 sm:p-8 text-slate-900 shadow-sm relative overflow-hidden border border-slate-400/80">
-            <div class="flex flex-col lg:flex-row items-center justify-between gap-6 relative z-10">
-                
-                <!-- Columna Izquierda: Títulos y Descripción -->
-                <div class="max-w-xl space-y-3 text-center lg:text-left">
-                    <div class="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1 rounded-lg bg-white text-slate-800 border border-slate-300 shadow-sm">
-                        <i class="fa-solid fa-gift text-apprecio-red"></i> Catálogo Apprecio
-                    </div>
-                    <h2 class="text-3xl sm:text-4xl font-black tracking-tight text-slate-900 leading-tight">
-                        Catálogo <span class="text-apprecio-red">Apprecio</span>
-                    </h2>
-                    <p class="text-slate-700 text-xs sm:text-sm leading-relaxed font-semibold">
-                        Un gran programa de reconocimientos donde canjeas puntos por gift cards y cupones digitales en todo Colombia.
-                    </p>
-                </div>
-
-                <!-- Columna Derecha: Banner Animado y Tarjetas Informativas -->
-                <div class="w-full lg:w-auto flex flex-col items-center justify-center gap-4">
-                    
-                    <!-- Imagen Animada Banner.png -->
-                    <div class="animate-float max-w-xs sm:max-w-sm rounded-2xl overflow-hidden shadow-lg border border-slate-300 bg-white p-1.5 transition-transform">
-                        <img src="banner.png" alt="Banner Apprecio" class="w-full h-auto object-contain rounded-xl" onerror="this.style.display='none'">
-                    </div>
-
-                    <div class="w-full flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <!-- Tarjeta 1: Gift Cards Digitales -->
-                        <div class="bg-white p-4 rounded-2xl border border-slate-300 shadow-sm flex items-center gap-3.5 w-full sm:w-auto min-w-[210px]">
-                            <div class="w-12 h-12 rounded-2xl bg-apprecio-red text-white flex items-center justify-center text-xl font-black shadow-md shrink-0">
-                                <i class="fa-solid fa-credit-card"></i>
-                            </div>
-                            <div class="text-left space-y-0.5">
-                                <span class="block text-sm font-extrabold text-slate-900 leading-snug">Gift Cards Digitales</span>
-                                <span class="block text-xs font-medium text-slate-500">Canje Inmediato</span>
-                            </div>
-                        </div>
-
-                        <!-- Tarjeta 2: Total Comercios -->
-                        <div class="bg-white p-4 rounded-2xl border border-slate-300 shadow-sm flex items-center gap-3.5 w-full sm:w-auto min-w-[210px]">
-                            <div class="w-12 h-12 rounded-2xl bg-slate-100 text-apprecio-red flex items-center justify-center text-xl font-black border border-slate-200 shrink-0">
-                                <i class="fa-solid fa-store"></i>
-                            </div>
-                            <div class="text-left space-y-0.5">
-                                <span class="text-[11px] font-extrabold text-slate-500 uppercase tracking-wider block">TOTAL COMERCIOS</span>
-                                <span id="total-comercios-count" class="text-xl font-black text-slate-900">Cargando...</span>
-                            </div>
-                        </div>
-                    </div>
-
+        <!-- Sección Supermercados y Retail -->
+        <h2 class="category-title">Supermercados y Grandes Superficies</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Falabella</h3>
+                <div class="montos">
+                    <strong>Montos Disponibles:</strong>
+                    $20.000, $30.000, $50.000, $80.000, $90.000, $100.000, $150.000, $200.000, $250.000, $300.000, $400.000, $500.000, $600.000
                 </div>
             </div>
-        </section>
-
-        <section id="catalogo" class="space-y-6">
-            <!-- Barra de Búsqueda -->
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-4 rounded-2xl border border-slate-300 shadow-sm">
-                
-                <div class="relative w-full sm:max-w-md">
-                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500 text-sm"></i>
-                    <input 
-                        type="text" 
-                        id="search-input" 
-                        oninput="handleSearch()" 
-                        placeholder="Buscar comercio, marca o valor..." 
-                        class="w-full pl-10 pr-4 py-2.5 bg-slate-100 border border-slate-300 rounded-xl text-sm text-slate-900 font-medium placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-800 focus:bg-white transition-all">
-                </div>
-
-                <div class="text-xs font-bold text-slate-700 text-right" id="filter-status-text">
-                    Mostrando todos los comercios
+            <div class="card">
+                <h3>Éxito</h3>
+                <div class="montos">
+                    <strong>Montos Disponibles:</strong>
+                    $10.500, $21.000, $31.500, $52.500, $105.000, $210.000, $315.000, $525.000
                 </div>
             </div>
-
-            <!-- Grid de Tarjetas de Comercios -->
-            <div id="cards-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-                <!-- Tarjetas pobladas dinámicamente -->
+            <div class="card">
+                <h3>Jumbo / Metro</h3>
+                <div class="montos">
+                    <strong>Montos Disponibles:</strong>
+                    $20.000, $30.000, $50.000, $70.000, $100.000, $150.000, $200.000
+                </div>
             </div>
-
-            <!-- Estado de Sin Resultados -->
-            <div id="no-results" class="hidden text-center py-16 space-y-3 bg-white rounded-2xl border border-slate-300 shadow-sm">
-                <i class="fa-solid fa-store-slash text-4xl text-slate-400"></i>
-                <h3 class="text-base font-bold text-slate-800">No se encontraron comercios</h3>
-                <p class="text-xs text-slate-500">Prueba ajustando el término de búsqueda.</p>
-            </div>
-        </section>
-
-    </main>
-
-    <div id="detail-modal" class="fixed inset-0 bg-slate-900/75 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] flex flex-col shadow-2xl border border-slate-300 overflow-hidden animate-fade-in">
-            
-            <div class="p-5 bg-slate-300 text-slate-900 flex items-center justify-between shrink-0 shadow-sm relative border-b border-slate-400">
-                <div class="absolute top-0 left-0 right-0 h-1.5 bg-apprecio-red"></div>
-                <div class="flex items-center gap-3.5 min-w-0">
-                    <div class="w-10 h-10 rounded-xl bg-apprecio-red flex items-center justify-center text-white font-black text-lg shadow-sm shrink-0">
-                        <i class="fa-solid fa-gift"></i>
-                    </div>
-                    <div class="min-w-0 flex-1">
-                        <div class="flex items-center gap-2">
-                            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-apprecio-red text-white">Apprecio</span>
-                            <h3 id="modal-comercio" class="text-xl font-black text-slate-900 truncate">Comercio</h3>
-                        </div>
-                        <p id="modal-categoria" class="text-xs font-bold text-slate-700 mt-0.5 truncate">Categoría</p>
-                    </div>
+            <div class="card">
+                <h3>Tiendas D1</h3>
+                <div class="montos">
+                    <strong>Montos Disponibles:</strong>
+                    $11.000, $22.000, $33.000, $55.000, $88.000, $110.000, $220.000, $330.000
                 </div>
-                <button onclick="closeDetailModal()" class="text-slate-600 hover:text-slate-900 transition-colors p-2 rounded-full hover:bg-slate-400/40 shrink-0">
-                    <i class="fa-solid fa-xmark text-xl"></i>
-                </button>
-            </div>
-
-            <div class="p-6 overflow-y-auto space-y-5 text-slate-800 text-sm flex-grow">
-
-                <div class="space-y-2.5">
-                    <h4 class="text-xs font-black uppercase tracking-wider text-slate-900 bg-slate-200 px-3.5 py-2 rounded-xl border-l-4 border-apprecio-red flex items-center gap-2">
-                        <i class="fa-solid fa-ticket text-apprecio-red"></i> 1. Oferta y Montos
-                    </h4>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <div class="p-3 bg-slate-100 rounded-xl border border-slate-300 sm:col-span-2">
-                            <span class="text-xs font-bold text-slate-600 uppercase block">Montos Disponibles:</span>
-                            <span id="field-montos" class="font-extrabold text-slate-900 text-sm mt-0.5 block"></span>
-                        </div>
-                        <div class="p-3 bg-slate-100 rounded-xl border border-slate-300">
-                            <span class="text-xs font-bold text-slate-600 block">Tipo de Producto:</span>
-                            <span id="field-tipoProducto" class="font-bold text-slate-900 text-xs mt-0.5 block"></span>
-                        </div>
-                        <div class="p-3 bg-slate-100 rounded-xl border border-slate-300">
-                            <span class="text-xs font-bold text-slate-600 block">Vigencia:</span>
-                            <span id="field-vigencia" class="font-bold text-slate-900 text-xs mt-0.5 block"></span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="space-y-2.5">
-                    <h4 class="text-xs font-black uppercase tracking-wider text-slate-900 bg-slate-200 px-3.5 py-2 rounded-xl border-l-4 border-apprecio-red flex items-center gap-2">
-                        <i class="fa-solid fa-clock text-apprecio-red"></i> 2. Entrega y Activación
-                    </h4>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <div class="p-3 bg-slate-100 rounded-xl border border-slate-300">
-                            <span class="text-xs font-bold text-slate-600 block">Tiempo de Entrega:</span>
-                            <span id="field-tiempoEntregaProveedor" class="font-bold text-slate-900 text-xs mt-0.5 block"></span>
-                        </div>
-                        <div class="p-3 bg-slate-100 rounded-xl border border-slate-300">
-                            <span class="text-xs font-bold text-slate-600 block">¿Cobro Extra?:</span>
-                            <span id="field-cobroExtra" class="font-bold text-slate-900 text-xs mt-0.5 block"></span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="space-y-2.5">
-                    <h4 class="text-xs font-black uppercase tracking-wider text-slate-900 bg-slate-200 px-3.5 py-2 rounded-xl border-l-4 border-apprecio-red flex items-center gap-2">
-                        <i class="fa-solid fa-arrows-rotate text-apprecio-red"></i> 3. Condiciones de Redención
-                    </h4>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <div class="p-3 bg-slate-100 rounded-xl border border-slate-300">
-                            <span class="text-xs font-bold text-slate-600 block">Permite Redención Parcial:</span>
-                            <span id="field-redencionParcial" class="font-bold text-slate-900 text-xs mt-0.5 block"></span>
-                        </div>
-                        <div class="p-3 bg-slate-100 rounded-xl border border-slate-300">
-                            <span class="text-xs font-bold text-slate-600 block">Solo Redención Total:</span>
-                            <span id="field-redencionTotal" class="font-bold text-slate-900 text-xs mt-0.5 block"></span>
-                        </div>
-                        <div class="p-3 bg-slate-100 rounded-xl border border-slate-300 sm:col-span-2">
-                            <span class="text-xs font-bold text-slate-600 block">Cobertura:</span>
-                            <span id="field-cobertura" class="font-bold text-slate-900 text-xs mt-0.5 block"></span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="space-y-2.5">
-                    <h4 class="text-xs font-black uppercase tracking-wider text-slate-900 bg-slate-200 px-3.5 py-2 rounded-xl border-l-4 border-apprecio-red flex items-center gap-2">
-                        <i class="fa-solid fa-file-shield text-apprecio-red"></i> 4. Instructivo y Restricciones
-                    </h4>
-                    <div class="space-y-3">
-                        <div class="p-3 bg-slate-100 rounded-xl border border-slate-300">
-                            <span class="text-xs font-bold text-slate-600 block">Instructivo de Uso:</span>
-                            <p id="field-instructivoUso" class="text-xs leading-relaxed text-slate-900 mt-1 font-semibold"></p>
-                        </div>
-                        <div class="p-3 bg-slate-100 rounded-xl border border-slate-300">
-                            <span class="text-xs font-bold text-slate-600 block">Exclusiones o Restricciones:</span>
-                            <p id="field-exclusionesRestricciones" class="text-xs leading-relaxed text-slate-900 mt-1 font-semibold"></p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="p-4 bg-slate-200 border-t border-slate-300 flex justify-end shrink-0">
-                <button onclick="closeDetailModal()" class="px-5 py-2 bg-slate-800 hover:bg-slate-900 text-white font-bold rounded-xl text-xs transition-all shadow-sm">
-                    Cerrar Ficha
-                </button>
             </div>
         </div>
+
+        <!-- Sección Restaurantes y Heladerías -->
+        <h2 class="category-title">Restaurantes y Heladerías</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Crepes & Waffles</h3>
+                <div class="montos">
+                    <strong>Montos Disponibles:</strong>
+                    $10.000, $20.000, $30.000, $50.000, $70.000, $100.000
+                </div>
+            </div>
+            <div class="card">
+                <h3>Dunkin' Donuts</h3>
+                <div class="montos">
+                    <strong>Opciones Fijas y Montos:</strong>
+                    1 Donut ($6.000), Combo Sandwich ($19.500), Combo 12 Donuts ($60.000), Bonos Generales ($18.000, $30.000)
+                </div>
+            </div>
+            <div class="card">
+                <h3>Starbucks</h3>
+                <div class="montos">
+                    <strong>Montos Disponibles:</strong>
+                    $10.000, $20.000, $30.000, $50.000
+                </div>
+            </div>
+            <div class="card">
+                <h3>Helados Popsy</h3>
+                <div class="montos">
+                    <strong>Opciones Fijas y Montos:</strong>
+                    Cono 1 bola ($7.500), Maxicono ($12.900), Malteada ($17.500), Litro ($40.900), Bonos Generales ($10.000, $30.000, $50.000)
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección Hogar y Tecnología -->
+        <h2 class="category-title">Hogar y Tecnología</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Homecenter</h3>
+                <div class="montos">
+                    <strong>Montos Disponibles:</strong>
+                    $10.000, $20.000, $30.000, $50.000, $100.000, $200.000, $300.000, $600.000
+                </div>
+            </div>
+            <div class="card">
+                <h3>K-Tronix</h3>
+                <div class="montos">
+                    <strong>Montos Disponibles:</strong>
+                    $30.000, $50.000, $100.000, $200.000, $300.000, $400.000, $500.000
+                </div>
+            </div>
+            <div class="card">
+                <h3>Casa Ideas</h3>
+                <div class="montos">
+                    <strong>Montos Disponibles:</strong>
+                    $50.000, $70.000, $100.000, $150.000, $200.000, $300.000, $500.000
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección Moda y Accesorios -->
+        <h2 class="category-title">Moda y Accesorios</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Dafiti</h3>
+                <div class="montos">
+                    <strong>Montos Disponibles:</strong>
+                    $30.000, $50.000, $80.000, $100.000, $150.000, $200.000
+                </div>
+            </div>
+            <div class="card">
+                <h3>Totto</h3>
+                <div class="montos">
+                    <strong>Montos Disponibles:</strong>
+                    $20.000, $50.000, $70.000, $100.000, $180.000, $200.000, $300.000, $400.000, $500.000
+                </div>
+            </div>
+            <div class="card">
+                <h3>Nike / Decathlon</h3>
+                <div class="montos">
+                    <strong>Montos Disponibles:</strong>
+                    Desde $30.000 hasta $300.000
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección Entretenimiento y Suscripciones -->
+        <h2 class="category-title">Entretenimiento</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Netflix & Spotify</h3>
+                <div class="montos">
+                    <strong>Montos Disponibles:</strong>
+                    Netflix ($31.000), Spotify ($47.900)
+                </div>
+            </div>
+            <div class="card">
+                <h3>Cinemark</h3>
+                <div class="montos">
+                    <strong>Opciones Fijas:</strong>
+                    Boleto 2D ($19.000), Boleto 3D ($20.500), Combos desde $13.500
+                </div>
+            </div>
+            <div class="card">
+                <h3>DirecTV</h3>
+                <div class="montos">
+                    <strong>Montos Disponibles:</strong>
+                    $64.000
+                </div>
+            </div>
+        </div>
+
     </div>
 
-    <footer class="bg-slate-900 text-white border-t border-slate-800 mt-12 py-8 text-center text-xs text-slate-400 space-y-2">
-        <div class="flex items-center justify-center gap-2 text-base font-extrabold text-white">
-            <span class="text-apprecio-red font-black text-lg">Apprecio</span>
-        </div>
-        <p>© 2026 Catálogo Comercial Dinámico — Alimentado desde Google Sheets</p>
+    <footer>
+        <p>&copy; 2026 Catálogo Apprecio Colombia. Todos los derechos reservados.</p>
     </footer>
 
-    <script>
-        const SHEET_ID = "14w_8kJekDgHq6-YxBY1ZKo1XfoCuwd0dB9giCd7Q2rI";
-        const GID = "1041963400";
-        
-        const PRIMARY_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=${GID}`;
-        const SECONDARY_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&gid=${GID}`;
-
-        function cleanVal(val) {
-            if (!val) return "-";
-            const trimmed = val.trim();
-            if (trimmed.toUpperCase() === "N/A" || trimmed.toUpperCase() === "NA" || trimmed === "" || trimmed === "null" || trimmed === "undefined") {
-                return "-";
-            }
-            return trimmed;
-        }
-
-        const sampleCatalogue = [
-            {
-                id: 0,
-                comercio: "Éxito",
-                categoria: "Supermercados",
-                montos: "20 000, 50 000, 100 000, 200 000",
-                tiempoEntregaProveedor: "Inmediata",
-                cobroExtra: "No",
-                valorCobroExtra: "-",
-                tipoProducto: "Bono Digital",
-                redencionParcial: "Sí",
-                redencionTotal: "No",
-                instructivoUso: "Presentar código en caja.",
-                cobertura: "Nacional",
-                exclusionesRestricciones: "Aplica en todas las sedes Éxito."
-            },
-            {
-                id: 1,
-                comercio: "Falabella",
-                categoria: "Grandes Tiendas",
-                montos: "50 000, 100 000, 150 000, 200 000",
-                tiempoEntregaProveedor: "Inmediata",
-                cobroExtra: "No",
-                valorCobroExtra: "-",
-                tipoProducto: "Gift Card Virtual",
-                redencionParcial: "Sí",
-                redencionTotal: "No",
-                instructivoUso: "Presentar en tienda física o asesor WhatsApp.",
-                cobertura: "Nacional",
-                exclusionesRestricciones: "Válido en tiendas físicas y WhatsApp."
-            }
-        ];
-
-        let catalogueData = [...sampleCatalogue];
-
-        function findColIndex(headers, ...possibleKeywords) {
-            if (!headers || headers.length === 0) return -1;
-            for (const keyword of possibleKeywords) {
-                const targetKey = keyword.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
-                const index = headers.findIndex(h => {
-                    if (!h) return false;
-                    const cleanH = h.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
-                    return cleanH.includes(targetKey);
-                });
-                if (index !== -1) return index;
-            }
-            return -1;
-        }
-
-        function renderCards(items) {
-            const grid = document.getElementById('cards-grid');
-            const noResults = document.getElementById('no-results');
-            const countText = document.getElementById('total-comercios-count');
-            const filterText = document.getElementById('filter-status-text');
-
-            grid.innerHTML = '';
-
-            if (countText) countText.innerText = `${items ? items.length : 0} Marcas`;
-            if (filterText) filterText.innerText = `Mostrando ${items ? items.length : 0} comercios`;
-
-            if (!items || items.length === 0) {
-                noResults.classList.remove('hidden');
-                return;
-            } else {
-                noResults.classList.add('hidden');
-            }
-
-            items.forEach((item) => {
-                const card = document.createElement('div');
-                card.className = "bg-white rounded-2xl border border-slate-300 overflow-hidden card-shadow flex flex-col justify-between animate-fade-in group";
-
-                const montosClean = cleanVal(item.montos);
-                const redParcialClean = cleanVal(item.redencionParcial);
-                const redTotalClean = cleanVal(item.redencionTotal);
-                const cobroExtraClean = cleanVal(item.cobroExtra);
-                const valorCobroExtraClean = cleanVal(item.valorCobroExtra);
-
-                let cobroExtraDisplay = cobroExtraClean;
-                if (cobroExtraClean !== '-' && valorCobroExtraClean !== '-') {
-                    cobroExtraDisplay = `${cobroExtraClean} (${valorCobroExtraClean})`;
-                } else if (cobroExtraClean === '-' && valorCobroExtraClean !== '-') {
-                    cobroExtraDisplay = valorCobroExtraClean;
-                }
-
-                card.innerHTML = `
-                    <div>
-                        <div class="bg-slate-300 border-b border-slate-400 px-3.5 py-2.5 flex items-center gap-2">
-                            <span class="bg-apprecio-red text-white text-[10px] font-extrabold px-1.5 py-0.5 rounded shadow-sm shrink-0">
-                                App
-                            </span>
-                            <h4 class="text-sm font-black text-slate-900 truncate leading-snug tracking-tight" title="${item.comercio}">
-                                ${cleanVal(item.comercio)}
-                            </h4>
-                        </div>
-
-                        <div class="p-4 space-y-2 text-xs text-slate-800">
-                            <div class="flex justify-between items-start gap-2 py-1 border-b border-slate-100">
-                                <span class="font-bold text-slate-700 shrink-0">Montos:</span>
-                                <span class="font-extrabold text-slate-900 text-right truncate max-w-[150px]">${montosClean}</span>
-                            </div>
-                            <div class="flex justify-between items-center gap-2 py-1 border-b border-slate-100">
-                                <span class="font-semibold text-slate-700 shrink-0">Redención Parcial:</span>
-                                <span class="font-bold text-slate-900 text-right">${redParcialClean}</span>
-                            </div>
-                            <div class="flex justify-between items-center gap-2 py-1 border-b border-slate-100">
-                                <span class="font-semibold text-slate-700 shrink-0">Solo Redención Total:</span>
-                                <span class="font-bold text-slate-900 text-right">${redTotalClean}</span>
-                            </div>
-                            <div class="flex justify-between items-center gap-2 pt-1">
-                                <span class="font-semibold text-slate-700 shrink-0">Cobro Extra:</span>
-                                <span class="font-extrabold text-slate-900 text-right">${cobroExtraDisplay}</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="p-3 pt-1">
-                        <button onclick="openDetailModal(${item.id})" class="w-full py-2.5 px-4 rounded-xl bg-apprecio-red hover:bg-rose-600 text-white font-extrabold text-xs transition-all duration-200 flex items-center justify-between shadow-md hover:shadow-lg active:scale-95 group/btn">
-                            <span>Ver Ficha Completa</span>
-                            <i class="fa-solid fa-chevron-right text-[11px] group-hover/btn:translate-x-1.5 transition-transform"></i>
-                        </button>
-                    </div>
-                `;
-                grid.appendChild(card);
-            });
-        }
-
-        function openDetailModal(itemId) {
-            const item = catalogueData.find(c => c.id === itemId);
-            if (!item) return;
-
-            document.getElementById('modal-comercio').innerText = cleanVal(item.comercio);
-            document.getElementById('modal-categoria').innerText = cleanVal(item.categoria) !== '-' ? item.categoria : 'Gift Card Colombia';
-
-            document.getElementById('field-montos').innerText = cleanVal(item.montos);
-            document.getElementById('field-tipoProducto').innerText = cleanVal(item.tipoProducto);
-            document.getElementById('field-vigencia').innerText = cleanVal(item.vigencia);
-
-            document.getElementById('field-tiempoEntregaProveedor').innerText = cleanVal(item.tiempoEntregaProveedor);
-            
-            const cobroExtraClean = cleanVal(item.cobroExtra);
-            const valorCobroClean = cleanVal(item.valorCobroExtra);
-            let cobroExtraFormatted = cobroExtraClean;
-            if (cobroExtraClean !== '-' && valorCobroClean !== '-') {
-                cobroExtraFormatted = `${cobroExtraClean} (${valorCobroClean})`;
-            } else if (cobroExtraClean === '-' && valorCobroClean !== '-') {
-                cobroExtraFormatted = valorCobroClean;
-            }
-            document.getElementById('field-cobroExtra').innerText = cobroExtraFormatted;
-
-            document.getElementById('field-redencionParcial').innerText = cleanVal(item.redencionParcial);
-            document.getElementById('field-redencionTotal').innerText = cleanVal(item.redencionTotal);
-            document.getElementById('field-cobertura').innerText = cleanVal(item.cobertura);
-
-            document.getElementById('field-instructivoUso').innerText = cleanVal(item.instructivoUso);
-            document.getElementById('field-exclusionesRestricciones').innerText = cleanVal(item.exclusionesRestricciones);
-
-            document.getElementById('detail-modal').classList.remove('hidden');
-        }
-
-        async function fetchGoogleSheetCsv(isBackground = false) {
-            try {
-                if (!isBackground) updateStatusBadge("Consultando datos...", false);
-                const cacheBuster = "&_t=" + new Date().getTime();
-                
-                let res = await fetch(PRIMARY_URL + cacheBuster);
-                if (!res.ok) {
-                    res = await fetch(SECONDARY_URL + cacheBuster);
-                }
-                
-                if (!res.ok) throw new Error("Error al conectar con Google Sheets");
-                const csvText = await res.text();
-                
-                const rows = parseCSV(csvText);
-
-                if (rows.length > 1) {
-                    const headers = rows[0];
-
-                    const mapCol = {
-                        comercio: findColIndex(headers, "comercio", "nombre comercio"),
-                        categoria: findColIndex(headers, "categoria", "rubro"),
-                        montos: findColIndex(headers, "montos", "monto", "valores"),
-                        tiempoEntregaProveedor: findColIndex(headers, "tiempo de entrega", "tiempo entrega", "entrega proveedor"),
-                        cobroExtra: findColIndex(headers, "cobro extra", "¿cobro extra?"),
-                        valorCobroExtra: findColIndex(headers, "valor cobro extra", "valor cobro"),
-                        tipoProducto: findColIndex(headers, "tipo de producto", "tipo producto"),
-                        redencionParcial: findColIndex(headers, "permite redencion parcial", "redencion parcial", "permite redencion"),
-                        redencionTotal: findColIndex(headers, "solo redencion total", "redencion total", "solo redencion"),
-                        instructivoUso: findColIndex(headers, "instructivo de uso", "instructivo"),
-                        cobertura: findColIndex(headers, "cobertura"),
-                        exclusionesRestricciones: findColIndex(headers, "exclusiones o restricciones", "exclusiones"),
-                        vigencia: findColIndex(headers, "vigencia")
-                    };
-
-                    const getVal = (cols, colIdx, fallbackIdx) => {
-                        const targetIdx = (colIdx !== -1) ? colIdx : fallbackIdx;
-                        return (targetIdx !== undefined && targetIdx >= 0 && cols[targetIdx] !== undefined) ? cleanVal(cols[targetIdx]) : "-";
-                    };
-
-                    const parsedData = [];
-                    let itemCounter = 0;
-                    
-                    for (let i = 1; i < rows.length; i++) {
-                        const cols = rows[i];
-                        const commerceName = getVal(cols, mapCol.comercio, 0);
-                        if (cols && commerceName !== '-' && commerceName.toUpperCase() !== 'COMERCIO') {
-                            parsedData.push({
-                                id: itemCounter++,
-                                comercio: commerceName,
-                                categoria: getVal(cols, mapCol.categoria, 1),
-                                montos: getVal(cols, mapCol.montos, 2),
-                                tiempoEntregaProveedor: getVal(cols, mapCol.tiempoEntregaProveedor, 4),
-                                cobroExtra: getVal(cols, mapCol.cobroExtra, 5),
-                                valorCobroExtra: getVal(cols, mapCol.valorCobroExtra, 6),
-                                tipoProducto: getVal(cols, mapCol.tipoProducto, 7),
-                                redencionParcial: getVal(cols, mapCol.redencionParcial, 8),
-                                redencionTotal: getVal(cols, mapCol.redencionTotal, 9),
-                                instructivoUso: getVal(cols, mapCol.instructivoUso, 14),
-                                cobertura: getVal(cols, mapCol.cobertura, 16),
-                                exclusionesRestricciones: getVal(cols, mapCol.exclusionesRestricciones, 17),
-                                vigencia: getVal(cols, mapCol.vigencia, 23)
-                            });
-                        }
-                    }
-
-                    if (parsedData.length > 0) {
-                        catalogueData = parsedData;
-                        handleSearch();
-                        updateStatusBadge(`Sincronizado (${parsedData.length} comercios)`, true);
-                    }
-                }
-            } catch (err) {
-                console.warn("Error al descargar desde Google Sheets:", err);
-                updateStatusBadge("Sincronizado", true);
-            }
-        }
-
-        function updateStatusBadge(msg, success) {
-            const badge = document.getElementById('sync-status-badge');
-            const text = document.getElementById('sync-text');
-            if (text) text.innerText = msg;
-            if (badge) {
-                if (success) {
-                    badge.className = "inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold bg-slate-800 text-white border border-slate-700";
-                } else {
-                    badge.className = "inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold bg-amber-500 text-slate-950 border border-amber-400";
-                }
-            }
-        }
-
-        function handleSearch() {
-            const query = (document.getElementById('search-input')?.value || '').toLowerCase().trim();
-            
-            const filtered = catalogueData.filter(item => {
-                if (!query) return true;
-                const searchPool = [
-                    item.comercio,
-                    item.categoria,
-                    item.montos,
-                    item.tipoProducto
-                ].map(v => (v || '').toLowerCase()).join(' ');
-
-                return searchPool.includes(query);
-            });
-
-            renderCards(filtered);
-        }
-
-        function closeDetailModal() {
-            document.getElementById('detail-modal').classList.add('hidden');
-        }
-
-        function refreshDataManual() {
-            const icon = document.getElementById('refresh-icon');
-            if (icon) icon.classList.add('fa-spin');
-            
-            fetchGoogleSheetCsv().finally(() => {
-                if (icon) icon.classList.remove('fa-spin');
-            });
-        }
-
-        function parseCSV(text) {
-            const lines = [];
-            let row = [];
-            let inQuotes = false;
-            let current = '';
-
-            for (let i = 0; i < text.length; i++) {
-                const char = text[i];
-                const nextChar = text[i + 1];
-
-                if (char === '"') {
-                    if (inQuotes && nextChar === '"') {
-                        current += '"';
-                        i++;
-                    } else {
-                        inQuotes = !inQuotes;
-                    }
-                } else if (char === ',' && !inQuotes) {
-                    row.push(current);
-                    current = '';
-                } else if ((char === '\r' || char === '\n') && !inQuotes) {
-                    if (char === '\r' && nextChar === '\n') i++;
-                    row.push(current);
-                    lines.push(row);
-                    row = [];
-                    current = '';
-                } else {
-                    current += char;
-                }
-            }
-            if (current || row.length > 0) {
-                row.push(current);
-                lines.push(row);
-            }
-            return lines;
-        }
-
-        // Initialize Apprecio Catalog on DOM load
-        window.addEventListener('DOMContentLoaded', () => {
-            handleSearch();
-            fetchGoogleSheetCsv(true);
-        });
-    </script>
 </body>
 </html>
