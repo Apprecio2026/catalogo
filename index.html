@@ -78,8 +78,9 @@
     <header class="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <div class="h-11 px-4 rounded-2xl bg-slate-950 flex items-center justify-center text-white font-extrabold text-xl shadow-md tracking-wider">
-                    <span><span class="text-[#fa335e]">A</span>pprecio</span>
+                <!-- Esquina Izquierda: Fondo Rojo con Tipografía Blanca -->
+                <div class="h-11 px-4 rounded-2xl bg-[#fa335e] flex items-center justify-center text-white font-extrabold text-xl shadow-md tracking-wider">
+                    <span class="text-white">Apprecio</span>
                 </div>
                 <div class="hidden sm:block border-l border-slate-200 h-8 mx-1"></div>
                 <div class="hidden sm:block">
@@ -91,10 +92,10 @@
             </div>
 
             <div class="flex items-center gap-3">
-                <!-- Botón Sincronizar en Rojo Apprecio -->
+                <!-- Botón Sincronizar -->
                 <button onclick="refreshDataManual()" id="btn-refresh" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#fa335e] hover:bg-[#d81e46] text-white text-xs font-bold transition-all shadow-md active:scale-95">
-                    <i class="fa-solid fa-rotate-right" id="refresh-icon"></i>
-                    <span>Sincronizar <span class="text-[#fa335e]">Apprecio</span></span>
+                    <i class="fa-solid fa-rotate-right text-white" id="refresh-icon"></i>
+                    <span class="text-white">Sincronizar Apprecio</span>
                 </button>
                 <span id="sync-status-badge" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold bg-apprecio-light text-[#fa335e] border border-apprecio-light">
                     <span class="w-2 h-2 rounded-full bg-[#fa335e] animate-pulse"></span>
@@ -116,7 +117,7 @@
                 <div class="max-w-xl space-y-4">
                     <div class="flex items-center gap-2">
                         <span class="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest font-extrabold px-3.5 py-1 rounded-full bg-white text-[#fa335e] shadow-sm">
-                            <i class="fa-solid fa-gift text-[#fa335e]"></i> Catálogo <span class="text-[#fa335e]">Apprecio</span>
+                            <i class="fa-solid fa-gift text-[#fa335e]"></i> Catálogo Apprecio
                         </span>
                     </div>
                     <h2 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight text-white">
@@ -183,7 +184,7 @@
     <!-- Footer Apprecio Style -->
     <footer class="bg-white border-t border-slate-200 mt-12 py-8 text-center text-xs text-slate-500 space-y-2">
         <div class="flex items-center justify-center gap-2 text-base font-extrabold text-slate-900">
-            <span class="font-black text-lg"><span class="text-[#fa335e]">A</span>pprecio</span>
+            <span class="font-black text-lg text-[#fa335e]">Apprecio</span>
         </div>
         <p>© 2026 Catálogo Comercial Dinámico — Alimentado desde Google Sheets</p>
     </footer>
@@ -375,7 +376,7 @@
                     img.parentElement.innerHTML = `
                         <div class="w-full h-full flex flex-col items-center justify-center p-6 text-center bg-white/10 backdrop-blur-sm">
                             <i class="fa-solid fa-gift text-5xl text-white mb-2 animate-bounce"></i>
-                            <span class="text-sm font-extrabold text-white tracking-wide"><span class="text-[#fa335e]">A</span>pprecio Gift Cards</span>
+                            <span class="text-sm font-extrabold text-white tracking-wide">Apprecio Gift Cards</span>
                             <span class="text-[11px] text-white/80 mt-1">Catálogo Digital Colombia</span>
                         </div>
                     `;
@@ -490,7 +491,7 @@
                                 ${cleanVal(item.categoria) !== '-' ? item.categoria : 'Gift Card'}
                             </span>
                             <span class="text-[10px] font-bold text-white/90 bg-black/30 px-2 py-0.5 rounded-full flex items-center gap-1">
-                                <i class="fa-solid fa-bolt text-[9px]"></i> <span class="text-[#fa335e]">A</span>pprecio
+                                <i class="fa-solid fa-bolt text-[9px]"></i> Apprecio
                             </span>
                         </div>
 
@@ -528,11 +529,11 @@
                         </div>
                     </div>
 
-                    <!-- Botón "Ver Ficha Completa Apprecio" en Rojo Sólido -->
+                    <!-- Botón "Ver Ficha Completa" Uniforme con Fondo Rojo Sólido y Texto Blanco -->
                     <div class="p-5 pt-0">
                         <button onclick="openDetailModal(${item.id})" class="w-full py-2.5 px-3 rounded-xl bg-[#fa335e] hover:bg-[#d81e46] text-white text-xs font-bold transition-all flex items-center justify-center gap-1.5 group shadow-md hover:shadow-lg active:scale-95">
-                            <span>Ver Ficha Completa <span class="text-[#fa335e]">Apprecio</span></span>
-                            <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
+                            <span class="text-white">Ver Ficha Completa</span>
+                            <i class="fa-solid fa-arrow-right text-[10px] text-white group-hover:translate-x-1 transition-transform"></i>
                         </button>
                     </div>
                 `;
