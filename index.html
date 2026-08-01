@@ -25,7 +25,7 @@
     <meta name="twitter:image" content="banner-apprecio.png.png">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%230f172a%22/><text y=%22.9em%22 x=%2222%22 font-size=%2265%22 font-weight=%22bold%22 fill=%22white%22>A</text></svg>">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23fa335e%22/><text y=%22.9em%22 x=%2222%22 font-size=%2265%22 font-weight=%22bold%22 fill=%22white%22>A</text></svg>">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -36,8 +36,9 @@
     
     <style>
         :root {
-            --apprecio-dark: #0f172a;
-            --apprecio-gray-header: #334155;
+            --apprecio-red: #fa335e;
+            --apprecio-red-dark: #d81e46;
+            --apprecio-gray-header: #1e293b;
             --apprecio-gray-light: #f8fafc;
             --apprecio-border: #e2e8f0;
         }
@@ -46,7 +47,7 @@
             background-color: #FAFAFA;
             color: #0F172A;
         }
-        .bg-apprecio-dark { background-color: var(--apprecio-dark); }
+        .bg-apprecio-red { background-color: var(--apprecio-red); }
         .bg-card-header { background-color: var(--apprecio-gray-header); }
         .glass-card-white {
             background: #FFFFFF;
@@ -66,7 +67,7 @@
         }
         ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: #FAFAFA; }
-        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb { background: #fa335e; border-radius: 4px; }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col antialiased">
@@ -103,22 +104,22 @@
     <!-- Main Content -->
     <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
 
-        <!-- Banner Hero Section (Gris Oscuro Sobrio) -->
-        <section class="bg-slate-900 rounded-3xl p-6 sm:p-10 text-white shadow-xl relative overflow-hidden">
-            <div class="absolute -right-12 -bottom-12 w-80 h-80 bg-white/5 rounded-full blur-2xl pointer-events-none"></div>
+        <!-- Banner Hero Section (Rojo Apprecio) -->
+        <section class="bg-[#fa335e] rounded-3xl p-6 sm:p-10 text-white shadow-xl relative overflow-hidden">
+            <div class="absolute -right-12 -bottom-12 w-80 h-80 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
             <div class="absolute right-1/4 -top-12 w-64 h-64 bg-white/5 rounded-full blur-2xl pointer-events-none"></div>
             
             <div class="flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
                 <div class="max-w-xl space-y-4">
                     <div class="flex items-center gap-2">
-                        <span class="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest font-extrabold px-3.5 py-1 rounded-full bg-white text-slate-950 shadow-sm">
-                            <i class="fa-solid fa-gift text-slate-950"></i> Catálogo Apprecio
+                        <span class="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest font-extrabold px-3.5 py-1 rounded-full bg-white text-[#fa335e] shadow-sm">
+                            <i class="fa-solid fa-gift text-[#fa335e]"></i> Catálogo Apprecio
                         </span>
                     </div>
                     <h2 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight text-white">
                         Catálogo de<br>Gift Cards Colombia
                     </h2>
-                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed font-semibold">
+                    <p class="text-white/95 text-sm sm:text-base leading-relaxed font-semibold">
                         Un gran programa de reconocimientos donde<br class="hidden sm:inline"> canjeas puntos por gift cards y cupones digitales
                     </p>
                 </div>
