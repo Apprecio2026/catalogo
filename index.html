@@ -56,10 +56,11 @@
             background: #FFFFFF;
             border: 1px solid #E2E8F0;
             box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .glass-card-white:hover {
             border-color: #0F172A;
-            box-shadow: 0 12px 28px -4px rgba(15, 23, 42, 0.15);
+            box-shadow: 0 20px 35px -10px rgba(15, 23, 42, 0.18), 0 0 15px rgba(250, 51, 94, 0.12);
         }
         .animate-fade-in {
             animation: fadeIn 0.25s ease-out forwards;
@@ -458,7 +459,7 @@
 
             items.forEach((item) => {
                 const card = document.createElement('div');
-                card.className = "glass-card-white rounded-2xl overflow-hidden transition-all duration-300 flex flex-col justify-between animate-fade-in group hover:-translate-y-1";
+                card.className = "glass-card-white rounded-2xl overflow-hidden transition-all duration-500 flex flex-col justify-between animate-fade-in group hover:-translate-y-2 relative";
                 
                 let iconClass = "fa-gift";
                 const catLower = (item.categoria || '').toLowerCase();
@@ -469,8 +470,8 @@
                 else if (catLower.includes('entretenimiento') || catLower.includes('direct')) { iconClass = "fa-tv"; }
 
                 const logoHtml = (item.imagenUrl && item.imagenUrl.trim() !== '') ? 
-                    `<img src="${item.imagenUrl}" alt="${item.comercio}" class="w-full h-full object-contain p-0.5 bg-white rounded-xl shadow-2xl" onerror="handleLogoError(this, '${iconClass}')">` : 
-                    `<div class="w-full h-full flex items-center justify-center bg-slate-100 rounded-xl border border-slate-200"><i class="fa-solid ${iconClass} text-slate-800 text-lg"></i></div>`;
+                    `<img src="${item.imagenUrl}" alt="${item.comercio}" class="w-full h-full object-contain p-0.5 bg-white rounded-xl shadow-2xl group-hover:scale-110 transition-transform duration-500 ease-out" onerror="handleLogoError(this, '${iconClass}')">` : 
+                    `<div class="w-full h-full flex items-center justify-center bg-slate-100 rounded-xl border border-slate-200 group-hover:scale-110 transition-transform duration-500 ease-out"><i class="fa-solid ${iconClass} text-slate-800 group-hover:text-apprecio-red text-lg transition-colors duration-300"></i></div>`;
 
                 const montosClean = cleanVal(item.montos);
                 const redParcialClean = cleanVal(item.redencionParcial);
@@ -488,23 +489,24 @@
                 card.innerHTML = `
                     <div>
                         <!-- Header Banner - Dark Charcoal Header with Red Accent Badge -->
-                        <div class="h-14 w-full bg-slate-950 border-b border-slate-800 p-3.5 flex items-center justify-between text-white relative">
-                            <span class="px-2.5 py-1 rounded-md text-[10px] font-black uppercase tracking-wider bg-apprecio-red text-white shadow-sm truncate max-w-[170px]">
+                        <div class="h-14 w-full bg-slate-950 border-b border-slate-800 p-3.5 flex items-center justify-between text-white relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-r from-apprecio-red/0 via-apprecio-red/10 to-apprecio-red/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                            <span class="px-2.5 py-1 rounded-md text-[10px] font-black uppercase tracking-wider bg-apprecio-red text-white shadow-sm truncate max-w-[170px] group-hover:scale-105 transition-transform duration-300">
                                 ${cleanVal(item.categoria) !== '-' ? item.categoria : 'Gift Card'}
                             </span>
                             <span class="text-[10px] font-bold text-slate-300 bg-slate-900 px-2.5 py-1 rounded-md border border-slate-800 flex items-center gap-1.5">
-                                <span class="w-1.5 h-1.5 rounded-full bg-apprecio-red"></span> Apprecio
+                                <span class="w-1.5 h-1.5 rounded-full bg-apprecio-red group-hover:animate-ping"></span> Apprecio
                             </span>
                         </div>
 
                         <!-- Commerce Header with Logo/Card Image directly beside Name -->
                         <div class="p-5 space-y-4">
                             <div class="flex items-center gap-3.5">
-                                <div class="w-16 h-12 rounded-xl shrink-0 bg-white border border-slate-200 flex items-center justify-center shadow-sm overflow-hidden p-0.5 group-hover:scale-105 transition-transform">
+                                <div class="w-16 h-12 rounded-xl shrink-0 bg-white border border-slate-200 flex items-center justify-center shadow-sm overflow-hidden p-0.5 group-hover:border-slate-800 transition-colors duration-300">
                                     ${logoHtml}
                                 </div>
                                 <div class="min-w-0 flex-1">
-                                    <h4 class="text-base font-black text-slate-900 leading-snug truncate" title="${item.comercio}">${cleanVal(item.comercio)}</h4>
+                                    <h4 class="text-base font-black text-slate-900 leading-snug truncate group-hover:text-apprecio-red transition-colors duration-300" title="${item.comercio}">${cleanVal(item.comercio)}</h4>
                                     <p class="text-xs text-apprecio-red font-bold mt-0.5 truncate">${cleanVal(item.tipoProducto)}</p>
                                 </div>
                             </div>
@@ -532,9 +534,9 @@
                     </div>
 
                     <div class="p-5 pt-0">
-                        <button onclick="openDetailModal(${item.id})" class="w-full py-2.5 px-3 rounded-xl bg-slate-950 hover:bg-apprecio-red text-white border border-slate-900 text-xs font-bold transition-all flex items-center justify-center gap-1.5 group shadow-sm">
+                        <button onclick="openDetailModal(${item.id})" class="w-full py-2.5 px-3 rounded-xl bg-slate-950 hover:bg-apprecio-red text-white border border-slate-900 text-xs font-bold transition-all duration-300 flex items-center justify-center gap-1.5 group/btn shadow-sm active:scale-95">
                             <span>Ver Ficha Completa</span>
-                            <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
+                            <i class="fa-solid fa-arrow-right text-[10px] group-hover/btn:translate-x-1.5 transition-transform duration-300"></i>
                         </button>
                     </div>
                 `;
