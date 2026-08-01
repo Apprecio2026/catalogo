@@ -25,7 +25,7 @@
     <meta name="twitter:image" content="banner-apprecio.png.png">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%235e5e5e%22/><text y=%22.9em%22 x=%2222%22 font-size=%2265%22 font-weight=%22bold%22 fill=%22white%22>A</text></svg>">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%230f172a%22/><text y=%22.9em%22 x=%2222%22 font-size=%2265%22 font-weight=%22bold%22 fill=%22white%22>A</text></svg>">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -36,29 +36,25 @@
     
     <style>
         :root {
-            --apprecio-red: #fa335e;
-            --apprecio-red-dark: #d81e46;
-            --apprecio-red-light: #f8fafc;
-            --apprecio-red-border: #e2e8f0;
-            --card-header-gray: #5e5e5e;
+            --apprecio-dark: #0f172a;
+            --apprecio-gray-header: #334155;
+            --apprecio-gray-light: #f8fafc;
+            --apprecio-border: #e2e8f0;
         }
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
             background-color: #FAFAFA;
             color: #0F172A;
         }
-        .bg-apprecio-red { background-color: var(--apprecio-red); }
-        .bg-card-header { background-color: var(--card-header-gray); }
-        .bg-apprecio-light { background-color: var(--apprecio-red-light); }
-        .text-apprecio-dark { color: #0F172A; }
-        .border-apprecio-light { border-color: var(--apprecio-red-border); }
+        .bg-apprecio-dark { background-color: var(--apprecio-dark); }
+        .bg-card-header { background-color: var(--apprecio-gray-header); }
         .glass-card-white {
             background: #FFFFFF;
             border: 1px solid #E2E8F0;
             box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
         }
         .glass-card-white:hover {
-            border-color: #94A3B8;
+            border-color: #64748B;
             box-shadow: 0 12px 28px -4px rgba(0, 0, 0, 0.12);
         }
         .animate-fade-in {
@@ -70,7 +66,7 @@
         }
         ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: #FAFAFA; }
-        ::-webkit-scrollbar-thumb { background: #5e5e5e; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col antialiased">
@@ -107,8 +103,8 @@
     <!-- Main Content -->
     <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
 
-        <!-- Banner Hero Section -->
-        <section class="bg-slate-950 rounded-3xl p-6 sm:p-10 text-white shadow-xl relative overflow-hidden">
+        <!-- Banner Hero Section (Gris Oscuro Sobrio) -->
+        <section class="bg-slate-900 rounded-3xl p-6 sm:p-10 text-white shadow-xl relative overflow-hidden">
             <div class="absolute -right-12 -bottom-12 w-80 h-80 bg-white/5 rounded-full blur-2xl pointer-events-none"></div>
             <div class="absolute right-1/4 -top-12 w-64 h-64 bg-white/5 rounded-full blur-2xl pointer-events-none"></div>
             
@@ -165,9 +161,9 @@
                 </div>
             </div>
 
-            <!-- Cards Container Grid - Maintained strictly in Sheet Row Order -->
+            <!-- Cards Container Grid -->
             <div id="cards-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                <!-- Dynamic commerce cards loaded in exact sheet row order -->
+                <!-- Tarjetas cargadas dinámicamente -->
             </div>
 
             <!-- Empty State -->
@@ -192,7 +188,7 @@
     <div id="detail-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div class="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] flex flex-col shadow-2xl border border-slate-200 overflow-hidden animate-fade-in">
             
-            <!-- Modal Header Slate 950 Style -->
+            <!-- Modal Header Slate 950 -->
             <div class="p-6 bg-slate-950 text-white flex items-center justify-between shrink-0 shadow-md">
                 <div class="flex items-center gap-4 min-w-0">
                     <div id="modal-icon-bg" class="w-16 h-12 rounded-xl bg-white border border-white/40 flex items-center justify-center shadow-md overflow-hidden shrink-0 p-1">
@@ -211,7 +207,7 @@
                 </button>
             </div>
 
-            <!-- Modal Content - Logical Groupings -->
+            <!-- Modal Content -->
             <div class="p-6 overflow-y-auto space-y-6 text-slate-700 text-sm flex-grow">
 
                 <!-- SECTION 1: Detalles de la Gift Card y Oferta -->
@@ -427,7 +423,6 @@
         let catalogueData = [...sampleCatalogue];
         let currentCategory = 'todos';
 
-        // Helper function to dynamically find column indices by header titles
         function findColIndex(headers, ...possibleKeywords) {
             if (!headers || headers.length === 0) return -1;
             for (const keyword of possibleKeywords) {
@@ -476,7 +471,6 @@
                 const cobroExtraClean = cleanVal(item.cobroExtra);
                 const valorCobroExtraClean = cleanVal(item.valorCobroExtra);
 
-                // Combine ¿Cobro Extra? SI/NO and its extra value if applicable
                 let cobroExtraDisplay = cobroExtraClean;
                 if (cobroExtraClean !== '-' && valorCobroExtraClean !== '-') {
                     cobroExtraDisplay = `${cobroExtraClean} (${valorCobroExtraClean})`;
@@ -486,17 +480,17 @@
 
                 card.innerHTML = `
                     <div>
-                        <!-- Header Banner en Gris Oscuro 5e5e5e -->
-                        <div class="h-14 w-full bg-[#5e5e5e] p-3.5 flex items-center justify-between text-white relative">
+                        <!-- Header Banner en Gris Oscuro Sobrio -->
+                        <div class="h-14 w-full bg-slate-800 p-3.5 flex items-center justify-between text-white relative">
                             <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-white text-slate-900 shadow-sm truncate max-w-[170px]">
                                 ${cleanVal(item.categoria) !== '-' ? item.categoria : 'Gift Card'}
                             </span>
-                            <span class="text-[10px] font-bold text-white/90 bg-black/20 px-2 py-0.5 rounded-full flex items-center gap-1">
+                            <span class="text-[10px] font-bold text-white/90 bg-black/30 px-2 py-0.5 rounded-full flex items-center gap-1">
                                 <i class="fa-solid fa-bolt text-[9px]"></i> Apprecio
                             </span>
                         </div>
 
-                        <!-- Commerce Header with Logo/Card Image directly beside Name -->
+                        <!-- Commerce Header -->
                         <div class="p-5 space-y-4">
                             <div class="flex items-center gap-3.5">
                                 <div class="w-16 h-12 rounded-xl shrink-0 bg-white border border-slate-200 flex items-center justify-center shadow-sm overflow-hidden p-0.5 group-hover:scale-105 transition-transform">
@@ -504,11 +498,11 @@
                                 </div>
                                 <div class="min-w-0 flex-1">
                                     <h4 class="text-base font-black text-slate-900 leading-snug truncate" title="${item.comercio}">${cleanVal(item.comercio)}</h4>
-                                    <p class="text-xs text-slate-900 font-bold mt-0.5 truncate">${cleanVal(item.tipoProducto)}</p>
+                                    <p class="text-xs text-slate-700 font-bold mt-0.5 truncate">${cleanVal(item.tipoProducto)}</p>
                                 </div>
                             </div>
 
-                            <!-- Summary Box displaying exact requested fields -->
+                            <!-- Summary Box -->
                             <div class="space-y-2 pt-3 border-t border-slate-100 text-xs">
                                 <div class="flex justify-between items-start text-slate-700 gap-2">
                                     <span class="text-slate-500 font-medium shrink-0">Montos:</span>
@@ -530,9 +524,10 @@
                         </div>
                     </div>
 
+                    <!-- Botón Abajo con A mayúscula en Apprecio -->
                     <div class="p-5 pt-0">
                         <button onclick="openDetailModal(${item.id})" class="w-full py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-slate-950 hover:text-white text-slate-900 border border-slate-200 text-xs font-bold transition-all flex items-center justify-center gap-1.5 group shadow-sm">
-                            <span>Ver Ficha Completa</span>
+                            <span>Ver Ficha Completa Apprecio</span>
                             <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
                         </button>
                     </div>
@@ -560,18 +555,15 @@
                 modalIconBg.innerHTML = `<i class="fa-solid ${iconClass} text-xl text-slate-900"></i>`;
             }
 
-            // Top Commerce Name
             document.getElementById('modal-comercio').innerText = cleanVal(item.comercio);
             document.getElementById('modal-categoria').innerText = cleanVal(item.categoria) !== '-' ? item.categoria : 'Gift Card';
             document.getElementById('modal-tipo-prod-badge').innerText = cleanVal(item.tipoProducto) !== '-' ? item.tipoProducto : 'Producto Digital';
 
-            // Section 1: General & Offer Details
             document.getElementById('field-montos').innerText = cleanVal(item.montos);
             document.getElementById('field-tipoProducto').innerText = cleanVal(item.tipoProducto);
             document.getElementById('field-vigencia').innerText = cleanVal(item.vigencia);
             document.getElementById('field-beneficiosExtra').innerText = cleanVal(item.beneficiosExtra);
 
-            // Section 2: Delivery & Activation
             document.getElementById('field-tiempoEntregaProveedor').innerText = cleanVal(item.tiempoEntregaProveedor);
             document.getElementById('field-activacionInmediata').innerText = cleanVal(item.activacionInmediata);
             document.getElementById('field-tiempoActivacion').innerText = cleanVal(item.tiempoActivacion);
@@ -586,7 +578,6 @@
             }
             document.getElementById('field-cobroExtra').innerText = cobroExtraFormatted;
 
-            // Section 3: Redemption Conditions
             document.getElementById('field-tipoRedencion').innerText = cleanVal(item.tipoRedencion);
             document.getElementById('field-otroTipoRedencion').innerText = cleanVal(item.otroTipoRedencion);
             document.getElementById('field-redencionParcial').innerText = cleanVal(item.redencionParcial);
@@ -595,7 +586,6 @@
             document.getElementById('field-acumulablePromociones').innerText = cleanVal(item.acumulablePromociones);
             document.getElementById('field-cobertura').innerText = cleanVal(item.cobertura);
 
-            // Section 4: Instructions, Restrictions & Support
             document.getElementById('field-instructivoUso').innerText = cleanVal(item.instructivoUso);
             document.getElementById('field-aplicaTodosProductos').innerText = cleanVal(item.aplicaTodosProductos);
             document.getElementById('field-productosExcluidos').innerText = cleanVal(item.productosExcluidos);
@@ -623,7 +613,6 @@
                 if (rows.length > 1) {
                     const headers = rows[0];
 
-                    // Dynamic column index lookup by column title keywords
                     const mapCol = {
                         comercio: findColIndex(headers, "comercio"),
                         categoria: findColIndex(headers, "categoria"),
@@ -659,11 +648,9 @@
                     const parsedData = [];
                     let itemCounter = 0;
                     
-                    // Iterate strictly in Sheet Row order (Row 1 to Row N)
                     for (let i = 1; i < rows.length; i++) {
                         const cols = rows[i];
                         
-                        // Check valid commerce row and skip repeated header rows
                         const commerceName = getVal(cols, mapCol.comercio, 0);
                         if (cols && commerceName !== '-' && commerceName.toUpperCase() !== 'COMERCIO') {
                             parsedData.push({
@@ -697,7 +684,6 @@
                     }
 
                     if (parsedData.length > 0) {
-                        // Strict row order preserved directly from Google Sheet
                         catalogueData = parsedData;
                         applyFilters();
                         updateStatusBadge(`Sincronizado (${parsedData.length} comercios)`, true);
@@ -808,7 +794,7 @@
         window.addEventListener('DOMContentLoaded', () => {
             fetchGoogleSheetCsv();
 
-            // Auto sync every 60 seconds
+            // Auto sync cada 60 segundos
             setInterval(() => {
                 fetchGoogleSheetCsv(true);
             }, 60000);
