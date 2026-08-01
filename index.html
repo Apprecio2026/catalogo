@@ -66,23 +66,24 @@
 </head>
 <body class="bg-slate-300 text-slate-900 min-h-screen flex flex-col antialiased">
 
-    <header class="sticky top-0 z-40 bg-apprecio-red text-white shadow-md border-b border-rose-600">
+    <!-- Header Principal en Negro para Diversidad Visual -->
+    <header class="sticky top-0 z-40 bg-slate-900 text-white shadow-lg border-b border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <div class="h-10 px-4 rounded-xl bg-slate-800 flex items-center justify-center text-white font-extrabold text-xl shadow-md border border-slate-700 tracking-wider">
+                <div class="h-10 px-4 rounded-xl bg-apprecio-red flex items-center justify-center text-white font-extrabold text-xl shadow-md border border-rose-500 tracking-wider">
                     <span>Apprecio</span>
                 </div>
-                <div class="hidden sm:block border-l border-white/20 h-7 mx-1"></div>
+                <div class="hidden sm:block border-l border-slate-700 h-7 mx-1"></div>
                 <div class="hidden sm:block">
                     <h1 class="text-sm font-extrabold text-white leading-tight">Catálogo de Gift Cards Colombia</h1>
-                    <p class="text-[11px] text-white/90 font-medium flex items-center gap-1.5">
+                    <p class="text-[11px] text-slate-300 font-medium flex items-center gap-1.5">
                         <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Sincronizado en Vivo con Google Sheets
                     </p>
                 </div>
             </div>
 
             <div class="flex items-center gap-2.5">
-                <button onclick="refreshDataManual()" id="btn-refresh" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl border border-white/20 bg-slate-800 text-white text-xs font-bold hover:bg-slate-900 transition-all shadow-sm active:scale-95">
+                <button onclick="refreshDataManual()" id="btn-refresh" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl border border-slate-700 bg-slate-800 text-white text-xs font-bold hover:bg-slate-700 transition-all shadow-sm active:scale-95">
                     <i class="fa-solid fa-rotate-right" id="refresh-icon"></i>
                     <span class="hidden sm:inline">Sincronizar</span>
                 </button>
@@ -96,9 +97,12 @@
 
     <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
 
+        <!-- Hero Banner con Tarjetas Restauradas -->
         <section class="bg-slate-200 rounded-3xl p-6 sm:p-8 text-slate-900 shadow-sm relative overflow-hidden border border-slate-400/80">
-            <div class="flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
-                <div class="max-w-xl space-y-3 text-center md:text-left">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-6 relative z-10">
+                
+                <!-- Columna Izquierda: Títulos y Descripción -->
+                <div class="max-w-xl space-y-3 text-center lg:text-left">
                     <div class="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1 rounded-lg bg-white text-slate-800 border border-slate-300 shadow-sm">
                         <i class="fa-solid fa-gift text-apprecio-red"></i> Catálogo Apprecio
                     </div>
@@ -110,33 +114,37 @@
                     </p>
                 </div>
 
-                <!-- Banner Feature Graphic Vector & Counter -->
-                <div class="w-full md:w-auto flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <div class="relative bg-gradient-to-br from-slate-800 to-slate-900 p-4 rounded-2xl border border-slate-700 text-white shadow-md flex items-center gap-3.5 max-w-xs">
-                        <div class="w-11 h-11 rounded-xl bg-apprecio-red text-white flex items-center justify-center text-xl font-black shadow-md shrink-0">
+                <!-- Columna Derecha: Tarjetas de Información del Banner (Restauradas) -->
+                <div class="w-full lg:w-auto flex flex-col sm:flex-row items-center justify-center gap-4">
+                    
+                    <!-- Tarjeta 1: Gift Cards Digitales -->
+                    <div class="bg-white p-4 rounded-2xl border border-slate-300 shadow-sm flex items-center gap-3.5 w-full sm:w-auto min-w-[210px]">
+                        <div class="w-12 h-12 rounded-2xl bg-apprecio-red text-white flex items-center justify-center text-xl font-black shadow-md shrink-0">
                             <i class="fa-solid fa-credit-card"></i>
                         </div>
                         <div class="text-left space-y-0.5">
-                            <span class="block text-xs font-extrabold text-white">Gift Cards Digitales</span>
-                            <span class="block text-[11px] font-medium text-slate-300">Canje Inmediato y Seguro</span>
-                            <span class="inline-block text-[9px] font-bold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">100% Cobertura</span>
+                            <span class="block text-sm font-extrabold text-slate-900 leading-snug">Gift Cards Digitales</span>
+                            <span class="block text-xs font-medium text-slate-500">Canje Inmediato</span>
                         </div>
                     </div>
 
-                    <div class="bg-white p-4 rounded-2xl border border-slate-300 shadow-sm flex items-center gap-3 min-w-[170px]">
-                        <div class="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center text-apprecio-red font-black text-xl border border-slate-300">
+                    <!-- Tarjeta 2: Total Comercios -->
+                    <div class="bg-white p-4 rounded-2xl border border-slate-300 shadow-sm flex items-center gap-3.5 w-full sm:w-auto min-w-[210px]">
+                        <div class="w-12 h-12 rounded-2xl bg-slate-100 text-apprecio-red flex items-center justify-center text-xl font-black border border-slate-200 shrink-0">
                             <i class="fa-solid fa-store"></i>
                         </div>
-                        <div>
-                            <span class="text-[11px] font-bold text-slate-600 uppercase tracking-wider block">Total Comercios</span>
-                            <span id="total-comercios-count" class="text-lg font-black text-slate-900">Cargando...</span>
+                        <div class="text-left space-y-0.5">
+                            <span class="text-[11px] font-extrabold text-slate-500 uppercase tracking-wider block">TOTAL COMERCIOS</span>
+                            <span id="total-comercios-count" class="text-xl font-black text-slate-900">Cargando...</span>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
 
         <section id="catalogo" class="space-y-6">
+            <!-- Barra de Búsqueda -->
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-4 rounded-2xl border border-slate-300 shadow-sm">
                 
                 <div class="relative w-full sm:max-w-md">
@@ -154,10 +162,12 @@
                 </div>
             </div>
 
+            <!-- Grid de Tarjetas de Comercios -->
             <div id="cards-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-                <!-- Dynamic cards populated here -->
+                <!-- Tarjetas pobladas dinámicamente -->
             </div>
 
+            <!-- Estado de Sin Resultados -->
             <div id="no-results" class="hidden text-center py-16 space-y-3 bg-white rounded-2xl border border-slate-300 shadow-sm">
                 <i class="fa-solid fa-store-slash text-4xl text-slate-400"></i>
                 <h3 class="text-base font-bold text-slate-800">No se encontraron comercios</h3>
@@ -167,6 +177,7 @@
 
     </main>
 
+    <!-- Modal Detalle del Comercio -->
     <div id="detail-modal" class="fixed inset-0 bg-slate-900/75 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div class="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] flex flex-col shadow-2xl border border-slate-300 overflow-hidden animate-fade-in">
             
