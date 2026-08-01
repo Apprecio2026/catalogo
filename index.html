@@ -24,8 +24,8 @@
     <meta name="twitter:description" content="Un gran programa de reconocimientos donde canjeas puntos por gift cards y cupones digitales.">
     <meta name="twitter:image" content="banner-apprecio.png.png">
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23fa335e%22/><text y=%22.9em%22 x=%2222%22 font-size=%2265%22 font-weight=%22bold%22 fill=%22white%22>a</text></svg>">
+    <!-- Favicon con A Mayúscula -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23fa335e%22/><text y=%22.9em%22 x=%2222%22 font-size=%2265%22 font-weight=%22bold%22 fill=%22white%22>A</text></svg>">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -54,12 +54,12 @@
         .border-apprecio-light { border-color: var(--apprecio-red-border); }
         .glass-card-white {
             background: #FFFFFF;
-            border: 1px solid #F1F5F9;
+            border: 1px solid #E2E8F0;
             box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04);
         }
         .glass-card-white:hover {
-            border-color: rgba(250, 51, 94, 0.35);
-            box-shadow: 0 12px 28px -4px rgba(250, 51, 94, 0.15);
+            border-color: #0F172A;
+            box-shadow: 0 12px 28px -4px rgba(15, 23, 42, 0.15);
         }
         .animate-fade-in {
             animation: fadeIn 0.25s ease-out forwards;
@@ -70,33 +70,33 @@
         }
         ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: #FAFAFA; }
-        ::-webkit-scrollbar-thumb { background: #fa335e; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb { background: #0F172A; border-radius: 4px; }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased">
 
     <!-- Header / Navbar Apprecio -->
-    <header class="sticky top-0 z-40 bg-white border-b border-apprecio-light shadow-sm">
+    <header class="sticky top-0 z-40 bg-slate-950 text-white border-b border-slate-800 shadow-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <div class="flex items-center gap-3">
                 <div class="h-11 px-4 rounded-2xl bg-apprecio-red flex items-center justify-center text-white font-extrabold text-xl shadow-md shadow-pink-500/20 tracking-wider">
-                    <span class="text-white">apprecio</span>
+                    <span class="text-white">Apprecio</span>
                 </div>
-                <div class="hidden sm:block border-l border-slate-200 h-8 mx-1"></div>
+                <div class="hidden sm:block border-l border-slate-800 h-8 mx-1"></div>
                 <div class="hidden sm:block">
-                    <h1 class="text-base font-extrabold text-slate-900 leading-tight">Catálogo de Gift Cards Colombia</h1>
-                    <p class="text-[11px] text-apprecio-red font-semibold flex items-center gap-1">
+                    <h1 class="text-base font-extrabold text-white leading-tight">Catálogo de Gift Cards Colombia</h1>
+                    <p class="text-[11px] text-slate-400 font-semibold flex items-center gap-1.5">
                         <span class="w-1.5 h-1.5 rounded-full bg-apprecio-red animate-pulse"></span> Sincronizado en Vivo con Google Sheets
                     </p>
                 </div>
             </div>
 
             <div class="flex items-center gap-3">
-                <button onclick="refreshDataManual()" id="btn-refresh" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl border border-apprecio-light bg-apprecio-light text-apprecio-red text-xs font-bold hover:bg-apprecio-red hover:text-white transition-all shadow-sm active:scale-95">
+                <button onclick="refreshDataManual()" id="btn-refresh" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl border border-slate-800 bg-slate-900 text-white text-xs font-bold hover:bg-apprecio-red hover:border-apprecio-red transition-all shadow-sm active:scale-95">
                     <i class="fa-solid fa-rotate-right" id="refresh-icon"></i>
                     <span>Sincronizar</span>
                 </button>
-                <span id="sync-status-badge" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold bg-apprecio-light text-apprecio-red border border-apprecio-light">
+                <span id="sync-status-badge" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold bg-slate-900 text-slate-200 border border-slate-800">
                     <span class="w-2 h-2 rounded-full bg-apprecio-red animate-pulse"></span>
                     <span id="sync-text">Sincronizado</span>
                 </span>
@@ -108,28 +108,30 @@
     <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
 
         <!-- Banner Hero Section -->
-        <section class="bg-apprecio-red rounded-3xl p-6 sm:p-10 text-white shadow-xl relative overflow-hidden">
-            <div class="absolute -right-12 -bottom-12 w-80 h-80 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
-            <div class="absolute right-1/4 -top-12 w-64 h-64 bg-white/5 rounded-full blur-2xl pointer-events-none"></div>
+        <section class="bg-slate-950 rounded-3xl p-6 sm:p-10 text-white shadow-2xl relative overflow-hidden border border-slate-800">
+            <div class="absolute -right-12 -bottom-12 w-80 h-80 bg-apprecio-red/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute right-1/4 -top-12 w-64 h-64 bg-slate-800/40 rounded-full blur-2xl pointer-events-none"></div>
+            <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-apprecio-red via-slate-900 to-apprecio-red"></div>
             
             <div class="flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
                 <div class="max-w-xl space-y-4">
                     <div class="flex items-center gap-2">
-                        <span class="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest font-extrabold px-3.5 py-1 rounded-full bg-white text-apprecio-red shadow-sm">
+                        <span class="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest font-extrabold px-3.5 py-1.5 rounded-lg bg-slate-900 text-white border border-slate-800 shadow-md">
+                            <span class="w-2 h-2 rounded-full bg-apprecio-red animate-pulse"></span>
                             <i class="fa-solid fa-gift text-apprecio-red"></i> Catálogo Apprecio
                         </span>
                     </div>
                     <h2 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight text-white">
-                        Catálogo de<br>Gift Cards Colombia
+                        Catálogo de<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-slate-400">Gift Cards Colombia</span>
                     </h2>
-                    <p class="text-white/95 text-sm sm:text-base leading-relaxed font-semibold">
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed font-semibold">
                         Un gran programa de reconocimientos donde<br class="hidden sm:inline"> canjeas puntos por gift cards y cupones digitales
                     </p>
                 </div>
 
                 <!-- Banner Image Card -->
                 <div class="w-full md:w-80 lg:w-96 shrink-0">
-                    <div class="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-white/20 aspect-[16/9] md:aspect-[4/3] bg-white/10 backdrop-blur-sm group">
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-800 aspect-[16/9] md:aspect-[4/3] bg-slate-900 backdrop-blur-sm group">
                         <img 
                             id="hero-banner-img"
                             src="banner-apprecio.png.png" 
@@ -148,7 +150,7 @@
                 
                 <!-- Category Tabs -->
                 <div class="flex items-center gap-2" id="category-buttons">
-                    <button onclick="filterCategory('todos', this)" class="cat-btn active px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold whitespace-nowrap bg-apprecio-red text-white transition-all shadow-sm">
+                    <button onclick="filterCategory('todos', this)" class="cat-btn active px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold whitespace-nowrap bg-slate-950 text-white border border-slate-800 transition-all shadow-sm hover:bg-apprecio-red hover:border-apprecio-red">
                         Todos los Comercios
                     </button>
                 </div>
@@ -161,7 +163,7 @@
                         id="search-input" 
                         oninput="handleSearch()" 
                         placeholder="Buscar comercio o monto..." 
-                        class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-apprecio-red focus:bg-white transition-all">
+                        class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-900 focus:bg-white transition-all">
                 </div>
             </div>
 
@@ -181,47 +183,48 @@
     </main>
 
     <!-- Footer Apprecio Style -->
-    <footer class="bg-white border-t border-slate-200 mt-12 py-8 text-center text-xs text-slate-500 space-y-2">
-        <div class="flex items-center justify-center gap-2 text-base font-extrabold text-slate-900">
-            <span class="text-apprecio-red font-black text-lg">apprecio</span>
+    <footer class="bg-slate-950 text-white border-t border-slate-800 mt-12 py-8 text-center text-xs text-slate-400 space-y-2">
+        <div class="flex items-center justify-center gap-2 text-base font-extrabold text-white">
+            <span class="text-apprecio-red font-black text-lg">Apprecio</span>
         </div>
         <p>© 2026 Catálogo Comercial Dinámico — Alimentado desde Google Sheets</p>
     </footer>
 
     <!-- Detailed Modal View -->
-    <div id="detail-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div id="detail-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
         <div class="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] flex flex-col shadow-2xl border border-slate-200 overflow-hidden animate-fade-in">
             
-            <!-- Modal Header Apprecio Red Style -->
-            <div class="p-6 bg-apprecio-red text-white flex items-center justify-between shrink-0 shadow-md">
+            <!-- Modal Header Black & Red Style -->
+            <div class="p-6 bg-slate-950 text-white flex items-center justify-between shrink-0 shadow-md relative border-b border-slate-800">
+                <div class="absolute top-0 left-0 right-0 h-1 bg-apprecio-red"></div>
                 <div class="flex items-center gap-4 min-w-0">
-                    <div id="modal-icon-bg" class="w-16 h-12 rounded-xl bg-white border border-white/40 flex items-center justify-center shadow-md overflow-hidden shrink-0 p-1">
+                    <div id="modal-icon-bg" class="w-16 h-12 rounded-xl bg-white border border-slate-700 flex items-center justify-center shadow-md overflow-hidden shrink-0 p-1">
                         <i id="modal-icon" class="fa-solid fa-store text-apprecio-red text-xl"></i>
                     </div>
                     <div class="min-w-0 flex-1">
                         <h3 id="modal-comercio" class="text-xl sm:text-2xl font-black text-white truncate leading-tight">Comercio</h3>
                         <div class="flex flex-wrap items-center gap-2 mt-1">
-                            <span id="modal-categoria" class="px-2.5 py-0.5 rounded-full text-[11px] font-extrabold bg-white text-apprecio-red shadow-sm truncate">Categoría</span>
-                            <span id="modal-tipo-prod-badge" class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-black/20 text-white truncate">Tipo Producto</span>
+                            <span id="modal-categoria" class="px-2.5 py-0.5 rounded-md text-[11px] font-extrabold bg-apprecio-red text-white shadow-sm truncate">Categoría</span>
+                            <span id="modal-tipo-prod-badge" class="px-2.5 py-0.5 rounded-md text-[11px] font-bold bg-slate-800 text-slate-200 border border-slate-700 truncate">Tipo Producto</span>
                         </div>
                     </div>
                 </div>
-                <button onclick="closeDetailModal()" class="text-white/80 hover:text-white transition-colors p-2 rounded-full hover:bg-white/10 shrink-0">
+                <button onclick="closeDetailModal()" class="text-slate-400 hover:text-white transition-colors p-2 rounded-full hover:bg-slate-800 shrink-0">
                     <i class="fa-solid fa-xmark text-xl"></i>
                 </button>
             </div>
 
-            <!-- Modal Content - Logical Groupings -->
+            <!-- Modal Content - Logical Groupings with Black Bar Titles -->
             <div class="p-6 overflow-y-auto space-y-6 text-slate-700 text-sm flex-grow">
 
                 <!-- SECTION 1: Detalles de la Gift Card y Oferta -->
                 <div class="space-y-3">
-                    <h4 class="text-xs font-black uppercase tracking-wider text-apprecio-red flex items-center gap-2 border-b border-apprecio-light pb-2">
-                        <i class="fa-solid fa-ticket"></i> 1. Información General y Oferta
+                    <h4 class="text-xs font-black uppercase tracking-wider text-white bg-slate-950 px-3.5 py-2 rounded-xl border-l-4 border-apprecio-red flex items-center gap-2 shadow-sm">
+                        <i class="fa-solid fa-ticket text-apprecio-red"></i> 1. Información General y Oferta
                     </h4>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <div class="p-3.5 bg-apprecio-light rounded-2xl border border-apprecio-light sm:col-span-2">
-                            <span class="text-xs font-bold text-apprecio-red uppercase tracking-wider block">Montos Disponibles:</span>
+                        <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 sm:col-span-2">
+                            <span class="text-xs font-bold text-slate-500 uppercase tracking-wider block">Montos Disponibles:</span>
                             <span id="field-montos" class="font-black text-slate-900 text-sm sm:text-base mt-0.5 block leading-relaxed"></span>
                         </div>
                         <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
@@ -233,7 +236,7 @@
                             <span id="field-vigencia" class="font-bold text-apprecio-red text-xs mt-0.5 block"></span>
                         </div>
                         <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 sm:col-span-2">
-                            <span class="text-xs font-bold text-apprecio-red block">Beneficios Extra:</span>
+                            <span class="text-xs font-bold text-slate-500 block">Beneficios Extra:</span>
                             <span id="field-beneficiosExtra" class="font-extrabold text-slate-900 text-xs mt-0.5 block"></span>
                         </div>
                     </div>
@@ -241,8 +244,8 @@
 
                 <!-- SECTION 2: Tiempos de Entrega y Activación -->
                 <div class="space-y-3">
-                    <h4 class="text-xs font-black uppercase tracking-wider text-apprecio-red flex items-center gap-2 border-b border-apprecio-light pb-2">
-                        <i class="fa-solid fa-clock"></i> 2. Entrega y Activación
+                    <h4 class="text-xs font-black uppercase tracking-wider text-white bg-slate-950 px-3.5 py-2 rounded-xl border-l-4 border-apprecio-red flex items-center gap-2 shadow-sm">
+                        <i class="fa-solid fa-clock text-apprecio-red"></i> 2. Entrega y Activación
                     </h4>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
@@ -257,17 +260,17 @@
                             <span class="text-xs font-semibold text-slate-500 block">Tiempo de activación (si aplica):</span>
                             <span id="field-tiempoActivacion" class="font-bold text-slate-800 text-xs mt-0.5 block"></span>
                         </div>
-                        <div class="p-3 bg-apprecio-light rounded-xl border border-apprecio-light">
-                            <span class="text-xs font-bold text-apprecio-red block">¿Cobro Extra?:</span>
-                            <span id="field-cobroExtra" class="font-extrabold text-slate-900 text-xs mt-0.5 block"></span>
+                        <div class="p-3 bg-slate-900 text-white rounded-xl border border-slate-800">
+                            <span class="text-xs font-bold text-slate-400 block">¿Cobro Extra?:</span>
+                            <span id="field-cobroExtra" class="font-extrabold text-apprecio-red text-xs mt-0.5 block"></span>
                         </div>
                     </div>
                 </div>
 
                 <!-- SECTION 3: Condiciones de Redención y Uso -->
                 <div class="space-y-3">
-                    <h4 class="text-xs font-black uppercase tracking-wider text-apprecio-red flex items-center gap-2 border-b border-apprecio-light pb-2">
-                        <i class="fa-solid fa-arrows-rotate"></i> 3. Condiciones de Redención
+                    <h4 class="text-xs font-black uppercase tracking-wider text-white bg-slate-950 px-3.5 py-2 rounded-xl border-l-4 border-apprecio-red flex items-center gap-2 shadow-sm">
+                        <i class="fa-solid fa-arrows-rotate text-apprecio-red"></i> 3. Condiciones de Redención
                     </h4>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
@@ -303,8 +306,8 @@
 
                 <!-- SECTION 4: Instructivo, Exclusiones y Soporte -->
                 <div class="space-y-3">
-                    <h4 class="text-xs font-black uppercase tracking-wider text-apprecio-red flex items-center gap-2 border-b border-apprecio-light pb-2">
-                        <i class="fa-solid fa-file-shield"></i> 4. Instructivo, Términos y Soporte
+                    <h4 class="text-xs font-black uppercase tracking-wider text-white bg-slate-950 px-3.5 py-2 rounded-xl border-l-4 border-apprecio-red flex items-center gap-2 shadow-sm">
+                        <i class="fa-solid fa-file-shield text-apprecio-red"></i> 4. Instructivo, Términos y Soporte
                     </h4>
                     <div class="space-y-3">
                         <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
@@ -323,9 +326,9 @@
                             <span class="text-xs font-semibold text-slate-500 block">Exclusiones o restricciones:</span>
                             <p id="field-exclusionesRestricciones" class="text-xs leading-relaxed text-slate-800 mt-1 font-medium"></p>
                         </div>
-                        <div class="p-3 bg-apprecio-light rounded-xl border border-apprecio-light flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-                            <span class="text-xs font-bold text-apprecio-red">Canales de Soporte:</span>
-                            <span id="field-canalesSoporte" class="font-extrabold text-slate-900 text-xs"></span>
+                        <div class="p-3 bg-slate-900 text-white rounded-xl border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                            <span class="text-xs font-bold text-slate-300">Canales de Soporte:</span>
+                            <span id="field-canalesSoporte" class="font-extrabold text-apprecio-red text-xs"></span>
                         </div>
                     </div>
                 </div>
@@ -334,7 +337,7 @@
 
             <!-- Modal Footer -->
             <div class="p-4 bg-slate-50 border-t border-slate-200 flex justify-end shrink-0">
-                <button onclick="closeDetailModal()" class="px-5 py-2.5 bg-apprecio-red hover:bg-apprecio-red-dark text-white font-bold rounded-xl text-xs transition-all shadow-md">
+                <button onclick="closeDetailModal()" class="px-5 py-2.5 bg-slate-950 hover:bg-apprecio-red text-white font-bold rounded-xl text-xs transition-all shadow-md border border-slate-800">
                     Cerrar Ficha
                 </button>
             </div>
@@ -427,7 +430,6 @@
         let catalogueData = [...sampleCatalogue];
         let currentCategory = 'todos';
 
-        // Helper function to dynamically find column indices by header titles
         function findColIndex(headers, ...possibleKeywords) {
             if (!headers || headers.length === 0) return -1;
             for (const keyword of possibleKeywords) {
@@ -468,7 +470,7 @@
 
                 const logoHtml = (item.imagenUrl && item.imagenUrl.trim() !== '') ? 
                     `<img src="${item.imagenUrl}" alt="${item.comercio}" class="w-full h-full object-contain p-0.5 bg-white rounded-xl shadow-2xl" onerror="handleLogoError(this, '${iconClass}')">` : 
-                    `<div class="w-full h-full flex items-center justify-center bg-apprecio-light rounded-xl border border-apprecio-light"><i class="fa-solid ${iconClass} text-apprecio-red text-lg"></i></div>`;
+                    `<div class="w-full h-full flex items-center justify-center bg-slate-100 rounded-xl border border-slate-200"><i class="fa-solid ${iconClass} text-slate-800 text-lg"></i></div>`;
 
                 const montosClean = cleanVal(item.montos);
                 const redParcialClean = cleanVal(item.redencionParcial);
@@ -476,7 +478,6 @@
                 const cobroExtraClean = cleanVal(item.cobroExtra);
                 const valorCobroExtraClean = cleanVal(item.valorCobroExtra);
 
-                // Combine ¿Cobro Extra? SI/NO and its extra value if applicable
                 let cobroExtraDisplay = cobroExtraClean;
                 if (cobroExtraClean !== '-' && valorCobroExtraClean !== '-') {
                     cobroExtraDisplay = `${cobroExtraClean} (${valorCobroExtraClean})`;
@@ -486,20 +487,20 @@
 
                 card.innerHTML = `
                     <div>
-                        <!-- Header Banner -->
-                        <div class="h-14 w-full bg-apprecio-red p-3.5 flex items-center justify-between text-white relative">
-                            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-white text-apprecio-red shadow-sm truncate max-w-[170px]">
+                        <!-- Header Banner - Dark Charcoal Header with Red Accent Badge -->
+                        <div class="h-14 w-full bg-slate-950 border-b border-slate-800 p-3.5 flex items-center justify-between text-white relative">
+                            <span class="px-2.5 py-1 rounded-md text-[10px] font-black uppercase tracking-wider bg-apprecio-red text-white shadow-sm truncate max-w-[170px]">
                                 ${cleanVal(item.categoria) !== '-' ? item.categoria : 'Gift Card'}
                             </span>
-                            <span class="text-[10px] font-bold text-white/90 bg-black/10 px-2 py-0.5 rounded-full flex items-center gap-1">
-                                <i class="fa-solid fa-bolt text-[9px]"></i> Apprecio
+                            <span class="text-[10px] font-bold text-slate-300 bg-slate-900 px-2.5 py-1 rounded-md border border-slate-800 flex items-center gap-1.5">
+                                <span class="w-1.5 h-1.5 rounded-full bg-apprecio-red"></span> Apprecio
                             </span>
                         </div>
 
                         <!-- Commerce Header with Logo/Card Image directly beside Name -->
                         <div class="p-5 space-y-4">
                             <div class="flex items-center gap-3.5">
-                                <div class="w-16 h-12 rounded-xl shrink-0 bg-white border border-apprecio-light flex items-center justify-center shadow-sm overflow-hidden p-0.5 group-hover:scale-105 transition-transform">
+                                <div class="w-16 h-12 rounded-xl shrink-0 bg-white border border-slate-200 flex items-center justify-center shadow-sm overflow-hidden p-0.5 group-hover:scale-105 transition-transform">
                                     ${logoHtml}
                                 </div>
                                 <div class="min-w-0 flex-1">
@@ -531,7 +532,7 @@
                     </div>
 
                     <div class="p-5 pt-0">
-                        <button onclick="openDetailModal(${item.id})" class="w-full py-2.5 px-3 rounded-xl bg-apprecio-light hover:bg-apprecio-red hover:text-white text-apprecio-red border border-apprecio-light text-xs font-bold transition-all flex items-center justify-center gap-1.5 group shadow-sm">
+                        <button onclick="openDetailModal(${item.id})" class="w-full py-2.5 px-3 rounded-xl bg-slate-950 hover:bg-apprecio-red text-white border border-slate-900 text-xs font-bold transition-all flex items-center justify-center gap-1.5 group shadow-sm">
                             <span>Ver Ficha Completa</span>
                             <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
                         </button>
@@ -623,7 +624,6 @@
                 if (rows.length > 1) {
                     const headers = rows[0];
 
-                    // Dynamic column index lookup by column title keywords
                     const mapCol = {
                         comercio: findColIndex(headers, "comercio"),
                         categoria: findColIndex(headers, "categoria"),
@@ -659,11 +659,8 @@
                     const parsedData = [];
                     let itemCounter = 0;
                     
-                    // Iterate strictly in Sheet Row order (Row 1 to Row N)
                     for (let i = 1; i < rows.length; i++) {
                         const cols = rows[i];
-                        
-                        // Check valid commerce row and skip repeated header rows
                         const commerceName = getVal(cols, mapCol.comercio, 0);
                         if (cols && commerceName !== '-' && commerceName.toUpperCase() !== 'COMERCIO') {
                             parsedData.push({
@@ -697,7 +694,6 @@
                     }
 
                     if (parsedData.length > 0) {
-                        // Strict row order preserved directly from Google Sheet
                         catalogueData = parsedData;
                         applyFilters();
                         updateStatusBadge(`Sincronizado (${parsedData.length} comercios)`, true);
@@ -808,7 +804,6 @@
         window.addEventListener('DOMContentLoaded', () => {
             fetchGoogleSheetCsv();
 
-            // Auto sync every 60 seconds
             setInterval(() => {
                 fetchGoogleSheetCsv(true);
             }, 60000);
