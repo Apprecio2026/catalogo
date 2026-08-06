@@ -9,20 +9,12 @@
     <link rel="canonical" href="https://apprecio2026.github.io/catalogo/">
     <meta name="description" content="Catálogo de Gift Cards Colombia — Un gran programa de reconocimientos donde canjeas puntos por gift cards y cupones digitales.">
     
-    <!-- Open Graph / WhatsApp / Facebook Share Metadata -->
+    <!-- Open Graph / Social Share Metadata -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://apprecio2026.github.io/catalogo/">
     <meta property="og:title" content="Catálogo de Gift Cards Colombia — Apprecio">
     <meta property="og:description" content="Un gran programa de reconocimientos donde canjeas puntos por gift cards y cupones digitales.">
-    <meta property="og:image" content="banner-apprecio.png.png">
     <meta property="og:site_name" content="Apprecio Colombia">
-
-    <!-- Twitter Card Metadata -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://apprecio2026.github.io/catalogo/">
-    <meta name="twitter:title" content="Catálogo de Gift Cards Colombia — Apprecio">
-    <meta name="twitter:description" content="Un gran programa de reconocimientos donde canjeas puntos por gift cards y cupones digitales.">
-    <meta name="twitter:image" content="banner-apprecio.png.png">
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23fa335e%22/><text y=%22.9em%22 x=%2222%22 font-size=%2265%22 font-weight=%22bold%22 fill=%22white%22>A</text></svg>">
@@ -38,142 +30,168 @@
         :root {
             --apprecio-red: #fa335e;
             --apprecio-red-dark: #d81e46;
-            --apprecio-red-light: #fff0f4;
-            --apprecio-red-border: #fcd5df;
+            --pantone-gray: #5e5e5e;
+            --pantone-gray-dark: #4d5562;
         }
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
-            background-color: #FAFAFA;
-            color: #0F172A;
+            background-color: #cbd5e1;
+            color: #0f172a;
         }
         .bg-apprecio-red { background-color: var(--apprecio-red); }
         .bg-apprecio-red-dark { background-color: var(--apprecio-red-dark); }
-        .bg-apprecio-light { background-color: var(--apprecio-red-light); }
         .text-apprecio-red { color: var(--apprecio-red); }
-        .border-apprecio-light { border-color: var(--apprecio-red-border); }
-        .glass-card-white {
-            background: #FFFFFF;
-            border: 1px solid #E2E8F0;
-            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+        .border-apprecio-red { border-color: var(--apprecio-red); }
+        .bg-pantone-gray { background-color: var(--pantone-gray); }
+        
+        .card-shadow {
+            box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.08), 0 2px 5px -1px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .glass-card-white:hover {
-            border-color: rgba(250, 51, 94, 0.4);
-            box-shadow: 0 12px 28px -4px rgba(250, 51, 94, 0.15);
+        .card-shadow:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 25px -5px rgba(0, 0, 0, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.06);
         }
         .animate-fade-in {
-            animation: fadeIn 0.25s ease-out forwards;
+            animation: fadeIn 0.3s ease-out forwards;
         }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(8px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        @keyframes floatBanner {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+        .animate-float {
+            animation: floatBanner 3.5s ease-in-out infinite;
+        }
         ::-webkit-scrollbar { width: 6px; height: 6px; }
-        ::-webkit-scrollbar-track { background: #FAFAFA; }
-        ::-webkit-scrollbar-thumb { background: #fa335e; border-radius: 4px; }
+        ::-webkit-scrollbar-track { background: #cbd5e1; }
+        ::-webkit-scrollbar-thumb { background: #64748b; border-radius: 4px; }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col antialiased">
+<body class="bg-slate-300 text-slate-900 min-h-screen flex flex-col antialiased">
 
-    <!-- Header / Navbar Apprecio -->
-    <header class="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+    <header class="sticky top-0 z-40 bg-slate-900 text-white shadow-lg border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <!-- Esquina Izquierda: Fondo Rojo con Tipografía Blanca -->
-                <div class="h-11 px-4 rounded-2xl bg-[#fa335e] flex items-center justify-center text-white font-extrabold text-xl shadow-md tracking-wider">
-                    <span class="text-white">Apprecio</span>
-                </div>
-                <div class="hidden sm:block border-l border-slate-200 h-8 mx-1"></div>
+                <!-- Main Header Logo replacing text -->
+                <a href="#" class="flex items-center shrink-0 group">
+                    <img src="logo-apprecio-png.png" 
+                         alt="Apprecio Logo" 
+                         class="h-9 sm:h-11 w-auto object-contain transition-transform group-hover:scale-105"
+                         onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'h-10 px-4 rounded-xl bg-apprecio-red flex items-center justify-center text-white font-extrabold text-xl shadow-md border border-rose-500 tracking-wider\'><span>Apprecio</span></div>';">
+                </a>
+                <div class="hidden sm:block border-l border-slate-700 h-7 mx-1"></div>
                 <div class="hidden sm:block">
-                    <h1 class="text-base font-extrabold text-slate-900 leading-tight">Catálogo de Gift Cards Colombia</h1>
-                    <p class="text-[11px] text-slate-600 font-semibold flex items-center gap-1">
-                        <span class="w-1.5 h-1.5 rounded-full bg-[#fa335e] animate-pulse"></span> Sincronizado en Vivo con Google Sheets
+                    <h1 class="text-sm font-extrabold text-white leading-tight">Catálogo de Gift Cards Colombia</h1>
+                    <p class="text-[11px] text-slate-300 font-medium flex items-center gap-1.5">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Sincronizado en Vivo con Google Sheets
                     </p>
                 </div>
             </div>
 
-            <div class="flex items-center gap-3">
-                <!-- Botón Sincronizar Fondo Rojo y Texto Blanco -->
-                <button onclick="refreshDataManual()" id="btn-refresh" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#fa335e] hover:bg-[#d81e46] text-white text-xs font-bold transition-all shadow-md active:scale-95">
-                    <i class="fa-solid fa-rotate-right text-white" id="refresh-icon"></i>
-                    <span class="text-white">Sincronizar Apprecio</span>
+            <!-- Top Right Bar with Synchronization Badge & Logo -->
+            <div class="flex items-center gap-2.5 sm:gap-4">
+                <button onclick="refreshDataManual()" id="btn-refresh" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl border border-slate-700 bg-slate-800 text-white text-xs font-bold hover:bg-slate-700 transition-all shadow-sm active:scale-95">
+                    <i class="fa-solid fa-rotate-right" id="refresh-icon"></i>
+                    <span class="hidden sm:inline">Sincronizar</span>
                 </button>
-                <span id="sync-status-badge" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold bg-apprecio-light text-[#fa335e] border border-apprecio-light">
-                    <span class="w-2 h-2 rounded-full bg-[#fa335e] animate-pulse"></span>
+                <span id="sync-status-badge" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold bg-slate-800 text-white border border-slate-700">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                     <span id="sync-text">Sincronizado</span>
                 </span>
+                <!-- Logo Top Right Corner -->
+                <div class="hidden lg:flex items-center pl-3 border-l border-slate-800">
+                    <img src="logo-apprecio-png.png" alt="Apprecio" class="h-8 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                </div>
             </div>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
 
-        <!-- Banner Hero Section (Rojo Apprecio) -->
-        <section class="bg-[#fa335e] rounded-3xl p-6 sm:p-10 text-white shadow-xl relative overflow-hidden">
-            <div class="absolute -right-12 -bottom-12 w-80 h-80 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
-            <div class="absolute right-1/4 -top-12 w-64 h-64 bg-white/5 rounded-full blur-2xl pointer-events-none"></div>
-            
-            <div class="flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
-                <div class="max-w-xl space-y-4">
-                    <div class="flex items-center gap-2">
-                        <span class="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest font-extrabold px-3.5 py-1 rounded-full bg-white text-[#fa335e] shadow-sm">
-                            <i class="fa-solid fa-gift text-[#fa335e]"></i> Catálogo Apprecio
-                        </span>
+        <section class="bg-slate-200 rounded-3xl p-6 sm:p-8 text-slate-900 shadow-sm relative overflow-hidden border border-slate-400/80">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-6 relative z-10">
+                
+                <!-- Columna Izquierda: Títulos y Descripción -->
+                <div class="max-w-xl space-y-3 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 text-xs font-bold px-3 py-1.5 rounded-lg bg-white text-slate-800 border border-slate-300 shadow-sm">
+                        <img src="logo-apprecio-png.png" alt="Apprecio Logo" class="h-4 w-auto object-contain" onerror="this.style.display='none'">
+                        <span>Catálogo Apprecio</span>
                     </div>
-                    <h2 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight text-white">
-                        Catálogo de<br>Gift Cards Colombia
+                    <h2 class="text-3xl sm:text-4xl font-black tracking-tight text-slate-900 leading-tight">
+                        Catálogo <span class="text-apprecio-red">Apprecio</span>
                     </h2>
-                    <p class="text-white/95 text-sm sm:text-base leading-relaxed font-semibold">
-                        Un gran programa de reconocimientos donde<br class="hidden sm:inline"> canjeas puntos por gift cards y cupones digitales
+                    <p class="text-slate-700 text-xs sm:text-sm leading-relaxed font-semibold">
+                        Un gran programa de reconocimientos donde canjeas puntos por gift cards y cupones digitales en todo Colombia.
                     </p>
                 </div>
 
-                <!-- Banner Image Card -->
-                <div class="w-full md:w-80 lg:w-96 shrink-0">
-                    <div class="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-white/20 aspect-[16/9] md:aspect-[4/3] bg-white/10 backdrop-blur-sm group">
-                        <img 
-                            id="hero-banner-img"
-                            src="banner-apprecio.png.png" 
-                            alt="Apprecio Banner" 
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                            onerror="handleHeroImgError(this)"
-                        >
+                <!-- Columna Derecha: Banner Animado y Tarjetas Informativas -->
+                <div class="w-full lg:w-auto flex flex-col items-center justify-center gap-4">
+                    
+                    <!-- Imagen Animada Banner.png -->
+                    <div class="animate-float max-w-xs sm:max-w-sm rounded-2xl overflow-hidden shadow-lg border border-slate-300 bg-white p-1.5 transition-transform">
+                        <img src="banner.png" alt="Banner Apprecio" class="w-full h-auto object-contain rounded-xl" onerror="this.style.display='none'">
                     </div>
+
+                    <div class="w-full flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <!-- Tarjeta 1: Gift Cards Digitales -->
+                        <div class="bg-white p-4 rounded-2xl border border-slate-300 shadow-sm flex items-center gap-3.5 w-full sm:w-auto min-w-[210px]">
+                            <div class="w-12 h-12 rounded-2xl bg-apprecio-red text-white flex items-center justify-center text-xl font-black shadow-md shrink-0">
+                                <i class="fa-solid fa-credit-card"></i>
+                            </div>
+                            <div class="text-left space-y-0.5">
+                                <span class="block text-sm font-extrabold text-slate-900 leading-snug">Gift Cards Digitales</span>
+                                <span class="block text-xs font-medium text-slate-500">Canje Inmediato</span>
+                            </div>
+                        </div>
+
+                        <!-- Tarjeta 2: Total Comercios -->
+                        <div class="bg-white p-4 rounded-2xl border border-slate-300 shadow-sm flex items-center gap-3.5 w-full sm:w-auto min-w-[210px]">
+                            <div class="w-12 h-12 rounded-2xl bg-slate-100 text-apprecio-red flex items-center justify-center text-xl font-black border border-slate-200 shrink-0">
+                                <i class="fa-solid fa-store"></i>
+                            </div>
+                            <div class="text-left space-y-0.5">
+                                <span class="text-[11px] font-extrabold text-slate-500 uppercase tracking-wider block">TOTAL COMERCIOS</span>
+                                <span id="total-comercios-count" class="text-xl font-black text-slate-900">Cargando...</span>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
 
-        <!-- Filters & Search Bar Section -->
         <section id="catalogo" class="space-y-6">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
+            <!-- Barra de Búsqueda -->
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-4 rounded-2xl border border-slate-300 shadow-sm">
                 
-                <!-- Category Tabs -->
-                <div class="flex items-center gap-2" id="category-buttons">
-                    <button onclick="filterCategory('todos', this)" class="cat-btn active px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold whitespace-nowrap bg-[#fa335e] text-white transition-all shadow-sm">
-                        Todos los Comercios
-                    </button>
-                </div>
-
-                <!-- Search Input -->
-                <div class="relative min-w-[280px] flex-1 sm:max-w-md">
-                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                <div class="relative w-full sm:max-w-md">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500 text-sm"></i>
                     <input 
                         type="text" 
                         id="search-input" 
                         oninput="handleSearch()" 
-                        placeholder="Buscar comercio o monto..." 
-                        class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#fa335e] focus:bg-white transition-all">
+                        placeholder="Buscar comercio, marca o valor..." 
+                        class="w-full pl-10 pr-4 py-2.5 bg-slate-100 border border-slate-300 rounded-xl text-sm text-slate-900 font-medium placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-800 focus:bg-white transition-all">
+                </div>
+
+                <div class="text-xs font-bold text-slate-700 text-right" id="filter-status-text">
+                    Mostrando todos los comercios
                 </div>
             </div>
 
-            <!-- Cards Container Grid -->
-            <div id="cards-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                <!-- Tarjetas cargadas dinámicamente -->
+            <!-- Grid de Tarjetas de Comercios -->
+            <div id="cards-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+                <!-- Tarjetas pobladas dinámicamente -->
             </div>
 
-            <!-- Empty State -->
-            <div id="no-results" class="hidden text-center py-16 space-y-3 bg-white rounded-2xl border border-slate-200 shadow-sm">
-                <i class="fa-solid fa-store-slash text-4xl text-slate-300"></i>
+            <!-- Estado de Sin Resultados -->
+            <div id="no-results" class="hidden text-center py-16 space-y-3 bg-white rounded-2xl border border-slate-300 shadow-sm">
+                <i class="fa-solid fa-store-slash text-4xl text-slate-400"></i>
                 <h3 class="text-base font-bold text-slate-800">No se encontraron comercios</h3>
                 <p class="text-xs text-slate-500">Prueba ajustando el término de búsqueda.</p>
             </div>
@@ -181,168 +199,118 @@
 
     </main>
 
-    <!-- Footer Apprecio Style -->
-    <footer class="bg-white border-t border-slate-200 mt-12 py-8 text-center text-xs text-slate-500 space-y-2">
-        <div class="flex items-center justify-center gap-2 text-base font-extrabold text-slate-900">
-            <span class="font-black text-lg text-[#fa335e]">Apprecio</span>
-        </div>
-        <p>© 2026 Catálogo Comercial Dinámico — Alimentado desde Google Sheets</p>
-    </footer>
-
-    <!-- Detailed Modal View -->
-    <div id="detail-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] flex flex-col shadow-2xl border border-slate-200 overflow-hidden animate-fade-in">
+    <div id="detail-modal" class="fixed inset-0 bg-slate-900/75 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] flex flex-col shadow-2xl border border-slate-300 overflow-hidden animate-fade-in">
             
-            <!-- Modal Header en Rojo Apprecio -->
-            <div class="p-6 bg-[#fa335e] text-white flex items-center justify-between shrink-0 shadow-md">
-                <div class="flex items-center gap-4 min-w-0">
-                    <div id="modal-icon-bg" class="w-16 h-12 rounded-xl bg-white border border-white/40 flex items-center justify-center shadow-md overflow-hidden shrink-0 p-1">
-                        <i id="modal-icon" class="fa-solid fa-store text-[#fa335e] text-xl"></i>
+            <div class="p-5 bg-slate-300 text-slate-900 flex items-center justify-between shrink-0 shadow-sm relative border-b border-slate-400">
+                <div class="absolute top-0 left-0 right-0 h-1.5 bg-apprecio-red"></div>
+                <div class="flex items-center gap-3.5 min-w-0">
+                    <div class="w-10 h-10 rounded-xl bg-apprecio-red flex items-center justify-center text-white font-black text-lg shadow-sm shrink-0">
+                        <i class="fa-solid fa-gift"></i>
                     </div>
                     <div class="min-w-0 flex-1">
-                        <h3 id="modal-comercio" class="text-xl sm:text-2xl font-black text-white truncate leading-tight">Comercio</h3>
-                        <div class="flex flex-wrap items-center gap-2 mt-1">
-                            <span id="modal-categoria" class="px-2.5 py-0.5 rounded-full text-[11px] font-extrabold bg-white text-[#fa335e] shadow-sm truncate">Categoría</span>
-                            <span id="modal-tipo-prod-badge" class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-black/20 text-white truncate">Tipo Producto</span>
+                        <div class="flex items-center gap-2">
+                            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-apprecio-red text-white">Apprecio</span>
+                            <h3 id="modal-comercio" class="text-xl font-black text-slate-900 truncate">Comercio</h3>
                         </div>
+                        <p id="modal-categoria" class="text-xs font-bold text-slate-700 mt-0.5 truncate">Categoría</p>
                     </div>
                 </div>
-                <button onclick="closeDetailModal()" class="text-white/80 hover:text-white transition-colors p-2 rounded-full hover:bg-white/10 shrink-0">
+                <button onclick="closeDetailModal()" class="text-slate-600 hover:text-slate-900 transition-colors p-2 rounded-full hover:bg-slate-400/40 shrink-0">
                     <i class="fa-solid fa-xmark text-xl"></i>
                 </button>
             </div>
 
-            <!-- Modal Content -->
-            <div class="p-6 overflow-y-auto space-y-6 text-slate-700 text-sm flex-grow">
+            <div class="p-6 overflow-y-auto space-y-5 text-slate-800 text-sm flex-grow">
 
-                <!-- SECTION 1: Detalles de la Gift Card y Oferta -->
-                <div class="space-y-3">
-                    <h4 class="text-xs font-black uppercase tracking-wider text-[#fa335e] flex items-center gap-2 border-b border-apprecio-light pb-2">
-                        <i class="fa-solid fa-ticket text-[#fa335e]"></i> 1. Información General y Oferta
+                <div class="space-y-2.5">
+                    <h4 class="text-xs font-black uppercase tracking-wider text-slate-900 bg-slate-200 px-3.5 py-2 rounded-xl border-l-4 border-apprecio-red flex items-center gap-2">
+                        <i class="fa-solid fa-ticket text-apprecio-red"></i> 1. Oferta y Montos
                     </h4>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <div class="p-3.5 bg-apprecio-light rounded-2xl border border-apprecio-light sm:col-span-2">
-                            <span class="text-xs font-bold text-[#fa335e] uppercase tracking-wider block">Montos Disponibles:</span>
-                            <span id="field-montos" class="font-black text-slate-900 text-sm sm:text-base mt-0.5 block leading-relaxed"></span>
+                        <div class="p-3 bg-slate-100 rounded-xl border border-slate-300 sm:col-span-2">
+                            <span class="text-xs font-bold text-slate-600 uppercase block">Montos Disponibles:</span>
+                            <span id="field-montos" class="font-extrabold text-slate-900 text-sm mt-0.5 block"></span>
                         </div>
-                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
-                            <span class="text-xs font-semibold text-slate-500 block">Tipo de Producto:</span>
+                        <div class="p-3 bg-slate-100 rounded-xl border border-slate-300 sm:col-span-2">
+                            <span class="text-xs font-bold text-slate-600 block">Tipo de Producto:</span>
                             <span id="field-tipoProducto" class="font-bold text-slate-900 text-xs mt-0.5 block"></span>
                         </div>
-                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
-                            <span class="text-xs font-semibold text-slate-500 block">Vigencia:</span>
-                            <span id="field-vigencia" class="font-bold text-slate-900 text-xs mt-0.5 block"></span>
-                        </div>
-                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 sm:col-span-2">
-                            <span class="text-xs font-bold text-slate-900 block">Beneficios Extra:</span>
-                            <span id="field-beneficiosExtra" class="font-extrabold text-slate-900 text-xs mt-0.5 block"></span>
-                        </div>
                     </div>
                 </div>
 
-                <!-- SECTION 2: Tiempos de Entrega y Activación -->
-                <div class="space-y-3">
-                    <h4 class="text-xs font-black uppercase tracking-wider text-[#fa335e] flex items-center gap-2 border-b border-apprecio-light pb-2">
-                        <i class="fa-solid fa-clock text-[#fa335e]"></i> 2. Entrega y Activación
+                <div class="space-y-2.5">
+                    <h4 class="text-xs font-black uppercase tracking-wider text-slate-900 bg-slate-200 px-3.5 py-2 rounded-xl border-l-4 border-apprecio-red flex items-center gap-2">
+                        <i class="fa-solid fa-clock text-apprecio-red"></i> 2. Entrega y Activación
                     </h4>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
-                            <span class="text-xs font-semibold text-slate-500 block">Tiempo de Entrega:</span>
-                            <span id="field-tiempoEntregaProveedor" class="font-bold text-slate-800 text-xs mt-0.5 block"></span>
+                        <div class="p-3 bg-slate-100 rounded-xl border border-slate-300">
+                            <span class="text-xs font-bold text-slate-600 block">Tiempo de Entrega:</span>
+                            <span id="field-tiempoEntregaProveedor" class="font-bold text-slate-900 text-xs mt-0.5 block"></span>
                         </div>
-                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
-                            <span class="text-xs font-semibold text-slate-500 block">¿Activación Inmediata?:</span>
-                            <span id="field-activacionInmediata" class="font-bold text-slate-800 text-xs mt-0.5 block"></span>
-                        </div>
-                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
-                            <span class="text-xs font-semibold text-slate-500 block">Tiempo de activación (si aplica):</span>
-                            <span id="field-tiempoActivacion" class="font-bold text-slate-800 text-xs mt-0.5 block"></span>
-                        </div>
-                        <div class="p-3 bg-apprecio-light rounded-xl border border-apprecio-light">
-                            <span class="text-xs font-bold text-[#fa335e] block">¿Cobro Extra?:</span>
-                            <span id="field-cobroExtra" class="font-extrabold text-slate-900 text-xs mt-0.5 block"></span>
+                        <div class="p-3 bg-slate-100 rounded-xl border border-slate-300">
+                            <span class="text-xs font-bold text-slate-600 block">¿Cobro Extra?:</span>
+                            <span id="field-cobroExtra" class="font-bold text-slate-900 text-xs mt-0.5 block"></span>
                         </div>
                     </div>
                 </div>
 
-                <!-- SECTION 3: Condiciones de Redención y Uso -->
-                <div class="space-y-3">
-                    <h4 class="text-xs font-black uppercase tracking-wider text-[#fa335e] flex items-center gap-2 border-b border-apprecio-light pb-2">
-                        <i class="fa-solid fa-arrows-rotate text-[#fa335e]"></i> 3. Condiciones de Redención
+                <div class="space-y-2.5">
+                    <h4 class="text-xs font-black uppercase tracking-wider text-slate-900 bg-slate-200 px-3.5 py-2 rounded-xl border-l-4 border-apprecio-red flex items-center gap-2">
+                        <i class="fa-solid fa-arrows-rotate text-apprecio-red"></i> 3. Condiciones de Redención
                     </h4>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
-                            <span class="text-xs font-semibold text-slate-500 block">Tipo de Redención:</span>
-                            <span id="field-tipoRedencion" class="font-bold text-slate-800 text-xs mt-0.5 block"></span>
+                        <div class="p-3 bg-slate-100 rounded-xl border border-slate-300">
+                            <span class="text-xs font-bold text-slate-600 block">Permite Redención Parcial:</span>
+                            <span id="field-redencionParcial" class="font-bold text-slate-900 text-xs mt-0.5 block"></span>
                         </div>
-                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
-                            <span class="text-xs font-semibold text-slate-500 block">Otro tipo de redención:</span>
-                            <span id="field-otroTipoRedencion" class="font-bold text-slate-800 text-xs mt-0.5 block"></span>
+                        <div class="p-3 bg-slate-100 rounded-xl border border-slate-300">
+                            <span class="text-xs font-bold text-slate-600 block">Solo Redención Total:</span>
+                            <span id="field-redencionTotal" class="font-bold text-slate-900 text-xs mt-0.5 block"></span>
                         </div>
-                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
-                            <span class="text-xs font-semibold text-slate-500 block">Permite Redención Parcial:</span>
-                            <span id="field-redencionParcial" class="font-bold text-slate-800 text-xs mt-0.5 block"></span>
-                        </div>
-                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
-                            <span class="text-xs font-semibold text-slate-500 block">Solo redención Total:</span>
-                            <span id="field-redencionTotal" class="font-bold text-slate-800 text-xs mt-0.5 block"></span>
-                        </div>
-                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
-                            <span class="text-xs font-semibold text-slate-500 block">Códigos por factura:</span>
-                            <span id="field-codigosPorFactura" class="font-bold text-slate-800 text-xs mt-0.5 block"></span>
-                        </div>
-                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
-                            <span class="text-xs font-semibold text-slate-500 block">¿Acumulable con promociones?:</span>
-                            <span id="field-acumulablePromociones" class="font-bold text-slate-800 text-xs mt-0.5 block"></span>
-                        </div>
-                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 sm:col-span-2">
-                            <span class="text-xs font-semibold text-slate-500 block">Cobertura:</span>
-                            <span id="field-cobertura" class="font-bold text-slate-800 text-xs mt-0.5 block"></span>
+                        <div class="p-3 bg-slate-100 rounded-xl border border-slate-300 sm:col-span-2">
+                            <span class="text-xs font-bold text-slate-600 block">Cobertura:</span>
+                            <span id="field-cobertura" class="font-bold text-slate-900 text-xs mt-0.5 block"></span>
                         </div>
                     </div>
                 </div>
 
-                <!-- SECTION 4: Instructivo, Exclusiones y Soporte -->
-                <div class="space-y-3">
-                    <h4 class="text-xs font-black uppercase tracking-wider text-[#fa335e] flex items-center gap-2 border-b border-apprecio-light pb-2">
-                        <i class="fa-solid fa-file-shield text-[#fa335e]"></i> 4. Instructivo, Términos y Soporte
+                <div class="space-y-2.5">
+                    <h4 class="text-xs font-black uppercase tracking-wider text-slate-900 bg-slate-200 px-3.5 py-2 rounded-xl border-l-4 border-apprecio-red flex items-center gap-2">
+                        <i class="fa-solid fa-file-shield text-apprecio-red"></i> 4. Instructivo y Restricciones
                     </h4>
                     <div class="space-y-3">
-                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
-                            <span class="text-xs font-semibold text-slate-500 block">Instructivo de uso en el comercio:</span>
-                            <p id="field-instructivoUso" class="text-xs leading-relaxed text-slate-800 mt-1 font-medium"></p>
+                        <div class="p-3 bg-slate-100 rounded-xl border border-slate-300">
+                            <span class="text-xs font-bold text-slate-600 block">Instructivo de Uso:</span>
+                            <p id="field-instructivoUso" class="text-xs leading-relaxed text-slate-900 mt-1 font-semibold"></p>
                         </div>
-                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
-                            <span class="text-xs font-semibold text-slate-500 block">¿Aplica para todos los productos?:</span>
-                            <span id="field-aplicaTodosProductos" class="font-bold text-slate-800 text-xs mt-0.5 block"></span>
-                        </div>
-                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
-                            <span class="text-xs font-semibold text-slate-500 block">Productos excluidos:</span>
-                            <p id="field-productosExcluidos" class="text-xs leading-relaxed text-slate-800 mt-1 font-medium"></p>
-                        </div>
-                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
-                            <span class="text-xs font-semibold text-slate-500 block">Exclusiones o restricciones:</span>
-                            <p id="field-exclusionesRestricciones" class="text-xs leading-relaxed text-slate-800 mt-1 font-medium"></p>
-                        </div>
-                        <div class="p-3 bg-apprecio-light rounded-xl border border-apprecio-light flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-                            <span class="text-xs font-bold text-[#fa335e]">Canales de Soporte:</span>
-                            <span id="field-canalesSoporte" class="font-extrabold text-slate-900 text-xs"></span>
+                        <div class="p-3 bg-slate-100 rounded-xl border border-slate-300">
+                            <span class="text-xs font-bold text-slate-600 block">Exclusiones o Restricciones:</span>
+                            <p id="field-exclusionesRestricciones" class="text-xs leading-relaxed text-slate-900 mt-1 font-semibold"></p>
                         </div>
                     </div>
                 </div>
 
             </div>
 
-            <!-- Modal Footer Botón en Rojo Apprecio -->
-            <div class="p-4 bg-slate-50 border-t border-slate-200 flex justify-end shrink-0">
-                <button onclick="closeDetailModal()" class="px-5 py-2.5 bg-[#fa335e] hover:bg-[#d81e46] text-white font-bold rounded-xl text-xs transition-all shadow-md">
+            <div class="p-4 bg-slate-200 border-t border-slate-300 flex justify-end shrink-0">
+                <button onclick="closeDetailModal()" class="px-5 py-2 bg-slate-800 hover:bg-slate-900 text-white font-bold rounded-xl text-xs transition-all shadow-sm">
                     Cerrar Ficha
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- JavaScript Logic -->
+    <footer class="bg-slate-900 text-white border-t border-slate-800 mt-12 py-8 text-center text-xs text-slate-400 space-y-3">
+        <div class="flex items-center justify-center gap-2">
+            <img src="logo-apprecio-png.png" 
+                 alt="Apprecio Logo" 
+                 class="h-9 sm:h-11 w-auto object-contain mx-auto"
+                 onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'text-apprecio-red font-black text-xl\'>Apprecio</span>';">
+        </div>
+        <p>© 2026 Catálogo Comercial Dinámico — Alimentado desde Google Sheets</p>
+    </footer>
+
     <script>
         const SHEET_ID = "14w_8kJekDgHq6-YxBY1ZKo1XfoCuwd0dB9giCd7Q2rI";
         const GID = "1041963400";
@@ -359,82 +327,48 @@
             return trimmed;
         }
 
-        function handleHeroImgError(img) {
-            const paths = [
-                'banner-apprecio.png.png',
-                'https://raw.githubusercontent.com/Apprecio2026/catalogo/main/banner-apprecio.png.png',
-                'banner-apprecio.png',
-                'https://raw.githubusercontent.com/Apprecio2026/catalogo/main/banner-apprecio.png'
-            ];
-            const idx = parseInt(img.getAttribute('data-try-idx') || '0');
-            if (idx < paths.length) {
-                img.setAttribute('data-try-idx', idx + 1);
-                img.src = paths[idx];
-            } else {
-                img.onerror = null;
-                if (img.parentElement) {
-                    img.parentElement.innerHTML = `
-                        <div class="w-full h-full flex flex-col items-center justify-center p-6 text-center bg-white/10 backdrop-blur-sm">
-                            <i class="fa-solid fa-gift text-5xl text-white mb-2 animate-bounce"></i>
-                            <span class="text-sm font-extrabold text-white tracking-wide">Apprecio Gift Cards</span>
-                            <span class="text-[11px] text-white/80 mt-1">Catálogo Digital Colombia</span>
-                        </div>
-                    `;
-                }
-            }
-        }
-
-        function handleLogoError(img, iconClass) {
-            img.onerror = null;
-            if (img.parentElement) {
-                img.parentElement.innerHTML = `
-                    <div class="w-full h-full flex items-center justify-center bg-apprecio-light rounded-xl border border-apprecio-light">
-                        <i class="fa-solid ${iconClass} text-[#fa335e] text-lg"></i>
-                    </div>
-                `;
-            }
-        }
-
         const sampleCatalogue = [
             {
                 id: 0,
-                comercio: "DirecTV",
-                categoria: "Entretenimiento",
-                montos: "50 000, 80 000, 100 000, 150 000, 200 000, 300 000, 400 000",
+                comercio: "Éxito",
+                categoria: "Supermercados",
+                montos: "20 000, 50 000, 100 000, 200 000",
                 tiempoEntregaProveedor: "Inmediata",
                 cobroExtra: "No",
                 valorCobroExtra: "-",
-                tipoProducto: "Suscripción / Bono Digital",
-                redencionParcial: "No",
-                redencionTotal: "Sí",
-                codigosPorFactura: "1 por cuenta",
-                tipoRedencion: "Código PIN Online",
-                otroTipoRedencion: "Atención Telefónica",
-                acumulablePromociones: "Sí",
-                instructivoUso: "Ingresar el PIN en la sección de pagos de la plataforma de DirecTV.",
-                canalesSoporte: "soporte@directv.com.co",
+                tipoProducto: "Bono Digital",
+                redencionParcial: "Sí",
+                redencionTotal: "No",
+                instructivoUso: "Presentar código en caja.",
                 cobertura: "Nacional",
-                exclusionesRestricciones: "Aplica únicamente para recargas o facturas activas.",
-                activacionInmediata: "Sí",
-                tiempoActivacion: "-",
-                aplicaTodosProductos: "Sí",
-                productosExcluidos: "-",
-                beneficiosExtra: "Puntos Apprecio extra acumulables",
-                vigencia: "12 Meses",
-                imagenUrl: ""
+                exclusionesRestricciones: "Aplica en todas las sedes Éxito."
+            },
+            {
+                id: 1,
+                comercio: "Falabella",
+                categoria: "Grandes Tiendas",
+                montos: "50 000, 100 000, 150 000, 200 000",
+                tiempoEntregaProveedor: "Inmediata",
+                cobroExtra: "No",
+                valorCobroExtra: "-",
+                tipoProducto: "Gift Card Virtual",
+                redencionParcial: "Sí",
+                redencionTotal: "No",
+                instructivoUso: "Presentar en tienda física o asesor WhatsApp.",
+                cobertura: "Nacional",
+                exclusionesRestricciones: "Válido en tiendas físicas y WhatsApp."
             }
         ];
 
         let catalogueData = [...sampleCatalogue];
-        let currentCategory = 'todos';
 
         function findColIndex(headers, ...possibleKeywords) {
             if (!headers || headers.length === 0) return -1;
             for (const keyword of possibleKeywords) {
-                const targetKey = keyword.toLowerCase().normalize("NFD").replace(/[\u0300-\u063f]/g, "").trim();
+                const targetKey = keyword.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
                 const index = headers.findIndex(h => {
                     if (!h) return false;
-                    const cleanH = h.toLowerCase().normalize("NFD").replace(/[\u0300-\u063f]/g, "").trim();
+                    const cleanH = h.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
                     return cleanH.includes(targetKey);
                 });
                 if (index !== -1) return index;
@@ -445,7 +379,13 @@
         function renderCards(items) {
             const grid = document.getElementById('cards-grid');
             const noResults = document.getElementById('no-results');
+            const countText = document.getElementById('total-comercios-count');
+            const filterText = document.getElementById('filter-status-text');
+
             grid.innerHTML = '';
+
+            if (countText) countText.innerText = `${items ? items.length : 0} Marcas`;
+            if (filterText) filterText.innerText = `Mostrando ${items ? items.length : 0} comercios`;
 
             if (!items || items.length === 0) {
                 noResults.classList.remove('hidden');
@@ -456,19 +396,7 @@
 
             items.forEach((item) => {
                 const card = document.createElement('div');
-                card.className = "glass-card-white rounded-2xl overflow-hidden transition-all duration-300 flex flex-col justify-between animate-fade-in group hover:-translate-y-1";
-                
-                let iconClass = "fa-gift";
-                const catLower = (item.categoria || '').toLowerCase();
-                if (catLower.includes('super')) { iconClass = "fa-cart-shopping"; }
-                else if (catLower.includes('restaurante') || catLower.includes('comida') || catLower.includes('cafe')) { iconClass = "fa-utensils"; }
-                else if (catLower.includes('moda') || catLower.includes('vestuario')) { iconClass = "fa-shirt"; }
-                else if (catLower.includes('hogar') || catLower.includes('tech') || catLower.includes('electro')) { iconClass = "fa-laptop"; }
-                else if (catLower.includes('entretenimiento') || catLower.includes('direct')) { iconClass = "fa-tv"; }
-
-                const logoHtml = (item.imagenUrl && item.imagenUrl.trim() !== '') ? 
-                    `<img src="${item.imagenUrl}" alt="${item.comercio}" class="w-full h-full object-contain p-0.5 bg-white rounded-xl shadow-md" onerror="handleLogoError(this, '${iconClass}')">` : 
-                    `<div class="w-full h-full flex items-center justify-center bg-apprecio-light rounded-xl border border-apprecio-light"><i class="fa-solid ${iconClass} text-[#fa335e] text-lg"></i></div>`;
+                card.className = "bg-white rounded-2xl border border-slate-300 overflow-hidden card-shadow flex flex-col justify-between animate-fade-in group";
 
                 const montosClean = cleanVal(item.montos);
                 const redParcialClean = cleanVal(item.redencionParcial);
@@ -485,55 +413,39 @@
 
                 card.innerHTML = `
                     <div>
-                        <!-- Header Banner en Gris Oscuro Sobrio -->
-                        <div class="h-14 w-full bg-slate-800 p-3.5 flex items-center justify-between text-white relative">
-                            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-white text-slate-900 shadow-sm truncate max-w-[170px]">
-                                ${cleanVal(item.categoria) !== '-' ? item.categoria : 'Gift Card'}
+                        <div class="bg-slate-300 border-b border-slate-400 px-3.5 py-2.5 flex items-center gap-2">
+                            <span class="bg-apprecio-red text-white text-[10px] font-extrabold px-1.5 py-0.5 rounded shadow-sm shrink-0">
+                                App
                             </span>
-                            <span class="text-[10px] font-bold text-white/90 bg-black/30 px-2 py-0.5 rounded-full flex items-center gap-1">
-                                <i class="fa-solid fa-bolt text-[9px]"></i> Apprecio
-                            </span>
+                            <h4 class="text-sm font-black text-slate-900 truncate leading-snug tracking-tight" title="${item.comercio}">
+                                ${cleanVal(item.comercio)}
+                            </h4>
                         </div>
 
-                        <!-- Commerce Header -->
-                        <div class="p-5 space-y-4">
-                            <div class="flex items-center gap-3.5">
-                                <div class="w-16 h-12 rounded-xl shrink-0 bg-apprecio-light border border-apprecio-light flex items-center justify-center shadow-sm overflow-hidden p-0.5 group-hover:scale-105 transition-transform">
-                                    ${logoHtml}
-                                </div>
-                                <div class="min-w-0 flex-1">
-                                    <h4 class="text-base font-black text-slate-900 leading-snug truncate" title="${item.comercio}">${cleanVal(item.comercio)}</h4>
-                                    <p class="text-xs text-slate-700 font-bold mt-0.5 truncate">${cleanVal(item.tipoProducto)}</p>
-                                </div>
+                        <div class="p-4 space-y-2 text-xs text-slate-800">
+                            <div class="flex justify-between items-start gap-2 py-1 border-b border-slate-100">
+                                <span class="font-bold text-slate-700 shrink-0">Montos:</span>
+                                <span class="font-extrabold text-slate-900 text-right truncate max-w-[150px]">${montosClean}</span>
                             </div>
-
-                            <!-- Summary Box -->
-                            <div class="space-y-2 pt-3 border-t border-slate-100 text-xs">
-                                <div class="flex justify-between items-start text-slate-700 gap-2">
-                                    <span class="text-slate-500 font-medium shrink-0">Montos:</span>
-                                    <span class="font-bold text-slate-950 text-right text-xs leading-snug break-words">${montosClean}</span>
-                                </div>
-                                <div class="flex justify-between items-center text-slate-700 gap-2">
-                                    <span class="text-slate-500 font-medium shrink-0">Permite Redención Parcial:</span>
-                                    <span class="font-bold text-slate-950 text-right text-xs">${redParcialClean}</span>
-                                </div>
-                                <div class="flex justify-between items-center text-slate-700 gap-2">
-                                    <span class="text-slate-500 font-medium shrink-0">Solo redención Total:</span>
-                                    <span class="font-bold text-slate-950 text-right text-xs">${redTotalClean}</span>
-                                </div>
-                                <div class="flex justify-between items-center text-slate-700 gap-2">
-                                    <span class="text-slate-500 font-medium shrink-0">¿Cobro Extra?:</span>
-                                    <span class="font-black text-slate-950 text-right text-xs">${cobroExtraDisplay}</span>
-                                </div>
+                            <div class="flex justify-between items-center gap-2 py-1 border-b border-slate-100">
+                                <span class="font-semibold text-slate-700 shrink-0">Redención Parcial:</span>
+                                <span class="font-bold text-slate-900 text-right">${redParcialClean}</span>
+                            </div>
+                            <div class="flex justify-between items-center gap-2 py-1 border-b border-slate-100">
+                                <span class="font-semibold text-slate-700 shrink-0">Solo Redención Total:</span>
+                                <span class="font-bold text-slate-900 text-right">${redTotalClean}</span>
+                            </div>
+                            <div class="flex justify-between items-center gap-2 pt-1">
+                                <span class="font-semibold text-slate-700 shrink-0">Cobro Extra:</span>
+                                <span class="font-extrabold text-slate-900 text-right">${cobroExtraDisplay}</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Botón "Ver Ficha Completa" Uniforme con Fondo Rojo Sólido y Texto Blanco -->
-                    <div class="p-5 pt-0">
-                        <button onclick="openDetailModal(${item.id})" class="w-full py-2.5 px-3 rounded-xl bg-[#fa335e] hover:bg-[#d81e46] text-white text-xs font-bold transition-all flex items-center justify-center gap-1.5 group shadow-md hover:shadow-lg active:scale-95">
-                            <span class="text-white">Ver Ficha Completa</span>
-                            <i class="fa-solid fa-arrow-right text-[10px] text-white group-hover:translate-x-1 transition-transform"></i>
+                    <div class="p-3 pt-1">
+                        <button onclick="openDetailModal(${item.id})" class="w-full py-2.5 px-4 rounded-xl bg-apprecio-red hover:bg-rose-600 text-white font-extrabold text-xs transition-all duration-200 flex items-center justify-between shadow-md hover:shadow-lg active:scale-95 group/btn">
+                            <span>Ver Ficha Completa</span>
+                            <i class="fa-solid fa-chevron-right text-[11px] group-hover/btn:translate-x-1.5 transition-transform"></i>
                         </button>
                     </div>
                 `;
@@ -545,33 +457,13 @@
             const item = catalogueData.find(c => c.id === itemId);
             if (!item) return;
 
-            const modalIconBg = document.getElementById('modal-icon-bg');
-            let iconClass = "fa-gift";
-            const catLower = (item.categoria || '').toLowerCase();
-            if (catLower.includes('super')) { iconClass = "fa-cart-shopping"; }
-            else if (catLower.includes('restaurante') || catLower.includes('comida') || catLower.includes('cafe')) { iconClass = "fa-utensils"; }
-            else if (catLower.includes('moda') || catLower.includes('vestuario')) { iconClass = "fa-shirt"; }
-            else if (catLower.includes('hogar') || catLower.includes('tech') || catLower.includes('electro')) { iconClass = "fa-laptop"; }
-            else if (catLower.includes('entretenimiento') || catLower.includes('direct')) { iconClass = "fa-tv"; }
-
-            if (item.imagenUrl && item.imagenUrl.trim() !== '') {
-                modalIconBg.innerHTML = `<img src="${item.imagenUrl}" alt="${item.comercio}" class="w-full h-full object-contain p-0.5 bg-white rounded-lg" onerror="handleLogoError(this, '${iconClass}')">`;
-            } else {
-                modalIconBg.innerHTML = `<i class="fa-solid ${iconClass} text-xl text-[#fa335e]"></i>`;
-            }
-
             document.getElementById('modal-comercio').innerText = cleanVal(item.comercio);
-            document.getElementById('modal-categoria').innerText = cleanVal(item.categoria) !== '-' ? item.categoria : 'Gift Card';
-            document.getElementById('modal-tipo-prod-badge').innerText = cleanVal(item.tipoProducto) !== '-' ? item.tipoProducto : 'Producto Digital';
+            document.getElementById('modal-categoria').innerText = cleanVal(item.categoria) !== '-' ? item.categoria : 'Gift Card Colombia';
 
             document.getElementById('field-montos').innerText = cleanVal(item.montos);
             document.getElementById('field-tipoProducto').innerText = cleanVal(item.tipoProducto);
-            document.getElementById('field-vigencia').innerText = cleanVal(item.vigencia);
-            document.getElementById('field-beneficiosExtra').innerText = cleanVal(item.beneficiosExtra);
 
             document.getElementById('field-tiempoEntregaProveedor').innerText = cleanVal(item.tiempoEntregaProveedor);
-            document.getElementById('field-activacionInmediata').innerText = cleanVal(item.activacionInmediata);
-            document.getElementById('field-tiempoActivacion').innerText = cleanVal(item.tiempoActivacion);
             
             const cobroExtraClean = cleanVal(item.cobroExtra);
             const valorCobroClean = cleanVal(item.valorCobroExtra);
@@ -583,19 +475,12 @@
             }
             document.getElementById('field-cobroExtra').innerText = cobroExtraFormatted;
 
-            document.getElementById('field-tipoRedencion').innerText = cleanVal(item.tipoRedencion);
-            document.getElementById('field-otroTipoRedencion').innerText = cleanVal(item.otroTipoRedencion);
             document.getElementById('field-redencionParcial').innerText = cleanVal(item.redencionParcial);
             document.getElementById('field-redencionTotal').innerText = cleanVal(item.redencionTotal);
-            document.getElementById('field-codigosPorFactura').innerText = cleanVal(item.codigosPorFactura);
-            document.getElementById('field-acumulablePromociones').innerText = cleanVal(item.acumulablePromociones);
             document.getElementById('field-cobertura').innerText = cleanVal(item.cobertura);
 
             document.getElementById('field-instructivoUso').innerText = cleanVal(item.instructivoUso);
-            document.getElementById('field-aplicaTodosProductos').innerText = cleanVal(item.aplicaTodosProductos);
-            document.getElementById('field-productosExcluidos').innerText = cleanVal(item.productosExcluidos);
             document.getElementById('field-exclusionesRestricciones').innerText = cleanVal(item.exclusionesRestricciones);
-            document.getElementById('field-canalesSoporte').innerText = cleanVal(item.canalesSoporte);
 
             document.getElementById('detail-modal').classList.remove('hidden');
         }
@@ -619,30 +504,19 @@
                     const headers = rows[0];
 
                     const mapCol = {
-                        comercio: findColIndex(headers, "comercio"),
-                        categoria: findColIndex(headers, "categoria"),
-                        montos: findColIndex(headers, "monto"),
-                        tiempoEntregaProveedor: findColIndex(headers, "tiempo entrega", "entrega proveedor"),
+                        comercio: findColIndex(headers, "comercio", "nombre comercio"),
+                        categoria: findColIndex(headers, "categoria", "rubro"),
+                        montos: findColIndex(headers, "montos", "monto", "valores"),
+                        tiempoEntregaProveedor: findColIndex(headers, "tiempo de entrega", "tiempo entrega", "entrega proveedor"),
                         cobroExtra: findColIndex(headers, "cobro extra", "¿cobro extra?"),
-                        valorCobroExtra: findColIndex(headers, "valor cobro"),
+                        valorCobroExtra: findColIndex(headers, "valor cobro extra", "valor cobro"),
                         tipoProducto: findColIndex(headers, "tipo de producto", "tipo producto"),
-                        redencionParcial: findColIndex(headers, "redencion parcial", "permite redencion"),
-                        redencionTotal: findColIndex(headers, "redencion total", "solo redencion"),
-                        codigosPorFactura: findColIndex(headers, "codigos por factura", "factura"),
-                        tipoRedencion: findColIndex(headers, "tipo de redencion", "redencion"),
-                        otroTipoRedencion: findColIndex(headers, "otro tipo de redencion"),
-                        acumulablePromociones: findColIndex(headers, "acumulable"),
-                        instructivoUso: findColIndex(headers, "instructivo"),
-                        canalesSoporte: findColIndex(headers, "soporte", "canales"),
+                        redencionParcial: findColIndex(headers, "permite redencion parcial", "redencion parcial", "permite redencion"),
+                        redencionTotal: findColIndex(headers, "solo redencion total", "redencion total", "solo redencion"),
+                        instructivoUso: findColIndex(headers, "instructivo de uso", "instructivo"),
                         cobertura: findColIndex(headers, "cobertura"),
-                        exclusionesRestricciones: findColIndex(headers, "exclusiones", "restricciones"),
-                        activacionInmediata: findColIndex(headers, "activacion inmediata"),
-                        tiempoActivacion: findColIndex(headers, "tiempo activacion", "tiempo de activacion"),
-                        aplicaTodosProductos: findColIndex(headers, "aplica todos los productos"),
-                        productosExcluidos: findColIndex(headers, "productos excluidos"),
-                        beneficiosExtra: findColIndex(headers, "beneficios extra"),
-                        vigencia: findColIndex(headers, "vigencia"),
-                        imagenUrl: findColIndex(headers, "imagen", "logo", "url")
+                        exclusionesRestricciones: findColIndex(headers, "exclusiones o restricciones", "exclusiones"),
+                        vigencia: findColIndex(headers, "vigencia")
                     };
 
                     const getVal = (cols, colIdx, fallbackIdx) => {
@@ -655,7 +529,6 @@
                     
                     for (let i = 1; i < rows.length; i++) {
                         const cols = rows[i];
-                        
                         const commerceName = getVal(cols, mapCol.comercio, 0);
                         if (cols && commerceName !== '-' && commerceName.toUpperCase() !== 'COMERCIO') {
                             parsedData.push({
@@ -669,33 +542,22 @@
                                 tipoProducto: getVal(cols, mapCol.tipoProducto, 7),
                                 redencionParcial: getVal(cols, mapCol.redencionParcial, 8),
                                 redencionTotal: getVal(cols, mapCol.redencionTotal, 9),
-                                codigosPorFactura: getVal(cols, mapCol.codigosPorFactura, 10),
-                                tipoRedencion: getVal(cols, mapCol.tipoRedencion, 11),
-                                otroTipoRedencion: getVal(cols, mapCol.otroTipoRedencion, 12),
-                                acumulablePromociones: getVal(cols, mapCol.acumulablePromociones, 13),
                                 instructivoUso: getVal(cols, mapCol.instructivoUso, 14),
-                                canalesSoporte: getVal(cols, mapCol.canalesSoporte, 15),
                                 cobertura: getVal(cols, mapCol.cobertura, 16),
                                 exclusionesRestricciones: getVal(cols, mapCol.exclusionesRestricciones, 17),
-                                activacionInmediata: getVal(cols, mapCol.activacionInmediata, 18),
-                                tiempoActivacion: getVal(cols, mapCol.tiempoActivacion, 19),
-                                aplicaTodosProductos: getVal(cols, mapCol.aplicaTodosProductos, 20),
-                                productosExcluidos: getVal(cols, mapCol.productosExcluidos, 21),
-                                beneficiosExtra: getVal(cols, mapCol.beneficiosExtra, 22),
-                                vigencia: getVal(cols, mapCol.vigencia, 23),
-                                imagenUrl: (mapCol.imagenUrl !== -1 && cols[mapCol.imagenUrl]) ? cols[mapCol.imagenUrl].trim() : (cols[24] ? cols[24].trim() : '')
+                                vigencia: getVal(cols, mapCol.vigencia, 23)
                             });
                         }
                     }
 
                     if (parsedData.length > 0) {
                         catalogueData = parsedData;
-                        applyFilters();
+                        handleSearch();
                         updateStatusBadge(`Sincronizado (${parsedData.length} comercios)`, true);
                     }
                 }
             } catch (err) {
-                console.warn("No se pudo descargar automáticamente desde Google Sheets:", err);
+                console.warn("Error al descargar desde Google Sheets:", err);
                 updateStatusBadge("Sincronizado", true);
             }
         }
@@ -706,44 +568,29 @@
             if (text) text.innerText = msg;
             if (badge) {
                 if (success) {
-                    badge.className = "inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold bg-apprecio-light text-[#fa335e] border border-apprecio-light";
+                    badge.className = "inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold bg-slate-800 text-white border border-slate-700";
                 } else {
-                    badge.className = "inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold bg-amber-50 text-amber-800 border border-amber-200";
+                    badge.className = "inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold bg-amber-500 text-slate-950 border border-amber-400";
                 }
             }
         }
 
-        function applyFilters() {
+        function handleSearch() {
             const query = (document.getElementById('search-input')?.value || '').toLowerCase().trim();
             
             const filtered = catalogueData.filter(item => {
-                const catMatch = currentCategory === 'todos' || 
-                    (item.categoria && item.categoria.toLowerCase().includes(currentCategory.toLowerCase()));
-                
-                if (!catMatch) return false;
                 if (!query) return true;
-
                 const searchPool = [
                     item.comercio,
                     item.categoria,
                     item.montos,
-                    item.tipoProducto,
-                    item.tipoRedencion
+                    item.tipoProducto
                 ].map(v => (v || '').toLowerCase()).join(' ');
 
                 return searchPool.includes(query);
             });
 
             renderCards(filtered);
-        }
-
-        function filterCategory(cat, btn) {
-            currentCategory = cat;
-            applyFilters();
-        }
-
-        function handleSearch() {
-            applyFilters();
         }
 
         function closeDetailModal() {
@@ -796,13 +643,10 @@
             return lines;
         }
 
+        // Initialize Apprecio Catalog on DOM load
         window.addEventListener('DOMContentLoaded', () => {
-            fetchGoogleSheetCsv();
-
-            // Auto sync cada 60 segundos
-            setInterval(() => {
-                fetchGoogleSheetCsv(true);
-            }, 60000);
+            handleSearch();
+            fetchGoogleSheetCsv(true);
         });
     </script>
 </body>
