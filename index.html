@@ -76,7 +76,7 @@
     <header class="sticky top-0 z-40 bg-slate-900 text-white shadow-lg border-b border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <!-- Logo Principal en Contenedor Gris -->
+                <!-- Logo Principal en Contenedor Gris Neutral -->
                 <a href="#" class="flex items-center shrink-0 group">
                     <div class="px-2.5 py-1.5 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center">
                         <img src="logo-apprecio-png.png" 
@@ -94,7 +94,7 @@
                 </div>
             </div>
 
-            <!-- Zona Superior Derecha con Sincronización y Logo secundario sobre fondo gris -->
+            <!-- Zona Superior Derecha con Sincronización y Logo Secundario -->
             <div class="flex items-center gap-2.5 sm:gap-4">
                 <button onclick="refreshDataManual()" id="btn-refresh" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl border border-slate-700 bg-slate-800 text-white text-xs font-bold hover:bg-slate-700 transition-all shadow-sm active:scale-95">
                     <i class="fa-solid fa-rotate-right" id="refresh-icon"></i>
@@ -104,7 +104,7 @@
                     <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                     <span id="sync-text">Sincronizado</span>
                 </span>
-                <!-- Logo secundario superior derecha con fondo gris suave -->
+                <!-- Logo secundario superior derecha con fondo gris -->
                 <div class="hidden md:flex items-center pl-3 border-l border-slate-800">
                     <div class="px-2 py-1 rounded-lg bg-slate-800 border border-slate-700/60">
                         <img src="logo-apprecio-png.png" 
@@ -136,7 +136,7 @@
                     </p>
                 </div>
 
-                <!-- Columna Derecha: Banner Animado (banner-apprecio.png.png) y Tarjetas Informativas -->
+                <!-- Columna Derecha: Banner Animado y Tarjetas Informativas -->
                 <div class="w-full lg:w-auto flex flex-col items-center justify-center gap-4">
                     
                     <!-- Imagen Animada con banner-apprecio.png.png (con fallback a banner.png) -->
@@ -195,7 +195,7 @@
 
             <!-- Grid de Tarjetas de Comercios -->
             <div id="cards-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-                <!-- Tarjetas pobladas dinámicamente -->
+                <!-- Tarjetas pobladas dinámicamente con las 8 preguntas bajo el nombre -->
             </div>
 
             <!-- Estado de Sin Resultados -->
@@ -397,6 +397,7 @@
             return -1;
         }
 
+        // Renderizado de tarjetas con las 8 preguntas exactas debajo del nombre del comercio
         function renderCards(items) {
             const grid = document.getElementById('cards-grid');
             const noResults = document.getElementById('no-results');
@@ -718,7 +719,7 @@
             return lines;
         }
 
-        // Initialize Apprecio Catalog on DOM load
+        // Inicializar catálogo al cargar el DOM
         window.addEventListener('DOMContentLoaded', () => {
             handleSearch();
             fetchGoogleSheetCsv(true);
