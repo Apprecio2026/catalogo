@@ -80,7 +80,7 @@
                 <a href="#" class="flex items-center shrink-0 group">
                     <img src="logo-apprecio-png.png" 
                          alt="Apprecio Logo" 
-                         class="h-9 sm:h-11 w-auto object-contain transition-transform group-hover:scale-105"
+                         class="h-8 sm:h-10 w-auto object-contain transition-transform group-hover:scale-105"
                          onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'h-10 px-4 rounded-xl bg-apprecio-red flex items-center justify-center text-white font-extrabold text-xl shadow-md border border-rose-500 tracking-wider\'><span>Apprecio</span></div>';">
                 </a>
                 <div class="hidden sm:block border-l border-slate-700 h-7 mx-1"></div>
@@ -103,8 +103,11 @@
                     <span id="sync-text">Sincronizado</span>
                 </span>
                 <!-- Logo Top Right Corner -->
-                <div class="hidden lg:flex items-center pl-3 border-l border-slate-800">
-                    <img src="logo-apprecio-png.png" alt="Apprecio" class="h-8 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+                <div class="hidden md:flex items-center pl-3 border-l border-slate-800">
+                    <img src="logo-apprecio-png.png" 
+                         alt="Apprecio Logo" 
+                         class="h-7 sm:h-8 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity"
+                         onerror="this.style.display='none'">
                 </div>
             </div>
         </div>
@@ -118,7 +121,7 @@
                 <!-- Columna Izquierda: Títulos y Descripción -->
                 <div class="max-w-xl space-y-3 text-center lg:text-left">
                     <div class="inline-flex items-center gap-2 text-xs font-bold px-3 py-1.5 rounded-lg bg-white text-slate-800 border border-slate-300 shadow-sm">
-                        <img src="logo-apprecio-png.png" alt="Apprecio Logo" class="h-4 w-auto object-contain" onerror="this.style.display='none'">
+                        <img src="logo-apprecio-png.png" alt="Apprecio" class="h-4 w-auto object-contain" onerror="this.style.display='none'">
                         <span>Catálogo Apprecio</span>
                     </div>
                     <h2 class="text-3xl sm:text-4xl font-black tracking-tight text-slate-900 leading-tight">
@@ -175,7 +178,7 @@
                         type="text" 
                         id="search-input" 
                         oninput="handleSearch()" 
-                        placeholder="Buscar comercio, marca o valor..." 
+                        placeholder="Buscar comercio, marca o categoría..." 
                         class="w-full pl-10 pr-4 py-2.5 bg-slate-100 border border-slate-300 rounded-xl text-sm text-slate-900 font-medium placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-800 focus:bg-white transition-all">
                 </div>
 
@@ -269,7 +272,7 @@
                             <span id="field-redencionTotal" class="font-bold text-slate-900 text-xs mt-0.5 block"></span>
                         </div>
                         <div class="p-3 bg-slate-100 rounded-xl border border-slate-300 sm:col-span-2">
-                            <span class="text-xs font-bold text-slate-600 block">Cobertura:</span>
+                            <span class="text-xs font-bold text-slate-600 block">Cobertura / Canales de Uso:</span>
                             <span id="field-cobertura" class="font-bold text-slate-900 text-xs mt-0.5 block"></span>
                         </div>
                     </div>
@@ -341,7 +344,12 @@
                 redencionTotal: "No",
                 instructivoUso: "Presentar código en caja.",
                 cobertura: "Nacional",
-                exclusionesRestricciones: "Aplica en todas las sedes Éxito."
+                exclusionesRestricciones: "Aplica en todas las sedes Éxito.",
+                nominativaPortador: "Al portador",
+                canalesUso: "Tiendas físicas y WhatsApp / Web",
+                restriccionPuntoFisico: "Sin restricciones en sedes nacionales",
+                multipleGiftCard: "Sí",
+                codigosPorFactura: "Hasta 5 códigos"
             },
             {
                 id: 1,
@@ -356,7 +364,12 @@
                 redencionTotal: "No",
                 instructivoUso: "Presentar en tienda física o asesor WhatsApp.",
                 cobertura: "Nacional",
-                exclusionesRestricciones: "Válido en tiendas físicas y WhatsApp."
+                exclusionesRestricciones: "Válido en tiendas físicas y WhatsApp.",
+                nominativaPortador: "Al portador",
+                canalesUso: "Tiendas físicas y canal digital",
+                restriccionPuntoFisico: "Sin restricción",
+                multipleGiftCard: "Sí",
+                codigosPorFactura: "Ilimitados"
             }
         ];
 
@@ -398,9 +411,7 @@
                 const card = document.createElement('div');
                 card.className = "bg-white rounded-2xl border border-slate-300 overflow-hidden card-shadow flex flex-col justify-between animate-fade-in group";
 
-                const montosClean = cleanVal(item.montos);
                 const redParcialClean = cleanVal(item.redencionParcial);
-                const redTotalClean = cleanVal(item.redencionTotal);
                 const cobroExtraClean = cleanVal(item.cobroExtra);
                 const valorCobroExtraClean = cleanVal(item.valorCobroExtra);
 
@@ -411,40 +422,84 @@
                     cobroExtraDisplay = valorCobroExtraClean;
                 }
 
+                const nominativaClean = cleanVal(item.nominativaPortador) !== '-' ? cleanVal(item.nominativaPortador) : "Al portador";
+                const canalesClean = cleanVal(item.canalesUso) !== '-' ? cleanVal(item.canalesUso) : cleanVal(item.cobertura);
+                const restriccionPuntoClean = cleanVal(item.restriccionPuntoFisico);
+                const exclusionesClean = cleanVal(item.exclusionesRestricciones);
+                const multipleClean = cleanVal(item.multipleGiftCard);
+                const codigosFacturaClean = cleanVal(item.codigosPorFactura);
+
                 card.innerHTML = `
                     <div>
-                        <div class="bg-slate-300 border-b border-slate-400 px-3.5 py-2.5 flex items-center gap-2">
-                            <span class="bg-apprecio-red text-white text-[10px] font-extrabold px-1.5 py-0.5 rounded shadow-sm shrink-0">
-                                App
-                            </span>
-                            <h4 class="text-sm font-black text-slate-900 truncate leading-snug tracking-tight" title="${item.comercio}">
-                                ${cleanVal(item.comercio)}
-                            </h4>
+                        <!-- Header de Tarjeta -->
+                        <div class="bg-slate-300 border-b border-slate-400 px-3.5 py-2.5 flex items-center justify-between gap-2">
+                            <div class="flex items-center gap-2 truncate">
+                                <span class="bg-apprecio-red text-white text-[10px] font-extrabold px-1.5 py-0.5 rounded shadow-sm shrink-0">
+                                    App
+                                </span>
+                                <h4 class="text-sm font-black text-slate-900 truncate leading-snug tracking-tight" title="${item.comercio}">
+                                    ${cleanVal(item.comercio)}
+                                </h4>
+                            </div>
                         </div>
 
-                        <div class="p-4 space-y-2 text-xs text-slate-800">
-                            <div class="flex justify-between items-start gap-2 py-1 border-b border-slate-100">
-                                <span class="font-bold text-slate-700 shrink-0">Montos:</span>
-                                <span class="font-extrabold text-slate-900 text-right truncate max-w-[150px]">${montosClean}</span>
+                        <!-- Cuerpos con los 8 campos ordenados -->
+                        <div class="p-4 space-y-2.5 text-xs text-slate-800">
+                            
+                            <!-- 1. ¿Las gift cards son nominativas o al portador? -->
+                            <div class="py-1 border-b border-slate-100">
+                                <span class="block font-bold text-slate-500 text-[11px]">¿Nominativa o al portador?:</span>
+                                <span class="font-extrabold text-slate-900 block mt-0.5">${nominativaClean}</span>
                             </div>
+
+                            <!-- 2. ¿En cuáles canales se puede usar la gift card? -->
+                            <div class="py-1 border-b border-slate-100">
+                                <span class="block font-bold text-slate-500 text-[11px]">¿En cuáles canales se puede usar?:</span>
+                                <span class="font-bold text-slate-900 block mt-0.5 leading-tight truncate" title="${canalesClean}">${canalesClean}</span>
+                            </div>
+
+                            <!-- 3. ¿Existe restricción de uso en algún punto físico? -->
+                            <div class="py-1 border-b border-slate-100">
+                                <span class="block font-bold text-slate-500 text-[11px]">¿Restricción en punto físico?:</span>
+                                <span class="font-bold text-slate-900 block mt-0.5 leading-tight truncate" title="${restriccionPuntoClean}">${restriccionPuntoClean}</span>
+                            </div>
+
+                            <!-- 4. Si tiene exclusiones o restricciones cuáles son -->
+                            <div class="py-1 border-b border-slate-100">
+                                <span class="block font-bold text-slate-500 text-[11px]">Exclusiones / Restricciones:</span>
+                                <span class="font-semibold text-slate-800 block mt-0.5 leading-tight line-clamp-2" title="${exclusionesClean}">${exclusionesClean}</span>
+                            </div>
+
+                            <!-- 5. ¿Se puede usar más de una gift card en la misma compra? -->
                             <div class="flex justify-between items-center gap-2 py-1 border-b border-slate-100">
-                                <span class="font-semibold text-slate-700 shrink-0">Redención Parcial:</span>
-                                <span class="font-bold text-slate-900 text-right">${redParcialClean}</span>
+                                <span class="font-bold text-slate-500 text-[11px] shrink-0">¿Más de 1 GC por compra?:</span>
+                                <span class="font-bold text-slate-900 text-right truncate">${multipleClean}</span>
                             </div>
+
+                            <!-- 6. ¿Cuántos códigos permite por factura? -->
                             <div class="flex justify-between items-center gap-2 py-1 border-b border-slate-100">
-                                <span class="font-semibold text-slate-700 shrink-0">Solo Redención Total:</span>
-                                <span class="font-bold text-slate-900 text-right">${redTotalClean}</span>
+                                <span class="font-bold text-slate-500 text-[11px] shrink-0">Códigos por factura:</span>
+                                <span class="font-bold text-slate-900 text-right truncate">${codigosFacturaClean}</span>
                             </div>
-                            <div class="flex justify-between items-center gap-2 pt-1">
-                                <span class="font-semibold text-slate-700 shrink-0">Cobro Extra:</span>
-                                <span class="font-extrabold text-slate-900 text-right">${cobroExtraDisplay}</span>
+
+                            <!-- 7. ¿Se permiten compras parciales con las gift cards (saldo remanente)? -->
+                            <div class="flex justify-between items-center gap-2 py-1 border-b border-slate-100">
+                                <span class="font-bold text-slate-500 text-[11px] shrink-0">¿Compras parciales (saldo)?:</span>
+                                <span class="font-bold text-slate-900 text-right truncate">${redParcialClean}</span>
                             </div>
+
+                            <!-- 8. ¿Cobro Extra? Valor cobro extra si aplica -->
+                            <div class="flex justify-between items-center gap-2 pt-0.5">
+                                <span class="font-bold text-slate-500 text-[11px] shrink-0">¿Cobro Extra?:</span>
+                                <span class="font-extrabold text-slate-900 text-right truncate">${cobroExtraDisplay}</span>
+                            </div>
+
                         </div>
                     </div>
 
                     <div class="p-3 pt-1">
                         <button onclick="openDetailModal(${item.id})" class="w-full py-2.5 px-4 rounded-xl bg-apprecio-red hover:bg-rose-600 text-white font-extrabold text-xs transition-all duration-200 flex items-center justify-between shadow-md hover:shadow-lg active:scale-95 group/btn">
-                            <span>Ver Ficha Completa</span>
+                            <span>Ver Ficha Completa (Montos)</span>
                             <i class="fa-solid fa-chevron-right text-[11px] group-hover/btn:translate-x-1.5 transition-transform"></i>
                         </button>
                     </div>
@@ -477,7 +532,7 @@
 
             document.getElementById('field-redencionParcial').innerText = cleanVal(item.redencionParcial);
             document.getElementById('field-redencionTotal').innerText = cleanVal(item.redencionTotal);
-            document.getElementById('field-cobertura').innerText = cleanVal(item.cobertura);
+            document.getElementById('field-cobertura').innerText = cleanVal(item.canalesUso) !== '-' ? item.canalesUso : cleanVal(item.cobertura);
 
             document.getElementById('field-instructivoUso').innerText = cleanVal(item.instructivoUso);
             document.getElementById('field-exclusionesRestricciones').innerText = cleanVal(item.exclusionesRestricciones);
@@ -511,12 +566,17 @@
                         cobroExtra: findColIndex(headers, "cobro extra", "¿cobro extra?"),
                         valorCobroExtra: findColIndex(headers, "valor cobro extra", "valor cobro"),
                         tipoProducto: findColIndex(headers, "tipo de producto", "tipo producto"),
-                        redencionParcial: findColIndex(headers, "permite redencion parcial", "redencion parcial", "permite redencion"),
+                        redencionParcial: findColIndex(headers, "permite redencion parcial", "redencion parcial", "permite redencion", "compras parciales", "saldo remanente"),
                         redencionTotal: findColIndex(headers, "solo redencion total", "redencion total", "solo redencion"),
                         instructivoUso: findColIndex(headers, "instructivo de uso", "instructivo"),
                         cobertura: findColIndex(headers, "cobertura"),
-                        exclusionesRestricciones: findColIndex(headers, "exclusiones o restricciones", "exclusiones"),
-                        vigencia: findColIndex(headers, "vigencia")
+                        exclusionesRestricciones: findColIndex(headers, "exclusiones o restricciones", "exclusiones", "restricciones"),
+                        vigencia: findColIndex(headers, "vigencia"),
+                        nominativaPortador: findColIndex(headers, "nominativa", "portador", "nominativa o al portador", "tipo de gift card"),
+                        canalesUso: findColIndex(headers, "canales", "canal", "canales de uso"),
+                        restriccionPuntoFisico: findColIndex(headers, "restriccion de uso en algun punto", "restriccion punto fisico", "puntos fisicos", "restriccion punto"),
+                        multipleGiftCard: findColIndex(headers, "mas de una gift card", "multiple gift card", "multiples gift cards", "acumulable", "varias gift card"),
+                        codigosPorFactura: findColIndex(headers, "cuantos codigos permite por factura", "codigos por factura", "limite codigos", "codigos factura", "codigos por venta")
                     };
 
                     const getVal = (cols, colIdx, fallbackIdx) => {
@@ -545,7 +605,12 @@
                                 instructivoUso: getVal(cols, mapCol.instructivoUso, 14),
                                 cobertura: getVal(cols, mapCol.cobertura, 16),
                                 exclusionesRestricciones: getVal(cols, mapCol.exclusionesRestricciones, 17),
-                                vigencia: getVal(cols, mapCol.vigencia, 23)
+                                vigencia: getVal(cols, mapCol.vigencia, 23),
+                                nominativaPortador: getVal(cols, mapCol.nominativaPortador, -1),
+                                canalesUso: getVal(cols, mapCol.canalesUso, -1),
+                                restriccionPuntoFisico: getVal(cols, mapCol.restriccionPuntoFisico, -1),
+                                multipleGiftCard: getVal(cols, mapCol.multipleGiftCard, -1),
+                                codigosPorFactura: getVal(cols, mapCol.codigosPorFactura, -1)
                             });
                         }
                     }
@@ -584,7 +649,9 @@
                     item.comercio,
                     item.categoria,
                     item.montos,
-                    item.tipoProducto
+                    item.tipoProducto,
+                    item.canalesUso,
+                    item.exclusionesRestricciones
                 ].map(v => (v || '').toLowerCase()).join(' ');
 
                 return searchPool.includes(query);
