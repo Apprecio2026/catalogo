@@ -73,19 +73,19 @@
 </head>
 <body class="bg-slate-300 text-slate-900 min-h-screen flex flex-col antialiased">
 
-    <header class="sticky top-0 z-40 bg-slate-900 text-white shadow-lg border-b border-slate-800">
+    <header class="sticky top-0 z-40 bg-black text-white shadow-xl border-b border-neutral-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
             <div class="flex items-center gap-3">
                 <!-- Logo Principal en Contenedor Gris Neutral -->
                 <a href="#" class="flex items-center shrink-0 group">
-                    <div class="px-2.5 py-1.5 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center">
+                    <div class="px-2.5 py-1.5 rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center">
                         <img src="logo-apprecio-png.png" 
                              alt="Apprecio Logo" 
                              class="h-7 sm:h-9 w-auto object-contain transition-transform group-hover:scale-105"
                              onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'h-8 px-3 rounded-lg bg-apprecio-red flex items-center justify-center text-white font-extrabold text-lg shadow-md border border-rose-500 tracking-wider\'><span>Apprecio</span></div>';">
                     </div>
                 </a>
-                <div class="hidden sm:block border-l border-slate-700 h-7 mx-1"></div>
+                <div class="hidden sm:block border-l border-neutral-800 h-7 mx-1"></div>
                 <div class="hidden sm:block">
                     <h1 class="text-sm font-extrabold text-white leading-tight">Catálogo de Gift Cards Colombia</h1>
                     <p class="text-[11px] text-slate-300 font-medium flex items-center gap-1.5">
@@ -96,17 +96,17 @@
 
             <!-- Zona Superior Derecha con Sincronización y Logo Secundario -->
             <div class="flex items-center gap-2.5 sm:gap-4">
-                <button onclick="refreshDataManual()" id="btn-refresh" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl border border-slate-700 bg-slate-800 text-white text-xs font-bold hover:bg-slate-700 transition-all shadow-sm active:scale-95">
+                <button onclick="refreshDataManual()" id="btn-refresh" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl border border-neutral-800 bg-neutral-900 text-white text-xs font-bold hover:bg-neutral-800 transition-all shadow-sm active:scale-95">
                     <i class="fa-solid fa-rotate-right" id="refresh-icon"></i>
                     <span class="hidden sm:inline">Sincronizar</span>
                 </button>
-                <span id="sync-status-badge" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold bg-slate-800 text-white border border-slate-700">
+                <span id="sync-status-badge" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold bg-neutral-900 text-white border border-neutral-800">
                     <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                     <span id="sync-text">Sincronizado</span>
                 </span>
-                <!-- Logo secundario superior derecha con fondo gris -->
-                <div class="hidden md:flex items-center pl-3 border-l border-slate-800">
-                    <div class="px-2 py-1 rounded-lg bg-slate-800 border border-slate-700/60">
+                <!-- Logo secundario superior derecha con fondo gris neutro -->
+                <div class="hidden md:flex items-center pl-3 border-l border-neutral-800">
+                    <div class="px-2 py-1 rounded-lg bg-neutral-900 border border-neutral-800">
                         <img src="logo-apprecio-png.png" 
                              alt="Apprecio Logo" 
                              class="h-6 sm:h-7 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity"
@@ -139,7 +139,7 @@
                 <!-- Columna Derecha: Banner Animado y Tarjetas Informativas -->
                 <div class="w-full lg:w-auto flex flex-col items-center justify-center gap-4">
                     
-                    <!-- Imagen Animada con banner-apprecio.png.png (con fallback a banner.png) -->
+                    <!-- Imagen Animada con banner-apprecio.png.png -->
                     <div class="animate-float max-w-xs sm:max-w-sm rounded-2xl overflow-hidden shadow-lg border border-slate-300 bg-slate-100 p-1.5 transition-transform">
                         <img src="banner-apprecio.png.png" 
                              alt="Banner Apprecio" 
@@ -195,7 +195,7 @@
 
             <!-- Grid de Tarjetas de Comercios -->
             <div id="cards-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-                <!-- Tarjetas pobladas dinámicamente con las 8 preguntas bajo el nombre -->
+                <!-- Tarjetas pobladas dinámicamente con las 8 preguntas exactas -->
             </div>
 
             <!-- Estado de Sin Resultados -->
@@ -303,16 +303,16 @@
             </div>
 
             <div class="p-4 bg-slate-200 border-t border-slate-300 flex justify-end shrink-0">
-                <button onclick="closeDetailModal()" class="px-5 py-2 bg-slate-800 hover:bg-slate-900 text-white font-bold rounded-xl text-xs transition-all shadow-sm">
+                <button onclick="closeDetailModal()" class="px-5 py-2 bg-black hover:bg-neutral-900 text-white font-bold rounded-xl text-xs transition-all shadow-sm">
                     Cerrar Ficha
                 </button>
             </div>
         </div>
     </div>
 
-    <footer class="bg-slate-900 text-white border-t border-slate-800 mt-12 py-8 text-center text-xs text-slate-400 space-y-3">
+    <footer class="bg-black text-white border-t border-neutral-800 mt-12 py-8 text-center text-xs text-slate-400 space-y-3">
         <div class="flex items-center justify-center gap-2">
-            <div class="px-3 py-1.5 rounded-xl bg-slate-800 border border-slate-700 inline-flex items-center justify-center">
+            <div class="px-3 py-1.5 rounded-xl bg-neutral-900 border border-neutral-800 inline-flex items-center justify-center">
                 <img src="logo-apprecio-png.png" 
                      alt="Apprecio Logo" 
                      class="h-8 sm:h-10 w-auto object-contain mx-auto"
@@ -397,7 +397,6 @@
             return -1;
         }
 
-        // Renderizado de tarjetas con las 8 preguntas exactas debajo del nombre del comercio
         function renderCards(items) {
             const grid = document.getElementById('cards-grid');
             const noResults = document.getElementById('no-results');
@@ -440,19 +439,14 @@
 
                 card.innerHTML = `
                     <div>
-                        <!-- Header de Tarjeta con fondo gris neutral y sello rojo -->
-                        <div class="bg-slate-300 border-b border-slate-400 px-3.5 py-2.5 flex items-center justify-between gap-2">
-                            <div class="flex items-center gap-2 truncate">
-                                <span class="bg-apprecio-red text-white text-[10px] font-extrabold px-1.5 py-0.5 rounded shadow-sm shrink-0">
-                                    App
-                                </span>
-                                <h4 class="text-sm font-black text-slate-900 truncate leading-snug tracking-tight" title="${item.comercio}">
-                                    ${cleanVal(item.comercio)}
-                                </h4>
-                            </div>
+                        <!-- Header de Tarjeta en Rojo Apprecio con letras blancas y solo el nombre -->
+                        <div class="bg-apprecio-red px-4 py-3 flex items-center justify-between gap-2 shadow-sm">
+                            <h4 class="text-sm sm:text-base font-black text-white truncate leading-snug tracking-tight" title="${item.comercio}">
+                                ${cleanVal(item.comercio)}
+                            </h4>
                         </div>
 
-                        <!-- Cuerpos con los 8 campos ordenados exactamente con sus preguntas debajo del nombre -->
+                        <!-- Cuerpo con las 8 preguntas exactas debajo del nombre -->
                         <div class="p-4 space-y-2.5 text-xs text-slate-800">
                             
                             <!-- 1. ¿Las gift cards son nominativas o al portador? -->
@@ -642,7 +636,7 @@
             if (text) text.innerText = msg;
             if (badge) {
                 if (success) {
-                    badge.className = "inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold bg-slate-800 text-white border border-slate-700";
+                    badge.className = "inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold bg-neutral-900 text-white border border-neutral-800";
                 } else {
                     badge.className = "inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold bg-amber-500 text-slate-950 border border-amber-400";
                 }
